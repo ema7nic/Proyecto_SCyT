@@ -24,10 +24,8 @@ class Usuario
     /**
      * @var integer
      * 
-     * @ORM\OneToMany(targetEntity="Solicitud")
-     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="Solicitud", mappedBy="usuario")
 	*/
-	 
 	 private $solicitudes;
 	
 	
@@ -107,6 +105,11 @@ class Usuario
      * @ORM\Column(name="dni", type="integer", unique=true)
      */
     private $dni;
+    
+    public function __construct()
+    {
+        $this->solicitudes = new ArrayCollection();
+    }
 
 
     /**

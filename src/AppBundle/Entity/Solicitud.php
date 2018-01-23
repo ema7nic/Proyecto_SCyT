@@ -126,6 +126,12 @@ class Solicitud
      * @ORM\Column(name="fecha_revision", type="datetime")
      */
     private $fechaRevision;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="solicitudes")
+     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id")
+     */
+    private $usuario;
 
 
     /**
