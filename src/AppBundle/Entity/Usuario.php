@@ -23,6 +23,7 @@ class Usuario
 
 	/**
      * @ORM\OneToMany(targetEntity="Solicitud", mappedBy="usuario")
+     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id")
 	*/
 	 
 	 private $solicitudes;

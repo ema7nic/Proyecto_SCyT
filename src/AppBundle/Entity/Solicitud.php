@@ -22,14 +22,6 @@ class Solicitud
     private $id;
 
 	
-	/**
-	*
-	*@ORM\ManyToOne(targetEntity="Usuario", inversedBy="solicitudes")
-     * @ORM\JoinColumn(name="usuario_genera_id", referencedColumnName="id")
-	*
-	*/
-	private $usuarioGenera;
-	
     /**
      * @var \DateTime
      *
