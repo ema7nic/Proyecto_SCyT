@@ -134,6 +134,24 @@ class Solicitud
     private $usuario;
 
 
+	/*
+	*@ORM\ManyToOne(targetEntity="Localidad")
+     * @ORM\JoinColumn(name="id_localidad", referencedColumnName="id")
+	 */
+	private $localidad;
+	
+	
+	 /**
+     * @var integer
+     * 
+     * @ORM\OneToMany(targetEntity="Comprobante", mappedBy="solicitud")
+	*/
+	private $comprobantes;
+	/*
+	*@ORM\ManyToOne(targetEntity="ProyectoGrupo")
+     * @ORM\JoinColumn(name="id_proyecto_grupo", referencedColumnName="id")
+	 */
+	private $proyectoGrupo;
     /**
      * Get id
      *
@@ -503,5 +521,84 @@ class Solicitud
     {
         return $this->fechaRevision;
     }
+	
+	/**
+	* Set usuario
+	**@param \Object $usuario
+	*
+	*@return Solicitud
+	*/
+	
+	public function setUsuario($usuario)
+	{
+		$this->usuario = $usuario;
+		return $this;
+	}
+	
+	/**
+	* Get usuario
+	*
+	* @return \Object
+	*/
+	
+	public function getUsuario()
+	{
+		return $this->usuario;
+		
+	}
+	
+	
+	/**
+	* Set localidad
+	**@param \Object $localidad
+	*
+	*@return Solicitud
+	*/
+	
+	public function setLocalidad($localidad)
+	{
+		$this->localidad = $localidad;
+		return $this;
+	}
+	
+	/**
+	* Get localidad
+	*
+	* @return \Object
+	*/
+	
+	public function getLocalidad()
+	{
+		return $this->localidad;
+		
+	}
+	
+	
+	/**
+	* Set proyectoGrupo
+	**@param \Object $proyectoGrupo
+	*
+	*@return Solicitud
+	*/
+	
+	public function setProyectoGrupo($proyectoGrupo)
+	{
+		$this->proyectoGrupo = $proyectoGrupo;
+		return $this;
+	}
+	
+	/**
+	* Get proyectoGrupo
+	*
+	* @return \Object
+	*/
+	
+	public function getproyectoGrupo()
+	{
+		return $this->proyectoGrupo;
+		
+	}
+	
+	
 }
 
