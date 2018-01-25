@@ -58,6 +58,14 @@ class AsignacionGlobal
     
     
     /**
+     * @param number $asignaciones
+     */
+    public function setAsignaciones($asignaciones)
+    {
+        $this->asignaciones = $asignaciones;
+    }
+
+    /**
      * Get id
      *
      * @return int

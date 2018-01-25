@@ -137,6 +137,14 @@ class Usuario
 
 
     /**
+     * @param \Doctrine\Common\Collections\ArrayCollection $asignaciones
+     */
+    public function setAsignaciones($asignaciones)
+    {
+        $this->asignaciones = $asignaciones;
+    }
+
+    /**
      * Get id
      *
      * @return int

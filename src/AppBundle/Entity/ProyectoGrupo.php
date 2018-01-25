@@ -77,6 +77,14 @@ class ProyectoGrupo
     private $asignaciones;
 
     /**
+     * @param number $asignaciones
+     */
+    public function setAsignaciones($asignaciones)
+    {
+        $this->asignaciones = $asignaciones;
+    }
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -261,13 +269,6 @@ class ProyectoGrupo
     public function getUsuario()
     {
     	return $this->usuario;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->asignaciones = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
