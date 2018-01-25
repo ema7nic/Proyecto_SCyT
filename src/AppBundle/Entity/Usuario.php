@@ -28,6 +28,13 @@ class Usuario
 	*/
 	 private $solicitudes;
 	
+	 /**
+	  * @var integer
+	  *
+	  * @ORM\OneToMany(targetEntity="Asignacion", mappedBy="usuario")
+	  */
+	 private $asignaciones;
+	 
 	
     /**
      * @var string
@@ -105,6 +112,13 @@ class Usuario
      * @ORM\Column(name="dni", type="integer", unique=true)
      */
     private $dni;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Localidad")
+     * @ORM\JoinColumn(name="id_localidad", referencedColumnName="id", nullable=false)
+     */
+    
+    private $localidad;
     
     public function __construct()
     {

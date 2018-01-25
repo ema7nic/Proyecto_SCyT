@@ -62,6 +62,14 @@ class ProyectoGrupo
      * @ORM\Column(name="saldo", type="decimal", precision=10, scale=2)
      */
     private $saldo;
+    
+    
+    /**
+     * @var integer
+     *
+     * @ORM\OneToMany(targetEntity="Asignacion", mappedBy="proyectoGrupo")
+     */
+    private $asignaciones;
 
 
     /**

@@ -40,7 +40,25 @@ class Asignacion
      * @ORM\Column(name="descripcion", type="string", length=255)
      */
     private $descripcion;
-
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="asignaciones")
+     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id")
+     */
+    private $usuario;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="ProyectoGrupo", inversedBy="asignaciones")
+     * @ORM\JoinColumn(name="id_proyecto_grupo", referencedColumnName="id")
+     */
+    private $proyectoGrupo;
+    
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="AsignacionGlobal", inversedBy="asignaciones")
+     * @ORM\JoinColumn(name="id_asignacion_global", referencedColumnName="id")
+     */
+    private $asignacionGlobal;
 
     /**
      * Get id

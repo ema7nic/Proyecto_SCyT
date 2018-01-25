@@ -49,7 +49,14 @@ class AsignacionGlobal
      */
     private $saldo;
 
-
+    /**
+     * @var integer
+     *
+     * @ORM\OneToMany(targetEntity="Asignacion", mappedBy="proyectoGrupo")
+     */
+    private $asignaciones;
+    
+    
     /**
      * Get id
      *
