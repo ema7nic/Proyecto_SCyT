@@ -31,14 +31,15 @@ class Localidad
     /**
      * @var string
      *
-     * @ORM\Column(name="cp", type="string", length=255)
+     * @ORM\Column(name="codigoPostal", type="string", length=255)
      */
+    private $codigoPostal;
 
     /**
      * @ORM\ManyToOne(targetEntity="Provincia")
      * @ORM\JoinColumn(name="provincia_id", referencedColumnName="id", nullable=false)
      */
-    protected $provincia;
+    private $provincia;
     
     
     /**
