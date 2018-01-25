@@ -99,5 +99,52 @@ class Localidad
     {
         return $this->cp;
     }
-}
 
+    /**
+     * Set codigoPostal
+     *
+     * @param string $codigoPostal
+     *
+     * @return Localidad
+     */
+    public function setCodigoPostal($codigoPostal)
+    {
+        $this->codigoPostal = $codigoPostal;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoPostal
+     *
+     * @return string
+     */
+    public function getCodigoPostal()
+    {
+        return $this->codigoPostal;
+    }
+
+    /**
+     * Set provincia
+     *
+     * @param \AppBundle\Entity\Provincia $provincia
+     *
+     * @return Localidad
+     */
+    public function setProvincia(\AppBundle\Entity\Provincia $provincia)
+    {
+        $this->provincia = $provincia;
+
+        return $this;
+    }
+
+    /**
+     * Get provincia
+     *
+     * @return \AppBundle\Entity\Provincia
+     */
+    public function getProvincia()
+    {
+        return $this->provincia;
+    }
+}

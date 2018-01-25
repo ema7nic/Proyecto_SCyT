@@ -162,5 +162,45 @@ class AsignacionGlobal
     {
         return $this->saldo;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->asignaciones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add asignacione
+     *
+     * @param \AppBundle\Entity\Asignacion $asignacione
+     *
+     * @return AsignacionGlobal
+     */
+    public function addAsignacione(\AppBundle\Entity\Asignacion $asignacione)
+    {
+        $this->asignaciones[] = $asignacione;
+
+        return $this;
+    }
+
+    /**
+     * Remove asignacione
+     *
+     * @param \AppBundle\Entity\Asignacion $asignacione
+     */
+    public function removeAsignacione(\AppBundle\Entity\Asignacion $asignacione)
+    {
+        $this->asignaciones->removeElement($asignacione);
+    }
+
+    /**
+     * Get asignaciones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAsignaciones()
+    {
+        return $this->asignaciones;
+    }
+}

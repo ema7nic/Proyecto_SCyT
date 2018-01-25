@@ -59,6 +59,16 @@ class Asignacion
      * @ORM\JoinColumn(name="id_asignacion_global", referencedColumnName="id")
      */
     private $asignacionGlobal;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->usuario = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->proyectoGrupo = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->$asignacionGlobal = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -141,5 +151,77 @@ class Asignacion
     {
         return $this->descripcion;
     }
-}
 
+    /**
+     * Set usuario
+     *
+     * @param \AppBundle\Entity\Usuario $usuario
+     *
+     * @return Asignacion
+     */
+    public function setUsuario(\AppBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \AppBundle\Entity\Usuario
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set proyectoGrupo
+     *
+     * @param \AppBundle\Entity\ProyectoGrupo $proyectoGrupo
+     *
+     * @return Asignacion
+     */
+    public function setProyectoGrupo(\AppBundle\Entity\ProyectoGrupo $proyectoGrupo = null)
+    {
+        $this->proyectoGrupo = $proyectoGrupo;
+
+        return $this;
+    }
+
+    /**
+     * Get proyectoGrupo
+     *
+     * @return \AppBundle\Entity\ProyectoGrupo
+     */
+    public function getProyectoGrupo()
+    {
+        return $this->proyectoGrupo;
+    }
+
+    /**
+     * Set asignacionGlobal
+     *
+     * @param \AppBundle\Entity\AsignacionGlobal $asignacionGlobal
+     *
+     * @return Asignacion
+     */
+    public function setAsignacionGlobal(\AppBundle\Entity\AsignacionGlobal $asignacionGlobal = null)
+    {
+        $this->asignacionGlobal = $asignacionGlobal;
+
+        return $this;
+    }
+
+    /**
+     * Get asignacionGlobal
+     *
+     * @return \AppBundle\Entity\AsignacionGlobal
+     */
+    public function getAsignacionGlobal()
+    {
+        return $this->asignacionGlobal;
+    }
+    
+}

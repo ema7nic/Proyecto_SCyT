@@ -689,5 +689,95 @@ class Solicitud
 		return $this->tiposEventos;
 	
 	}
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comprobantes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->conceptosImportesSolicitudes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tiposEventos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add comprobante
+     *
+     * @param \AppBundle\Entity\Comprobante $comprobante
+     *
+     * @return Solicitud
+     */
+    public function addComprobante(\AppBundle\Entity\Comprobante $comprobante)
+    {
+        $this->comprobantes[] = $comprobante;
+
+        return $this;
+    }
+
+    /**
+     * Remove comprobante
+     *
+     * @param \AppBundle\Entity\Comprobante $comprobante
+     */
+    public function removeComprobante(\AppBundle\Entity\Comprobante $comprobante)
+    {
+        $this->comprobantes->removeElement($comprobante);
+    }
+
+    /**
+     * Add conceptosImportesSolicitude
+     *
+     * @param \AppBundle\Entity\ConceptoImporteSolicitud $conceptosImportesSolicitude
+     *
+     * @return Solicitud
+     */
+    public function addConceptosImportesSolicitude(\AppBundle\Entity\ConceptoImporteSolicitud $conceptosImportesSolicitude)
+    {
+        $this->conceptosImportesSolicitudes[] = $conceptosImportesSolicitude;
+
+        return $this;
+    }
+
+    /**
+     * Remove conceptosImportesSolicitude
+     *
+     * @param \AppBundle\Entity\ConceptoImporteSolicitud $conceptosImportesSolicitude
+     */
+    public function removeConceptosImportesSolicitude(\AppBundle\Entity\ConceptoImporteSolicitud $conceptosImportesSolicitude)
+    {
+        $this->conceptosImportesSolicitudes->removeElement($conceptosImportesSolicitude);
+    }
+
+    /**
+     * Get conceptosImportesSolicitudes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConceptosImportesSolicitudes()
+    {
+        return $this->conceptosImportesSolicitudes;
+    }
+
+    /**
+     * Add tiposEvento
+     *
+     * @param \AppBundle\Entity\TipoEvento $tiposEvento
+     *
+     * @return Solicitud
+     */
+    public function addTiposEvento(\AppBundle\Entity\TipoEvento $tiposEvento)
+    {
+        $this->tiposEventos[] = $tiposEvento;
+
+        return $this;
+    }
+
+    /**
+     * Remove tiposEvento
+     *
+     * @param \AppBundle\Entity\TipoEvento $tiposEvento
+     */
+    public function removeTiposEvento(\AppBundle\Entity\TipoEvento $tiposEvento)
+    {
+        $this->tiposEventos->removeElement($tiposEvento);
+    }
+}

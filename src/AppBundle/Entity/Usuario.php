@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,21 +21,6 @@ class Usuario
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * 
-     * 
-     * @ORM\OneToMany(targetEntity="Solicitud", mappedBy="usuario")
-	*/
-	 private $solicitudes;
-	
-	 /**
-	  * 
-	  *
-	  * @ORM\OneToMany(targetEntity="Asignacion", mappedBy="usuario")
-	  */
-	 private $asignaciones;
-	 
 	
     /**
      * @var string
@@ -120,6 +106,20 @@ class Usuario
     
     private $localidad;
     
+    /**
+     *
+     *
+     * @ORM\OneToMany(targetEntity="Solicitud", mappedBy="usuario")
+     */
+    private $solicitudes;
+    
+    /**
+     *
+     *
+     * @ORM\OneToMany(targetEntity="Asignacion", mappedBy="usuario")
+     */
+    private $asignaciones;
+    
     
     /**
      *
@@ -130,6 +130,7 @@ class Usuario
     public function __construct()
     {
         $this->solicitudes = new ArrayCollection();
+        $this->asignaciones = new ArrayCollection();
     }
     
    
@@ -454,5 +455,110 @@ class Usuario
     {
     	return $this->proyectosGrupos;
     }
-}
 
+    /**
+     * Add solicitude
+     *
+     * @param \AppBundle\Entity\Solicitud $solicitude
+     *
+     * @return Usuario
+     */
+    public function addSolicitude(\AppBundle\Entity\Solicitud $solicitude)
+    {
+        $this->solicitudes[] = $solicitude;
+
+        return $this;
+    }
+
+    /**
+     * Remove solicitude
+     *
+     * @param \AppBundle\Entity\Solicitud $solicitude
+     */
+    public function removeSolicitude(\AppBundle\Entity\Solicitud $solicitude)
+    {
+        $this->solicitudes->removeElement($solicitude);
+    }
+
+    /**
+     * Add asignacione
+     *
+     * @param \AppBundle\Entity\Asignacion $asignacione
+     *
+     * @return Usuario
+     */
+    public function addAsignacione(\AppBundle\Entity\Asignacion $asignacione)
+    {
+        $this->asignaciones[] = $asignacione;
+
+        return $this;
+    }
+
+    /**
+     * Remove asignacione
+     *
+     * @param \AppBundle\Entity\Asignacion $asignacione
+     */
+    public function removeAsignacione(\AppBundle\Entity\Asignacion $asignacione)
+    {
+        $this->asignaciones->removeElement($asignacione);
+    }
+
+    /**
+     * Get asignaciones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAsignaciones()
+    {
+        return $this->asignaciones;
+    }
+
+    /**
+     * Set localidad
+     *
+     * @param \AppBundle\Entity\Localidad $localidad
+     *
+     * @return Usuario
+     */
+    public function setLocalidad(\AppBundle\Entity\Localidad $localidad)
+    {
+        $this->localidad = $localidad;
+
+        return $this;
+    }
+
+    /**
+     * Get localidad
+     *
+     * @return \AppBundle\Entity\Localidad
+     */
+    public function getLocalidad()
+    {
+        return $this->localidad;
+    }
+
+    /**
+     * Add proyectosGrupo
+     *
+     * @param \AppBundle\Entity\ProyectoGrupo $proyectosGrupo
+     *
+     * @return Usuario
+     */
+    public function addProyectosGrupo(\AppBundle\Entity\ProyectoGrupo $proyectosGrupo)
+    {
+        $this->proyectosGrupos[] = $proyectosGrupo;
+
+        return $this;
+    }
+
+    /**
+     * Remove proyectosGrupo
+     *
+     * @param \AppBundle\Entity\ProyectoGrupo $proyectosGrupo
+     */
+    public function removeProyectosGrupo(\AppBundle\Entity\ProyectoGrupo $proyectosGrupo)
+    {
+        $this->proyectosGrupos->removeElement($proyectosGrupo);
+    }
+}

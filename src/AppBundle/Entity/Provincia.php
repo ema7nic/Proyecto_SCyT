@@ -177,4 +177,28 @@ class Provincia {
     public function getFechaBaja() {
         return $this->fechaBaja;
     }
+
+    /**
+     * Set pais
+     *
+     * @param \AppBundle\Entity\Pais $pais
+     *
+     * @return Provincia
+     */
+    public function setPais(\AppBundle\Entity\Pais $pais)
+    {
+        $this->pais = $pais;
+
+        return $this;
+    }
+
+    /**
+     * Get pais
+     *
+     * @return \AppBundle\Entity\Pais
+     */
+    public function getPais()
+    {
+        return $this->pais;
+    }
 }

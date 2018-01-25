@@ -125,4 +125,3 @@ class TipoEvento
     	return $this->solicitud;
     }
 }
-
