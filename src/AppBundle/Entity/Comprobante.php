@@ -44,7 +44,7 @@ class Comprobante
 
 	/**
      * @ORM\ManyToOne(targetEntity="Solicitud", inversedBy="comprobantes")
-     * @ORM\JoinColumn(name="id_solicitud", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_solicitud", referencedColumnName="id", nullable=false)
      */
 	private $solicitud;
 
@@ -129,5 +129,28 @@ class Comprobante
     {
         return $this->fecha;
     }
+    
+    
+    /**
+     *  Get solicitud
+     *  @return \Solicitud
+     * */
+    public function getSolicitud()
+    {
+    	return $this->solicitud;
+    }
+     
+    /**
+     * Set solicitud
+     * @param \Solicitud $solicitud
+     * @return Comprobante
+     */
+    public function setSolicitud($solicitud)
+    {
+    	$this->solicitud = $solicitud;
+    	
+    	return $this;
+    }
+    
 }
 

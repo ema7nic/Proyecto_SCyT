@@ -22,14 +22,14 @@ class Usuario
     private $id;
 
     /**
-     * @var integer
+     * 
      * 
      * @ORM\OneToMany(targetEntity="Solicitud", mappedBy="usuario")
 	*/
 	 private $solicitudes;
 	
 	 /**
-	  * @var integer
+	  * 
 	  *
 	  * @ORM\OneToMany(targetEntity="Asignacion", mappedBy="usuario")
 	  */
@@ -120,10 +120,19 @@ class Usuario
     
     private $localidad;
     
+    
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="ProyectoGrupo", mappedBy="usuario")
+     */
+    private $proyectosGrupos;
+    
     public function __construct()
     {
         $this->solicitudes = new ArrayCollection();
     }
+    
+   
 
 
     /**
@@ -419,6 +428,31 @@ class Usuario
     public function getDni()
     {
         return $this->dni;
+    }
+    
+    
+    /**
+     * Set proyectosGrupos
+     *
+     * @param \Object $proyectosGrupos
+     *
+     * @return Usuario
+     */
+    public function setProyectosGrupos($proyectosGrupos)
+    {
+    	$this->proyectosGrupos = $proyectosGrupos;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get proyectosGrupos
+     *
+     * @return \Object
+     */
+    public function getProyectosGrupos()
+    {
+    	return $this->proyectosGrupos;
     }
 }
 

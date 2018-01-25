@@ -35,6 +35,12 @@ class TipoEvento
      */
     private $importe;
 
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Solicitud", inversedBy="tiposEventos")
+     * @ORM\JoinColumn(name="id_solicitud", referencedColumnName="id", nullable=false)
+     */
+    private $solicitud;
 
     /**
      * Get id
@@ -92,6 +98,31 @@ class TipoEvento
     public function getImporte()
     {
         return $this->importe;
+    }
+    
+    
+    /**
+     * Set solicitud
+     *
+     * @param Solicitud $solicitud
+     *
+     * @return TipoEvento
+     */
+    public function setSolicitud($solicitud)
+    {
+    	$this->solicitud = $solicitud;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get solicitud
+     *
+     * @return Solicitud
+     */
+    public function getSolicitud()
+    {
+    	return $this->solicitud;
     }
 }
 

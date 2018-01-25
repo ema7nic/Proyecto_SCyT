@@ -63,6 +63,11 @@ class ProyectoGrupo
      */
     private $saldo;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="proyectosGrupos")
+     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id", nullable=false)
+     */
+    private $usuario;
     
     /**
      * @var integer
@@ -224,6 +229,31 @@ class ProyectoGrupo
     public function getSaldo()
     {
         return $this->saldo;
+    }
+    
+    
+    /**
+     * Set usuario
+     *
+     * @param Usuario $usuario
+     *
+     * @return ProyectoGrupo
+     */
+    public function setUsuario($usuario)
+    {
+    	$this->usuario = $usuario;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get usuario
+     *
+     * @return Usuario
+     */
+    public function getUsuario()
+    {
+    	return $this->usuario;
     }
 }
 

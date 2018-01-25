@@ -129,14 +129,14 @@ class Solicitud
     
     /**
      * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="solicitudes")
-     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id", nullable=false)
      */
     private $usuario;
 
 
-	/*
+	/**
 	*@ORM\ManyToOne(targetEntity="Localidad")
-     * @ORM\JoinColumn(name="id_localidad", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_localidad", referencedColumnName="id", nullable=false)
 	 */
 	private $localidad;
 	
@@ -147,11 +147,26 @@ class Solicitud
      * @ORM\OneToMany(targetEntity="Comprobante", mappedBy="solicitud")
 	*/
 	private $comprobantes;
-	/*
+	/**
 	*@ORM\ManyToOne(targetEntity="ProyectoGrupo")
-     * @ORM\JoinColumn(name="id_proyecto_grupo", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_proyecto_grupo", referencedColumnName="id", nullable=false)
 	 */
 	private $proyectoGrupo;
+		
+	
+	/**
+	 * 
+	 * @ORM\OneToMany(targetEntity="ConceptoImporteSolicitud", mappedBy="solicitud")
+	 */
+	private $conceptosImportesSolicitudes;
+	
+	
+	/**
+	 *
+	 * @ORM\OneToMany(targetEntity="TipoEvento", mappedBy="solicitud")
+	 */
+	private $tiposEventos;
+	
     /**
      * Get id
      *
@@ -524,7 +539,7 @@ class Solicitud
 	
 	/**
 	* Set usuario
-	**@param \Object $usuario
+	**@param \Usuario $usuario
 	*
 	*@return Solicitud
 	*/
@@ -538,7 +553,7 @@ class Solicitud
 	/**
 	* Get usuario
 	*
-	* @return \Object
+	* @return \Usuario
 	*/
 	
 	public function getUsuario()
@@ -550,7 +565,7 @@ class Solicitud
 	
 	/**
 	* Set localidad
-	**@param \Object $localidad
+	**@param \Localidad $localidad
 	*
 	*@return Solicitud
 	*/
@@ -564,7 +579,7 @@ class Solicitud
 	/**
 	* Get localidad
 	*
-	* @return \Object
+	* @return \Localidad
 	*/
 	
 	public function getLocalidad()
@@ -576,7 +591,7 @@ class Solicitud
 	
 	/**
 	* Set proyectoGrupo
-	**@param \Object $proyectoGrupo
+	**@param \ProyectoGrupo $proyectoGrupo
 	*
 	*@return Solicitud
 	*/
@@ -590,15 +605,89 @@ class Solicitud
 	/**
 	* Get proyectoGrupo
 	*
-	* @return \Object
+	* @return \ProyectoGrupo
 	*/
 	
-	public function getproyectoGrupo()
+	public function getProyectoGrupo()
 	{
 		return $this->proyectoGrupo;
 		
 	}
 	
+	/**
+	 * Set comprobantes
+	 **@param \Object $comprobantes
+	 *
+	 *@return Solicitud
+	 */
 	
+	public function setComprobantes($comprobantes)
+	{
+		$this->comprobantes = $comprobantes;
+		return $this;
+	}
+	
+	/**
+	 * Get comprobantes
+	 *
+	 * @return \Object
+	 */
+	
+	public function getComprobantes()
+	{
+		return $this->comprobantes;
+	
+	}
+	
+	/**
+	 * Set conceptosImportesSolicitudes
+	 **@param \Object $conceptosImportesSolicitudes
+	 *
+	 *@return Solicitud
+	 */
+	
+	public function setConceptosImportesSolicitudes($conceptosImportesSolicitudes)
+	{
+		$this->conceptosImportesSolicitudes = $conceptosImportesSolicitudes;
+		return $this;
+	}
+	
+	/**
+	 * Get conceptosImportesSolicitudes
+	 *
+	 * @return \Object
+	 */
+	
+	public function getConcpetosImportesSolicitudes()
+	{
+		return $this->conceptosImportesSolicitudes;
+	
+	}
+	
+	
+	/**
+	 * Set tiposEventos
+	 **@param \Object $tiposEventos
+	 *
+	 *@return Solicitud
+	 */
+	
+	public function setTiposEventos($tiposEventos)
+	{
+		$this->tiposEventos = $tiposEventos;
+		return $this;
+	}
+	
+	/**
+	 * Get tiposEventos
+	 *
+	 * @return \Object
+	 */
+	
+	public function getTiposEventos()
+	{
+		return $this->tiposEventos;
+	
+	}
 }
 
