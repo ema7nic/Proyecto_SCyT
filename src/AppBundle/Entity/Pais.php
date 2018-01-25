@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Localidad
+ * Pais
  *
- * @ORM\Table(name="localidad")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\LocalidadRepository")
+ * @ORM\Table(name="pais")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PaisRepository")
  */
-class Localidad
+class Pais
 {
     /**
      * @var int
@@ -28,19 +28,7 @@ class Localidad
      */
     private $nombre;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cp", type="string", length=255)
-     */
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Provincia")
-     * @ORM\JoinColumn(name="provincia_id", referencedColumnName="id", nullable=false)
-     */
-    protected $provincia;
-    
-    
     /**
      * Get id
      *
@@ -56,7 +44,7 @@ class Localidad
      *
      * @param string $nombre
      *
-     * @return Localidad
+     * @return Pais
      */
     public function setNombre($nombre)
     {
@@ -73,30 +61,6 @@ class Localidad
     public function getNombre()
     {
         return $this->nombre;
-    }
-
-    /**
-     * Set cp
-     *
-     * @param string $cp
-     *
-     * @return Localidad
-     */
-    public function setCp($cp)
-    {
-        $this->cp = $cp;
-
-        return $this;
-    }
-
-    /**
-     * Get cp
-     *
-     * @return string
-     */
-    public function getCp()
-    {
-        return $this->cp;
     }
 }
 
