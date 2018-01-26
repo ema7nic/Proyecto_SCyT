@@ -62,7 +62,35 @@ class ProyectoGrupo
      * @ORM\Column(name="saldo", type="decimal", precision=10, scale=2)
      */
     private $saldo;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="proyectosGrupos")
+     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id", nullable=false)
+     */
+    private $usuario;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\OneToMany(targetEntity="Asignacion", mappedBy="proyectoGrupo")
+     */
+    private $asignaciones;
 
+    /**
+     * @param number $asignaciones
+     */
+    public function setAsignaciones($asignaciones)
+    {
+        $this->asignaciones = $asignaciones;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->asignaciones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -217,5 +245,63 @@ class ProyectoGrupo
     {
         return $this->saldo;
     }
-}
+    
+    
+    /**
+     * Set usuario
+     *
+     * @param Usuario $usuario
+     *
+     * @return ProyectoGrupo
+     */
+    public function setUsuario($usuario)
+    {
+    	$this->usuario = $usuario;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get usuario
+     *
+     * @return Usuario
+     */
+    public function getUsuario()
+    {
+    	return $this->usuario;
+    }
 
+    /**
+     * Add asignacione
+     *
+     * @param \AppBundle\Entity\Asignacion $asignacione
+     *
+     * @return ProyectoGrupo
+     */
+    public function addAsignacione(\AppBundle\Entity\Asignacion $asignacione)
+    {
+        $this->asignaciones[] = $asignacione;
+
+        return $this;
+    }
+
+    /**
+     * Remove asignacione
+     *
+     * @param \AppBundle\Entity\Asignacion $asignacione
+     */
+    public function removeAsignacione(\AppBundle\Entity\Asignacion $asignacione)
+    {
+        $this->asignaciones->removeElement($asignacione);
+    }
+
+    /**
+     * Get asignaciones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAsignaciones()
+    {
+        return $this->asignaciones;
+    }
+}

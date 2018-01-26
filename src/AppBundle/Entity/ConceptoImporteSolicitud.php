@@ -37,6 +37,14 @@ class ConceptoImporteSolicitud
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="Solicitud", inversedBy="conceptosImportesSolicitudes")
+     * @ORM\JoinColumn(name="id_solicitud", referencedColumnName="id", nullable=false)
+     */
+    private $solicitud;
+    
+    
+    
+    /**
      * Get id
      *
      * @return int
@@ -93,5 +101,29 @@ class ConceptoImporteSolicitud
     {
         return $this->importe;
     }
+    
+    
+    /**
+     * Set solicitud
+     *
+     * @param Solicitud $solicitud
+     *
+     * @return ConceptoImporteSolicitud
+     */
+    public function setSolicitud($solicitud)
+    {
+    	$this->solicitud = $solicitud;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get solicitud
+     *
+     * @return Solicitud
+     */
+    public function getSolicitud()
+    {
+    	return $this->solicitud;
+    }
 }
-
