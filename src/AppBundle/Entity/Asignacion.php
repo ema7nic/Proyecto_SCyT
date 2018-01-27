@@ -67,7 +67,7 @@ class Asignacion
     {
         $this->usuario = new \Doctrine\Common\Collections\ArrayCollection();
         $this->proyectoGrupo = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->$asignacionGlobal = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->asignacionGlobal = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
