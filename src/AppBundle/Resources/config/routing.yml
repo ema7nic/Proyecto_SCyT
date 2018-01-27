@@ -1,0 +1,7 @@
+aut_user:
+    resource: "@AutBundle/Resources/config/routing/user.yml"
+    prefix:   /user/
+    
+    
+
+
