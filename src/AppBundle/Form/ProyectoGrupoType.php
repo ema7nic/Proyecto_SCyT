@@ -13,7 +13,13 @@ class ProyectoGrupoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('codigo')->add('codigoUtn')->add('nombre')->add('fechaInicio')->add('fechaFin')->add('saldo')->add('usuario');
+        $builder
+        ->add('codigo')
+        ->add('codigoUtn')
+        ->add('nombre')
+        ->add('fechaInicio')
+        ->add('fechaFin')
+        ->add('usuario');
     }/**
      * {@inheritdoc}
      */
