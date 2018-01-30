@@ -7,22 +7,28 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ asignacion.id }}</td>
+                <td class="form-control">{{ asignacion.id }}</td>
             </tr>
            
             <tr>
                 <th>Monto</th>
-                <td>{{ asignacion.monto }}</td>
+                <td class="form-control">{{ asignacion.monto }}</td>
             </tr>
            
             <tr>
                 <th>Fecha</th>
-                <td>{% if asignacion.fechaAsignacion %}{{ asignacion.fechaAsignacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="form-control">{% if asignacion.fechaAsignacion %}{{ asignacion.fechaAsignacion|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Descripcion</th>
-                <td>{{ asignacion.descripcion }}</td>
+                <td class="form-control">{{ asignacion.descripcion }}</td>
             </tr>
+            
+            <tr>
+                <th>Asignacion global</th>
+                <td class="form-control">{{ asignacion.asignacionGlobal }}</td>
+            </tr>
+            
         </tbody>
     </table>
 

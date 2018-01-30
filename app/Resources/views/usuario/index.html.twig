@@ -5,13 +5,17 @@
         <table class="table table-responsive table-striped table-bordered">
             <thead class="thead-default">
                 <tr>
-                    <th>Username</th>
+                   <th>Id</th>
+                    <th>Iup</th>
                     <th>Clave</th>
                     <th>Rol</th>
                     <th>Nombre</th>
                     <th>Direccion</th>
                     <th>Telefono</th>
                     <th>Mail</th>
+                    <th>Fechaalta</th>
+                    <th>Fechabaja</th>
+                    <th>Fechaultimamodificacion</th>
                     <th>Dni</th>
                     <th>Actions</th>
                 </tr>
@@ -27,6 +31,9 @@
                         <td>{{ usuario.direccion }}</td>
                         <td>{{ usuario.telefono }}</td>
                         <td>{{ usuario.mail }}</td>
+                        <td>{% if usuario.fechaAlta %}{{ usuario.fechaAlta|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if usuario.fechaBaja %}{{ usuario.fechaBaja|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if usuario.fechaUltimaModificacion %}{{ usuario.fechaUltimaModificacion|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{{ usuario.dni }}</td>
                         <td>
                         	<ul>
@@ -45,9 +52,7 @@
     
         <ul>
             <li>
-            	<button type="button" role="button" aria-disabled="false"
-                	onclick="location.href = '{#{{ path('usuario_new') }}'#}">Crear</span>
-        		</button>
+            	<a href="{{ path('usuario_new') }}">Create a new usuario</a>
             </li>
         </ul>
 	</div>

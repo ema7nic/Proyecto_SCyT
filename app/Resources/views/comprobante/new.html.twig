@@ -1,12 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Asignacion de Comprobante a Solicitud</h1>
+<div class="main_container">
+		<div class="row well">
+			<div class="col-md-6">
+				<div class="page-header">
+					<h2> Asignacion de Comprobante a Solicitud </h2>
+				</div>
+				
+				{{ form_start(form) }}
+				
+    				<div class="form-group" >
+    			<input class="btn" type="button" value="Adjuntar Archivo"/>
+    			<p></p>
+    				{{form_label(form.nombreArchivo)}}
+					{{ form_widget(form.nombreArchivo, {'attr' : {'class' : 'form-control' }}) }}
+					<span class="text-danger"> {{form_errors(form.nombreArchivo)}}</span>
+					
+					{{form_label(form.ubicacionArchivo)}}
+					{{ form_widget(form.ubicacionArchivo, {'attr' : {'class' : 'form-control' }}) }}
+					<span class="text-danger"> {{form_errors(form.ubicacionArchivo)}}</span>
+					
+					
+        			<input class="btn" type="submit" value="Asignar" />
+					</div>
+        
+   				 {{ form_end(form) }}
+			</div>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Asignar" />
-    {{ form_end(form) }}
+	
+		</div>
+
+
 
     <ul>
         <li>

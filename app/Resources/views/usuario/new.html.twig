@@ -1,16 +1,69 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Usuario creation</h1>
+  
+  
+  		<div class="row well">
+			<div class="col-md-6">
+				<div class="page-header">
+					<h2>Nuevo Usuario </h2>
+				</div>
+				
+				{{ form_start(form) }}
+    				<div class="form-group" >
+    				{{form_label(form.iup)}}
+					{{ form_widget(form.iup, {'attr' : {'class' : 'form-control' }}) }}
+					<span class="text-danger"> {{form_errors(form.iup)}}</span>
+					
+					{{form_label(form.clave)}}
+					{{ form_widget(form.clave, {'attr' : {'class' : 'form-control' }}) }}
+					<span class="text-danger"> {{form_errors(form.clave)}}</span>
+				
+				{{form_label(form.rol)}}
+					{{ form_widget(form.rol, {'attr' : {'class' : 'form-control' }}) }}
+					<span class="text-danger"> {{form_errors(form.rol)}}</span>
+				
+				{{form_label(form.nombre)}}
+					{{ form_widget(form.nombre, {'attr' : {'class' : 'form-control' }}) }}
+					<span class="text-danger"> {{form_errors(form.nombre)}}</span>
+				
+				{{form_label(form.direccion)}}
+					{{ form_widget(form.direccion, {'attr' : {'class' : 'form-control' }}) }}
+					<span class="text-danger"> {{form_errors(form.direccion)}}</span>
+				
+				{{form_label(form.telefono)}}
+					{{ form_widget(form.telefono, {'attr' : {'class' : 'form-control' }}) }}
+					<span class="text-danger"> {{form_errors(form.telefono)}}</span>
+				
+				{{form_label(form.mail)}}
+					{{ form_widget(form.mail, {'attr' : {'class' : 'form-control' }}) }}
+					<span class="text-danger"> {{form_errors(form.mail)}}</span>
+					
+					{{form_label(form.dni)}}
+					{{ form_widget(form.dni, {'attr' : {'class' : 'form-control' }}) }}
+					<span class="text-danger"> {{form_errors(form.dni)}}</span>
+					
+						{{form_label(form.localidad)}}
+					{{ form_widget(form.localidad, {'attr' : {'class' : 'form-control' }}) }}
+					<span class="text-danger"> {{form_errors(form.localidad)}}</span>
+					
+        			<input class="btn btn-sucess" type="submit" value="Nuevo" />
+					</div>
+        
+   				 {{ form_end(form) }}
+			</div>
+		</div>
+  
+  
+  
+  
+  
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    
 
     <ul>
         <li>
-            <a href="{{ path('usuario_index') }}">Back to the list</a>
+            <a href="{{ path('usuario_index') }}">Volver a la lista</a>
         </li>
     </ul>
 {% endblock %}
