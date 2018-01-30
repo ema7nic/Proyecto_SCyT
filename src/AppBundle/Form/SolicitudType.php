@@ -13,20 +13,7 @@ class SolicitudType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-        ->add('direccion')
-        ->add('localidad')
-        ->add('fechaInicio')
-        ->add('fechaFin')
-        ->add('nombreEvento')
-        ->add('fechaSalida')
-        ->add('fechaLlegada')
-        ->add('importeTotal')
-        ->add('autores')
-        ->add('observaciones')
-        ->add('nroNota')
-        ->add('usuario')
-        ->add('proyectoGrupo');
+        $builder->add('fechaGeneracion')->add('fechaUltimaModificacion')->add('direccion')->add('fechaInicio')->add('fechaFin')->add('nombreEvento')->add('fechaSalida')->add('fechaLlegada')->add('importeTotal')->add('estado')->add('autores')->add('ejercicio')->add('observaciones')->add('nroNota')->add('fechaRevision')->add('usuario')->add('localidad')->add('proyectoGrupo');
     }/**
      * {@inheritdoc}
      */

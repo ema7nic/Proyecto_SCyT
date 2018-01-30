@@ -13,9 +13,7 @@ class ComprobanteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-        ->add('nombreArchivo')
-        ->add('ubicacionArchivo');
+        $builder->add('nombreArchivo')->add('ubicacionArchivo');
     }/**
      * {@inheritdoc}
      */

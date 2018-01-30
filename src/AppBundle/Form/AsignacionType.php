@@ -5,7 +5,6 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class AsignacionType extends AbstractType
 {
@@ -14,10 +13,7 @@ class AsignacionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-        ->add('monto')
-        ->add('descripcion')
-        ->add('asignacionGlobal');
+        $builder->add('monto')->add('fechaAsignacion')->add('descripcion')->add('asignacionGlobal');
     }/**
      * {@inheritdoc}
      */

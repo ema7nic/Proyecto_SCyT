@@ -1,50 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <h1>Proyectogrupo creation</h1>
 
-<div class="row well">
-			<div class="col-md-6">
-				<div class="page-header">
-					<h2>Nuevo Proyecto / Grupo </h2>
-				</div>
-				
-				{{ form_start(form) }}
-    				<div class="form-group" >
-    				{{form_label(form.codigo)}}
-					{{ form_widget(form.codigo, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.codigo)}}</span>
-					
-					{{form_label(form.codigoUtn)}}
-					{{ form_widget(form.codigoUtn, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.codigoUtn)}}</span>
-				
-				{{form_label(form.nombre)}}
-					{{ form_widget(form.nombre, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.nombre)}}</span>
-				
-				{{form_label(form.fechaInicio)}}
-					{{ form_widget(form.fechaInicio, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.fechaInicio)}}</span>
-				
-				{{form_label(form.fechaFin)}}
-					{{ form_widget(form.fechaFin, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.fechaFin)}}</span>
-				
-				{{form_label(form.usuario)}}
-					{{ form_widget(form.usuario, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.usuario)}}</span>
-				
-        			<input class="btn btn-sucess" type="submit" value="Nuevo" />
-					</div>
-        
-   				 {{ form_end(form) }}
-			</div>
-		</div>
-
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('proyectogrupo_index') }}">Volver a la lista</a>
+            <a href="{{ path('proyectogrupo_index') }}">Back to the list</a>
         </li>
     </ul>
 {% endblock %}

@@ -1,87 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <h1>Solicitud creation</h1>
 
-		<div class="row well">
-			<div class="col-md-6">
-				<div class="page-header">
-					<h2>Crear Solicitud</h2>
-				</div>
-				
-				{{ form_start(form) }}
-    				<div class="form-group" >
-    				{{form_label(form.direccion)}}
-					{{ form_widget(form.direccion, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.direccion)}}</span>
-					
-					{{form_label(form.localidad)}}
-					{{ form_widget(form.localidad, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.localidad)}}</span>
-				
-				{{form_label(form.fechaInicio)}}
-					{{ form_widget(form.fechaInicio, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.fechaInicio)}}</span>
-					
-					{{form_label(form.fechaFin)}}
-					{{ form_widget(form.fechaFin, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.fechaFin)}}</span>
-				
-				
-				{{form_label(form.nombreEvento)}}
-					{{ form_widget(form.nombreEvento, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.nombreEvento)}}</span>
-					
-					{{form_label(form.fechaSalida)}}
-					{{ form_widget(form.fechaSalida, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.fechaSalida)}}</span>
-				
-				
-				{{form_label(form.fechaLlegada)}}
-					{{ form_widget(form.fechaLlegada, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.fechaLlegada)}}</span>
-					
-					{{form_label(form.importeTotal)}}
-					{{ form_widget(form.importeTotal, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.importeTotal)}}</span>
-				
-				{{form_label(form.autores)}}
-					{{ form_widget(form.autores, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.autores)}}</span>
-				
-					{{form_label(form.observaciones)}}
-					{{ form_widget(form.observaciones, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.observaciones)}}</span>
-					
-					{{form_label(form.nroNota)}}
-					{{ form_widget(form.nroNota, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.nroNota)}}</span>
-				
-				
-					{{form_label(form.usuario)}}
-					{{ form_widget(form.usuario, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.usuario)}}</span>
-				
-					{{form_label(form.proyectoGrupo)}}
-					{{ form_widget(form.proyectoGrupo, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.proyectoGrupo)}}</span>
-				
-				
-       				
-        			<input class="btn btn-sucess" type="submit" value="Crear" />
-					</div>
-        
-   				 {{ form_end(form) }}
-			</div>
-
-	
-		</div>
-
-
- 
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('solicitud_index') }}">Volver a la lista</a>
+            <a href="{{ path('solicitud_index') }}">Back to the list</a>
         </li>
     </ul>
 {% endblock %}
