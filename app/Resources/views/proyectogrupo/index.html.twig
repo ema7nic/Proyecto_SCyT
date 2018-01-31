@@ -1,12 +1,11 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
-    <h1>Proyectogrupos list</h1>
+    <h1>Lista de Proyectos/Grupos</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
+	<div class="container-fluid">
+        <table class="table table-responsive table-striped table-bordered">
+            <thead class="thead-default">
+                <tr>
                 <th>Codigo</th>
                 <th>Codigoutn</th>
                 <th>Nombre</th>
@@ -15,35 +14,38 @@
                 <th>Saldo</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for proyectoGrupo in proyectoGrupos %}
-            <tr>
-                <td><a href="{{ path('proyectogrupo_show', { 'id': proyectoGrupo.id }) }}">{{ proyectoGrupo.id }}</a></td>
-                <td>{{ proyectoGrupo.codigo }}</td>
-                <td>{{ proyectoGrupo.codigoUtn }}</td>
-                <td>{{ proyectoGrupo.nombre }}</td>
-                <td>{% if proyectoGrupo.fechaInicio %}{{ proyectoGrupo.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if proyectoGrupo.fechaFin %}{{ proyectoGrupo.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ proyectoGrupo.saldo }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('proyectogrupo_show', { 'id': proyectoGrupo.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('proyectogrupo_edit', { 'id': proyectoGrupo.id }) }}">edit</a>
-                        </li>
-                    </ul>
+            </thead>
+            <tbody>
+                {% for proyectoGrupo in proyectoGrupos %}
+                    <tr>
+                        <td><a href="{{ path('proyectogrupo_show', { 'id': proyectoGrupo.id }) }}">{{ proyectoGrupo.id }}</a></td>
+                		<td>{{ proyectoGrupo.codigo }}</td>
+                		<td>{{ proyectoGrupo.codigoUtn }}</td>
+                		<td>{{ proyectoGrupo.nombre }}</td>
+                		<td>{% if proyectoGrupo.fechaInicio %}{{ proyectoGrupo.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+                		<td>{% if proyectoGrupo.fechaFin %}{{ proyectoGrupo.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                		<td>{{ proyectoGrupo.saldo }}</td>
+                		<td>
+	                    <ul>
+	                        <li>
+	                            <a href="{{ path('proyectogrupo_show', { 'id': proyectoGrupo.id }) }}">show</a>
+	                        </li>
+	                        <li>
+	                            <a href="{{ path('proyectogrupo_edit', { 'id': proyectoGrupo.id }) }}">edit</a>
+	                        </li>
+	                    </ul>
                 </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('proyectogrupo_new') }}">Create a new proyectoGrupo</a>
-        </li>
-    </ul>
+        <div class="btn-group" role="group" aria-label="false">
+            <button type="buttom" class="btn btn-default"  
+                    onclick="location.href = '{#{{ path('proyectogrupo_new') }}'#}">Crear</button>
+        </div>
+    </div>
+
+
+
 {% endblock %}

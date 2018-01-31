@@ -23,11 +23,11 @@
 					<span class="text-danger"> {{form_errors(form.nombre)}}</span>
 				
 				{{form_label(form.fechaInicio)}}
-					{{ form_widget(form.fechaInicio, {'attr' : {'class' : 'form-control' }}) }}
+					{{ form_widget(form.fechaInicio, {'attr' : {'class' : 'input-group date' }}) }}
 					<span class="text-danger"> {{form_errors(form.fechaInicio)}}</span>
 				
 				{{form_label(form.fechaFin)}}
-					{{ form_widget(form.fechaFin, {'attr' : {'class' : 'form-control' }}) }}
+					{{ form_widget(form.fechaFin, {'attr' : {'class' : 'input-group date' }}) }}
 					<span class="text-danger"> {{form_errors(form.fechaFin)}}</span>
 				
 				{{form_label(form.usuario)}}
