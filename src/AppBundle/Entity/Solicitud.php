@@ -100,6 +100,13 @@ class Solicitud
     private $autores;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="contratados", type="string", length=255)
+     */
+    private $contratados;
+    
+    /**
      * @var int
      *
      * @ORM\Column(name="ejercicio", type="integer")
@@ -439,6 +446,31 @@ class Solicitud
     public function getAutores()
     {
         return $this->autores;
+    }
+    
+    
+    /**
+     * Set contratados
+     *
+     * @param string $contratados
+     *
+     * @return Solicitud
+     */
+    public function setContratados($contratados)
+    {
+    	$this->contratados = $contratados;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get contratados
+     *
+     * @return string
+     */
+    public function getContratados()
+    {
+    	return $this->contratados;
     }
 
     /**
