@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}SCyT{% endblock %}</title>
-        {% stylesheets '@AppBundle/Resources/public/css/*' filter='cssrewrite' %}
+        {% stylesheets '@AppBundle/Resources/public/css/bootstrap.min.css' filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -70,21 +70,11 @@
                     <ul class="navbar-nav navbar-toggler-right">
                         <li class="nav-item">
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                <a class="btn btn-danger"" role="button" aria-disabled="true" href="{{logout_path()}}">Logout</a>
+                                <a class="btn btn-danger" role="button" aria-disabled="true" href="{{logout_path()}}">Logout</a>
                             {% endif %}
                         </li>
                     </ul>
                 </ul>
-                <form class="navbar-form navbar-left" >
-				  <div class="input-group">
-				    <input type="text" class="form-control">
-				    <div class="input-group-btn">
-				      <button class="btn btn-default" type="submit">
-				        Buscar
-				      </button>
-				    </div>
-				  </div>
-				</form>
             </div>
         </nav>
 
