@@ -5,29 +5,45 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Usuario;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Usuario controller.
  *
  * @Route("usuario")
  */
-class UsuarioController extends Controller
-{
+class UsuarioController extends Controller {
+
     /**
      * Lists all usuario entities.
      *
      * @Route("/", name="usuario_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $usuarios = $em->getRepository('AppBundle:Usuario')->findAll();
 
         return $this->render('usuario/index.html.twig', array(
-            'usuarios' => $usuarios,
+                    'usuarios' => $usuarios,
+        ));
+    }
+    
+        /**
+     *
+     * @Route("/balance", name="usuario_balance")
+     * @Method("GET")     
+     */
+    public function balanceAction() {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $usuarios = $em->getRepository('AppBundle:Usuario')->findAll();
+
+        return $this->render('usuario/balance.html.twig', array(
+                    'usuarios' => $usuarios,
         ));
     }
 
@@ -37,8 +53,7 @@ class UsuarioController extends Controller
      * @Route("/new", name="usuario_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $usuario = new Usuario();
         $form = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
         $form->handleRequest($request);
@@ -52,8 +67,8 @@ class UsuarioController extends Controller
         }
 
         return $this->render('usuario/new.html.twig', array(
-            'usuario' => $usuario,
-            'form' => $form->createView(),
+                    'usuario' => $usuario,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -63,13 +78,12 @@ class UsuarioController extends Controller
      * @Route("/{id}", name="usuario_show")
      * @Method("GET")
      */
-    public function showAction(Usuario $usuario)
-    {
+    public function showAction(Usuario $usuario) {
         $deleteForm = $this->createDeleteForm($usuario);
 
         return $this->render('usuario/show.html.twig', array(
-            'usuario' => $usuario,
-            'delete_form' => $deleteForm->createView(),
+                    'usuario' => $usuario,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -79,8 +93,7 @@ class UsuarioController extends Controller
      * @Route("/{id}/edit", name="usuario_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Usuario $usuario)
-    {
+    public function editAction(Request $request, Usuario $usuario) {
         $deleteForm = $this->createDeleteForm($usuario);
         $editForm = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
         $editForm->handleRequest($request);
@@ -92,9 +105,9 @@ class UsuarioController extends Controller
         }
 
         return $this->render('usuario/edit.html.twig', array(
-            'usuario' => $usuario,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'usuario' => $usuario,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -104,8 +117,7 @@ class UsuarioController extends Controller
      * @Route("/{id}", name="usuario_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Usuario $usuario)
-    {
+    public function deleteAction(Request $request, Usuario $usuario) {
         $form = $this->createDeleteForm($usuario);
         $form->handleRequest($request);
 
@@ -125,12 +137,12 @@ class UsuarioController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Usuario $usuario)
-    {
+    private function createDeleteForm(Usuario $usuario) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('usuario_delete', array('id' => $usuario->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('usuario_delete', array('id' => $usuario->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }
