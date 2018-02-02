@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
             <div class="col">
                 <div class="page-header">
@@ -12,192 +12,217 @@
         <div class="row justify-content-md-center">
             <div class="col-12 col-md-auto">
                 {{ form_start(form) }}
-                <div class="row">
-                    <div class="col">
-					{{form_label(form.direccion)}}
-					{{ form_widget(form.direccion, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.direccion)}}</span>
-								
-                    </div>
-                    <div class="col">
-						{{form_label(form.localidad)}}
-						{{ form_widget(form.localidad, {'attr' : {'class' : 'form-control' }}) }}
-						<span class="text-danger"> {{form_errors(form.localidad)}}</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-						{{form_label(form.fechaInicio)}}
-						{{ form_widget(form.fechaInicio, {'attr' : {'class' : 'input-group date' }}) }}
-						<span class="text-danger"> {{form_errors(form.fechaInicio)}}</span>
-						
-					
-                    </div>
-                    <div class="col">
-						{{form_label(form.fechaFin)}}
-						{{ form_widget(form.fechaFin, {'attr' : {'class' : 'input-group date' }}) }}
-						<span class="text-danger"> {{form_errors(form.fechaFin)}}</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-						<label>Tipo de Evento</label>			
-						<div class="radio">
-							<label><input type="radio" name="optradio">Congreso</label>
-						</div>
-						<div class="radio">
-							<label><input type="radio" name="optradio">Curso</label>
-						</div>
-						<div class="radio">
-							<label><input type="radio" name="optradio">Reunion Cientifica</label>
-						</div>
-						<div class="radio">
-							<label><input type="radio" name="optradio">Otros</label>
-							<input type="text" id="otrs" placeholder="Detallar">
-						</div>
-			
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-						{{form_label(form.nombreEvento)}}
-						{{ form_widget(form.nombreEvento, {'attr' : {'class' : 'form-control' }}) }}
-						<span class="text-danger"> {{form_errors(form.nombreEvento)}}</span>
-				
-			
-                    </div>
-                    <div class="col">
-						{{form_label(form.proyectoGrupo)}}
-						{{ form_widget(form.proyectoGrupo, {'attr' : {'class' : 'form-control' }}) }}
-						<span class="text-danger"> {{form_errors(form.proyectoGrupo)}}</span>
-				
-                    </div>
-                </div>
 
-				<div class="row">
-					<div class="col">
-					{{form_label(form.autores)}}
-					{{ form_widget(form.autores, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.autores)}}</span>
-					
-					</div>
-				</div>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>Lugar de Realización</th>
+                            <td>
+                                <div class="row">
+                                    <div class="col">
+                                        {{form_label(form.direccion, 'Dirección')}}
+                                        {{ form_widget(form.direccion, {'attr' : {'class' : 'form-control' }}) }}
+                                        <span class="text-danger"> {{form_errors(form.direccion)}}</span>
 
-				<div class="row">
-					<div class="col">
-						{{form_label(form.contratados)}}
-						{{ form_widget(form.contratados, {'attr' : {'class' : 'form-control' }}) }}
-						<span class="text-danger"> {{form_errors(form.contratados)}}</span>
-					
-					</div>
-				
-				</div>
-			
-				<div class="row">
-				
-					<div class="col>
-					
-						{{form_label(form.fechaSalida)}}
-						{{ form_widget(form.fechaSalida, {'attr' : {'class' : 'input-group date' }}) }}
-						<span class="text-danger"> {{form_errors(form.fechaSalida)}}</span>
-					
-					</div>
-					
-					<div class="col">
-						{{form_label(form.fechaLlegada)}}
-						{{ form_widget(form.fechaLlegada, {'attr' : {'class' : 'input-group date' }}) }}
-						<span class="text-danger"> {{form_errors(form.fechaLlegada)}}</span>
-						
-					</div>	
-				
-				</div>
-
-				<div class="row">
-				
-					<div class="col">
-					<label>Importe Parcial</label>
-						<div class="checkbox">
-						  <label><input type="checkbox" value="">Pasajes</label>
-						  <input type="number" id="montoPasajes" placeholder="Monto">
-						</div>
-						<div class="checkbox">
-						  <label><input type="checkbox" value="">Viaticos</label>
-						  <input type="number" id="montoViaticos" placeholder="Monto">
-						</div>
-											
-						<div class="checkbox">
-						  <label><input type="checkbox" value="">Honorarios</label>
-						  <input type="number" id="montoHonorarios" placeholder="Monto">
-						</div>
-						<div class="checkbox">
-						  <label><input type="checkbox" value="">Servicios</label>
-						  <input type="number" id="montoServicios" placeholder="Monto">
-						</div>
-						
-						<div class="checkbox">
-						  <label><input type="checkbox" value="">Inscripcion</label>
-						  <input type="number" id="montoInscripcion" placeholder="Monto">
-						</div>
-						<div class="checkbox">
-						  <label><input type="checkbox" value="">Otros</label>
-						  <input type="text" id="otros" placeholder="Detallar">
-						  <input type="number" id="montoOtros" placeholder="Monto">
-						</div>
-						
-					
-					</div>
-					
-				
-				</div>
-
-				<div class="row">
-					<div class="col">
-						
-				
-						{{form_label(form.importeTotal)}}
-						{{ form_widget(form.importeTotal, {'attr' : {'class' : 'form-control' }}) }}
-						<span class="text-danger"> {{form_errors(form.importeTotal)}}</span>
-					
-					</div>
-					
-					<div class="col">
-						{{form_label(form.observaciones)}}
-						{{ form_widget(form.observaciones, {'attr' : {'class' : 'form-control' }}) }}
-						<span class="text-danger"> {{form_errors(form.observaciones)}}</span>
-						
-						
-					
-					</div>
-				
-				
-				</div>
+                                    </div>
+                                    <div class="col">
+                                        {{form_label(form.localidad, 'Localidad')}}
+                                        {{ form_widget(form.localidad, {'attr' : {'class' : 'form-control' }}) }}
+                                        <span class="text-danger"> {{form_errors(form.localidad)}}</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de Realización</th>
+                            <td>
+                                <div class="row">
+                                    <div class="col">
+                                        {{form_label(form.fechaInicio, 'Fecha de inicio')}}
+                                        {{ form_widget(form.fechaInicio, {'attr' : {'class' : 'input-group date' }}) }}
+                                        <span class="text-danger"> {{form_errors(form.fechaInicio)}}</span>
 
 
+                                    </div>
+                                    <div class="col">
+                                        {{form_label(form.fechaFin, 'Fecha de fin')}}
+                                        {{ form_widget(form.fechaFin, {'attr' : {'class' : 'input-group date' }}) }}
+                                        <span class="text-danger"> {{form_errors(form.fechaFin)}}</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Concepto de gasto:</th>
+                            <td>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="">Pasajes</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="">Viaticos</label>
+                                        </div>
+
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="">Honorarios</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="">Servicios</label>
+                                        </div>
+
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="">Inscripcion</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="">Otros</label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="checkbox">
+                                            <input type="number" id="montoPasajes" placeholder="Monto">
+                                        </div>
+                                        <div class="checkbox">
+                                            <input type="number" id="montoViaticos" placeholder="Monto">
+                                        </div>
+
+                                        <div class="checkbox">
+                                            <input type="number" id="montoHonorarios" placeholder="Monto">
+                                        </div>
+                                        <div class="checkbox">
+                                            <input type="number" id="montoServicios" placeholder="Monto">
+                                        </div>
+                                        <div class="checkbox">
+                                            <input type="number" id="montoInscripcion" placeholder="Monto">
+                                        </div>
+                                        <div class="checkbox">
+                                            <input type="text" id="otros" placeholder="Detallar">
+                                            <input type="number" id="montoOtros" placeholder="Monto">
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>                            
+                        </tr>
+                        <tr>
+                            <th>Tipo de Evento:</th>
+                            <td>
+                                <div class="row">
+                                    <div class="col">		
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio">Congreso</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio">Curso</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio">Reunion Cientifica</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio">Otros</label>
+                                            <input type="text" id="otrs" placeholder="Detallar">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Nombre del evento:</th>
+                            <td>
+                                <div class="row">
+                                    <div class="col">
+                                        {{form_label(form.nombreEvento, 'Tipo de evento')}}
+                                        {{ form_widget(form.nombreEvento, {'attr' : {'class' : 'form-control' }}) }}
+                                        <span class="text-danger"> {{form_errors(form.nombreEvento)}}</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <th>Título del Proyecto</th>
+                    <td>
+                        <div class="row">
+                            <div class="col">
+                                {{form_label(form.proyectoGrupo, 'Proyecto/Grupo')}}
+                                {{ form_widget(form.proyectoGrupo, {'attr' : {'class' : 'form-control' }}) }}
+                                <span class="text-danger"> {{form_errors(form.proyectoGrupo)}}</span>
+                            </div>
+                        </div>
+                    </td>
+                    </tr>
+                    <tr>
+                        <th>Autores:</th>
+                        <td>
+                            <div class="row">
+                                <div class="col">
+                                    {{form_label(form.autores, 'Autores')}}
+                                    {{ form_widget(form.autores, {'attr' : {'class' : 'form-control' }}) }}
+                                    <span class="text-danger"> {{form_errors(form.autores)}}</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <th>Contratados:</th>
+                    <td>
+                        <div class="row">
+                            <div class="col">
+                                {{form_label(form.contratados, 'Contratados')}}
+                                {{ form_widget(form.contratados, {'attr' : {'class' : 'form-control' }}) }}
+                                <span class="text-danger"> {{form_errors(form.contratados)}}</span>
+                            </div>
+                        </div>
+                    </td>
+                    </tr>
+                    <tr>
+                        <th>Cantidad de días:</th>
+                        <td>
+                            <div class="row">
+                                <div class="col">
+                                     {{form_label(form.fechaSalida, 'Fecha de salida')}}
+                                     {{ form_widget(form.fechaSalida, {'attr' : {'class' : 'input-group date' }}) }}
+                                     <span class="text-danger"> {{form_errors(form.fechaSalida)}}</span>
+                                </div>
+                                <div class="col">
+                                    {{form_label(form.fechaLlegada, 'Fecha de llegada')}}
+                                    {{ form_widget(form.fechaLlegada, {'attr' : {'class' : 'input-group date' }}) }}
+                                    <span class="text-danger"> {{form_errors(form.fechaLlegada)}}</span>
+                                </div>	
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Importe Total:</th>
+                        <td>
+                            <div class="row">
+                                <div class="col">
+                                    {{form_label(form.importeTotal, 'Importe Total')}}
+                                    {{ form_widget(form.importeTotal, {'attr' : {'class' : 'form-control' }}) }}
+                                    <span class="text-danger"> {{form_errors(form.importeTotal)}}</span>
+
+                                </div>
+                                <div class="col">
+                                    {{form_label(form.observaciones, 'Observaciones')}}
+                                    {{ form_widget(form.observaciones, {'attr' : {'class' : 'form-control' }}) }}
+                                    <span class="text-danger"> {{form_errors(form.observaciones)}}</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
                 <div class="row">
                     <div class="col">
                     </div>
                     <div class="col align-self-end align-items-end">
-                <input class="btn btn-sucess" type="submit" value="Crear" />
-				    </div> 
+                        <input class="btn btn-sucess" type="submit" value="Crear" />
+                    </div> 
                 </div>
                 {{ form_end(form) }}
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-    <ul>
-        <li>
-            <a href="{{ path('solicitud_index') }}">Volver a la lista</a>
-        </li>
-    </ul>
+        <ul>
+            <li>
+                <a href="{{ path('solicitud_index') }}">Volver a la lista</a>
+            </li>
+        </ul>
     </div>
 {% endblock %}
