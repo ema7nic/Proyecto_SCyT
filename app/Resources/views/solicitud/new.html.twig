@@ -1,140 +1,203 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-		<div class="row well">
-			<div class="col-md-6">
-				<div class="page-header">
-					<h2>Crear Solicitud</h2>
-				</div>
-				
-				{{ form_start(form) }}
-				
-								
-    				<div class="form-group" >
-    				<label>Lugar de Realizacion</label>
-    				<p></p>
-    				{{form_label(form.direccion)}}
+  <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="page-header">
+                    <h2>Nueva Solicitud </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-12 col-md-auto">
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col">
+					{{form_label(form.direccion)}}
 					{{ form_widget(form.direccion, {'attr' : {'class' : 'form-control' }}) }}
 					<span class="text-danger"> {{form_errors(form.direccion)}}</span>
+								
+                    </div>
+                    <div class="col">
+						{{form_label(form.localidad)}}
+						{{ form_widget(form.localidad, {'attr' : {'class' : 'form-control' }}) }}
+						<span class="text-danger"> {{form_errors(form.localidad)}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+						{{form_label(form.fechaInicio)}}
+						{{ form_widget(form.fechaInicio, {'attr' : {'class' : 'input-group date' }}) }}
+						<span class="text-danger"> {{form_errors(form.fechaInicio)}}</span>
+						
 					
-					{{form_label(form.localidad)}}
-					{{ form_widget(form.localidad, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.localidad)}}</span>
-				<p></p>
-				<label>Fecha de Realizacion</label>
-    				<p></p>
-				{{form_label(form.fechaInicio)}}
-					{{ form_widget(form.fechaInicio, {'attr' : {'class' : 'input-group date' }}) }}
-					<span class="text-danger"> {{form_errors(form.fechaInicio)}}</span>
-					
-					{{form_label(form.fechaFin)}}
-					{{ form_widget(form.fechaFin, {'attr' : {'class' : 'input-group date' }}) }}
-					<span class="text-danger"> {{form_errors(form.fechaFin)}}</span>
-				<p></p>
-					<label>Tipo de Evento</label>			
-					<div class="radio">
-						<label><input type="radio" name="optradio">Congreso</label>
-					</div>
-					<div class="radio">
-						<label><input type="radio" name="optradio">Curso</label>
-					</div>
-					<div class="radio">
-						<label><input type="radio" name="optradio">Reunion Cientifica</label>
-					</div>
-					<div class="radio">
-						<label><input type="radio" name="optradio">Otros</label>
-						<input type="text" id="otrs" placeholder="Detallar">
-					</div>
+                    </div>
+                    <div class="col">
+						{{form_label(form.fechaFin)}}
+						{{ form_widget(form.fechaFin, {'attr' : {'class' : 'input-group date' }}) }}
+						<span class="text-danger"> {{form_errors(form.fechaFin)}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+						<label>Tipo de Evento</label>			
+						<div class="radio">
+							<label><input type="radio" name="optradio">Congreso</label>
+						</div>
+						<div class="radio">
+							<label><input type="radio" name="optradio">Curso</label>
+						</div>
+						<div class="radio">
+							<label><input type="radio" name="optradio">Reunion Cientifica</label>
+						</div>
+						<div class="radio">
+							<label><input type="radio" name="optradio">Otros</label>
+							<input type="text" id="otrs" placeholder="Detallar">
+						</div>
 			
-		
-			<p></p>
-				{{form_label(form.nombreEvento)}}
-					{{ form_widget(form.nombreEvento, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.nombreEvento)}}</span>
-					<p></p>
-					{{form_label(form.proyectoGrupo)}}
-					{{ form_widget(form.proyectoGrupo, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.proyectoGrupo)}}</span>
-				<p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+						{{form_label(form.nombreEvento)}}
+						{{ form_widget(form.nombreEvento, {'attr' : {'class' : 'form-control' }}) }}
+						<span class="text-danger"> {{form_errors(form.nombreEvento)}}</span>
+				
+			
+                    </div>
+                    <div class="col">
+						{{form_label(form.proyectoGrupo)}}
+						{{ form_widget(form.proyectoGrupo, {'attr' : {'class' : 'form-control' }}) }}
+						<span class="text-danger"> {{form_errors(form.proyectoGrupo)}}</span>
+				
+                    </div>
+                </div>
+
+				<div class="row">
+					<div class="col">
 					{{form_label(form.autores)}}
 					{{ form_widget(form.autores, {'attr' : {'class' : 'form-control' }}) }}
 					<span class="text-danger"> {{form_errors(form.autores)}}</span>
-				<p></p>
-				{{form_label(form.contratados)}}
-					{{ form_widget(form.contratados, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.contratados)}}</span>
-				<p></p>
-				<label>Cantidad de Dias</label>
-				<p></p>
-					{{form_label(form.fechaSalida)}}
-					{{ form_widget(form.fechaSalida, {'attr' : {'class' : 'input-group date' }}) }}
-					<span class="text-danger"> {{form_errors(form.fechaSalida)}}</span>
-				
-				
-				{{form_label(form.fechaLlegada)}}
-					{{ form_widget(form.fechaLlegada, {'attr' : {'class' : 'input-group date' }}) }}
-					<span class="text-danger"> {{form_errors(form.fechaLlegada)}}</span>
-					<p></p>
 					
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col">
+						{{form_label(form.contratados)}}
+						{{ form_widget(form.contratados, {'attr' : {'class' : 'form-control' }}) }}
+						<span class="text-danger"> {{form_errors(form.contratados)}}</span>
+					
+					</div>
+				
+				</div>
+			
+				<div class="row">
+				
+					<div class="col>
+					
+						{{form_label(form.fechaSalida)}}
+						{{ form_widget(form.fechaSalida, {'attr' : {'class' : 'input-group date' }}) }}
+						<span class="text-danger"> {{form_errors(form.fechaSalida)}}</span>
+					
+					</div>
+					
+					<div class="col">
+						{{form_label(form.fechaLlegada)}}
+						{{ form_widget(form.fechaLlegada, {'attr' : {'class' : 'input-group date' }}) }}
+						<span class="text-danger"> {{form_errors(form.fechaLlegada)}}</span>
+						
+					</div>	
+				
+				</div>
+
+				<div class="row">
+				
+					<div class="col">
 					<label>Importe Parcial</label>
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Pasajes</label>
-					  <input type="number" id="montoPasajes" placeholder="Monto">
-					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Viaticos</label>
-					  <input type="number" id="montoViaticos" placeholder="Monto">
-					</div>
-										
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Honorarios</label>
-					  <input type="number" id="montoHonorarios" placeholder="Monto">
-					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Servicios</label>
-					  <input type="number" id="montoServicios" placeholder="Monto">
+						<div class="checkbox">
+						  <label><input type="checkbox" value="">Pasajes</label>
+						  <input type="number" id="montoPasajes" placeholder="Monto">
+						</div>
+						<div class="checkbox">
+						  <label><input type="checkbox" value="">Viaticos</label>
+						  <input type="number" id="montoViaticos" placeholder="Monto">
+						</div>
+											
+						<div class="checkbox">
+						  <label><input type="checkbox" value="">Honorarios</label>
+						  <input type="number" id="montoHonorarios" placeholder="Monto">
+						</div>
+						<div class="checkbox">
+						  <label><input type="checkbox" value="">Servicios</label>
+						  <input type="number" id="montoServicios" placeholder="Monto">
+						</div>
+						
+						<div class="checkbox">
+						  <label><input type="checkbox" value="">Inscripcion</label>
+						  <input type="number" id="montoInscripcion" placeholder="Monto">
+						</div>
+						<div class="checkbox">
+						  <label><input type="checkbox" value="">Otros</label>
+						  <input type="text" id="otros" placeholder="Detallar">
+						  <input type="number" id="montoOtros" placeholder="Monto">
+						</div>
+						
+					
 					</div>
 					
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Inscripcion</label>
-					  <input type="number" id="montoInscripcion" placeholder="Monto">
-					</div>
-					<div class="checkbox">
-					  <label><input type="checkbox" value="">Otros</label>
-					  <input type="text" id="otros" placeholder="Detallar">
-					  <input type="number" id="montoOtros" placeholder="Monto">
-					</div>
-					
-					
-					<p></p>
-					{{form_label(form.importeTotal)}}
-					{{ form_widget(form.importeTotal, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.importeTotal)}}</span>
 				
-			<p></p>
-					{{form_label(form.observaciones)}}
-					{{ form_widget(form.observaciones, {'attr' : {'class' : 'form-control' }}) }}
-					<span class="text-danger"> {{form_errors(form.observaciones)}}</span>
+				</div>
+
+				<div class="row">
+					<div class="col">
+						
+				
+						{{form_label(form.importeTotal)}}
+						{{ form_widget(form.importeTotal, {'attr' : {'class' : 'form-control' }}) }}
+						<span class="text-danger"> {{form_errors(form.importeTotal)}}</span>
 					
-							
-				<p></p>
-       				
-        			<input class="btn btn-sucess" type="submit" value="Crear" />
 					</div>
-        
-   				 {{ form_end(form) }}
-			</div>
+					
+					<div class="col">
+						{{form_label(form.observaciones)}}
+						{{ form_widget(form.observaciones, {'attr' : {'class' : 'form-control' }}) }}
+						<span class="text-danger"> {{form_errors(form.observaciones)}}</span>
+						
+						
+					
+					</div>
+				
+				
+				</div>
 
-	
-		</div>
+
+                <div class="row">
+                    <div class="col">
+                    </div>
+                    <div class="col align-self-end align-items-end">
+                <input class="btn btn-sucess" type="submit" value="Crear" />
+				    </div> 
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
 
 
- 
+
+
+
+
+
+
+
+
 
     <ul>
         <li>
             <a href="{{ path('solicitud_index') }}">Volver a la lista</a>
         </li>
     </ul>
+    </div>
 {% endblock %}

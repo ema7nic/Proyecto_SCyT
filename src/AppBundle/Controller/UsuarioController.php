@@ -46,6 +46,24 @@ class UsuarioController extends Controller {
                     'usuarios' => $usuarios,
         ));
     }
+    
+    
+    
+    /**
+     *
+     * @Route("/balance_general", name="usuario_balance_general")
+     * @Method("GET")
+     */
+    public function balanceGeneralAction() {
+    
+    	$em = $this->getDoctrine()->getManager();
+    
+    	$usuarios = $em->getRepository('AppBundle:Usuario')->findAll();
+    
+    	return $this->render('usuario/balance_general.html.twig', array(
+    			'usuarios' => $usuarios,
+    	));
+    }
 
     /**
      * Creates a new usuario entity.
