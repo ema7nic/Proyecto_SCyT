@@ -6,6 +6,9 @@
         <title>{% block title %}SCyT{% endblock %}</title>
         {% stylesheets '@AppBundle/Resources/public/css/bootstrap.min.css' filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
+        <style type="text/css">
+
+        </style>
         {% endstylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -18,9 +21,9 @@
             <a class="navbar-brand" href="#">Gestor de Proyectos</a>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-                    </li>
+                    <!-- <li class="nav-item active">
+                         <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                     </li>-->
                     <!--
                     <li class="nav-item">
                     <a class="nav-link" href="#">Usuarios</a>
@@ -29,9 +32,8 @@
                     <a class="nav-link" href="#">Pricing</a>
                     </li>
                     -->
-
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Usuarios
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -40,7 +42,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Solicitudes
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -50,7 +52,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Proyectos/Grupos
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -59,7 +61,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Cuentas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -86,8 +88,14 @@
                 '@AppBundle/Resources/public/js/jquery-3.2.1.js'
             	'@AppBundle/Resources/public/js/bootstrap.min.js'	
             %}
-            <script src="{{ asset_url }}"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+            <script src="{{ asset_url }}"></script>         
+            <script type="text/javascript">
+                $('ul.navbar-nav li.nav-item').hover(function () {
+                    $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeIn(500);
+                }, function () {
+                    $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(500);
+                });
+            </script>
             {% endjavascripts %}
         {% endblock %}
 
