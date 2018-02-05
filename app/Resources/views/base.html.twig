@@ -45,8 +45,8 @@
                             Usuarios
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Crear</a>
-                            <a class="dropdown-item" href="#">Consultar</a>
+                            <a class="dropdown-item"  href="{{ path('usuario_new')}}">Crear</a>
+                            <a class="dropdown-item" href="{{ path('usuario_index')}}">Consultar</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -54,8 +54,8 @@
                             Solicitudes
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Crear</a>
-                            <a class="dropdown-item" href="#">Consultar</a>
+                            <a class="dropdown-item" href="{{ path('solicitud_new')}}">Crear</a>
+                            <a class="dropdown-item" href="{{ path('solicitud_index')}}">Consultar</a>
 
                         </div>
                     </li>
@@ -64,8 +64,8 @@
                             Proyectos/Grupos
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Crear</a>
-                            <a class="dropdown-item" href="#">Consultar</a>
+                            <a class="dropdown-item" href="{{ path('proyectogrupo_new')}}">Crear</a>
+                            <a class="dropdown-item"href="{{ path('proyectogrupo_new')}}">Consultar</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -73,8 +73,8 @@
                             Cuentas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Consultar Balance Gral.</a>
-                            <a class="dropdown-item" href="#">Consultar Cuenta Propia</a>
+                            <a class="dropdown-item" href="{{ path('usuario_balance')}}">Consultar Balance Gral.</a>
+                            <a class="dropdown-item" href="{{ path('usuario_balance_general')}}">Consultar Cuenta Propia</a>
                         </div>
                     </li>
                     <ul class="navbar-nav navbar-toggler-right">
