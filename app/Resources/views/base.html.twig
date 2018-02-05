@@ -7,7 +7,15 @@
         {% stylesheets '@AppBundle/Resources/public/css/bootstrap.min.css' filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
         <style type="text/css">
-
+            .col-12{
+                border:1px solid #ccc;
+                border-top-width: 5px;
+                border-bottom-width: 5px;
+                border-right-width: 5px;
+                border-left-width: 5px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
         </style>
         {% endstylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -74,6 +82,7 @@
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                 <a class="btn btn-danger" role="button" aria-disabled="true" href="{{logout_path()}}">Logout</a>
                             {% endif %}
+                            <button type="button" class="btn btn-danger">Logout</button>
                         </li>
                     </ul>
                 </ul>
@@ -91,9 +100,9 @@
             <script src="{{ asset_url }}"></script>         
             <script type="text/javascript">
                 $('ul.navbar-nav li.nav-item').hover(function () {
-                    $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeIn(500);
+                    $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn(500);
                 }, function () {
-                    $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(500);
+                    $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut(500);
                 });
             </script>
             {% endjavascripts %}
