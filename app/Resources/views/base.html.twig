@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>{% block title %}SCyT{% endblock %}</title>
-        <link rel="stylesheet" href="//code.jquery.com/ui/jquery-ui-git.css" type="text/css" />   
+        <title>{% block title %}SCyT{% endblock %}</title>  
+        <link rel="stylesheet" href="//bootswatch.com/4/slate/bootstrap.min.css" type="text/css" />  
+        <!--
         {% stylesheets '@AppBundle/Resources/public/css/bootstrap.min.css' filter='cssrewrite' %}
         <link rel="stylesheet" href="{{ asset_url }}" /> 
         <style type="text/css">
@@ -20,6 +21,7 @@
             }
         </style>
         {% endstylesheets %}
+        -->
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
 
@@ -94,16 +96,15 @@
         {% block body %}
         {% endblock %}
 
+
         <div id="myProgressBar" style="visibility: hidden;"></div>
         {% block javascripts %}
             {% javascripts 
                 '@AppBundle/Resources/public/js/jquery-3.2.1.js'               
-            	'@AppBundle/Resources/public/js/bootstrap.min.js'	     
-                '@AppBundle/Resources/public/js/interface.js'          
+            	'@AppBundle/Resources/public/js/bootstrap.min.js'	              
             %}
             <script src="{{ asset_url }}"></script> 
-            {% endjavascripts %}        
-            <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>                                  
+            {% endjavascripts %}                                      
             <script type="text/javascript">
                 $('ul.navbar-nav li.nav-item').hover(function () {
                     $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn(500);
