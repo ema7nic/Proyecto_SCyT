@@ -1,0 +1,4 @@
+services:
+#    aut.example:
+#        class: AutBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

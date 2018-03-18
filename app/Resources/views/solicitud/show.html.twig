@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Solicitud</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ solicitud.id }}</td>
+            </tr>
+            <tr>
+                <th>Fechageneracion</th>
+                <td>{% if solicitud.fechaGeneracion %}{{ solicitud.fechaGeneracion|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechaultimamodificacion</th>
+                <td>{% if solicitud.fechaUltimaModificacion %}{{ solicitud.fechaUltimaModificacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ solicitud.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Fechainicio</th>
+                <td>{% if solicitud.fechaInicio %}{{ solicitud.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechafin</th>
+                <td>{% if solicitud.fechaFin %}{{ solicitud.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nombreevento</th>
+                <td>{{ solicitud.nombreEvento }}</td>
+            </tr>
+            <tr>
+                <th>Fechasalida</th>
+                <td>{% if solicitud.fechaSalida %}{{ solicitud.fechaSalida|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechallegada</th>
+                <td>{% if solicitud.fechaLlegada %}{{ solicitud.fechaLlegada|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Importetotal</th>
+                <td>{{ solicitud.importeTotal }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ solicitud.estado }}</td>
+            </tr>
+            <tr>
+                <th>Autores</th>
+                <td>{{ solicitud.autores }}</td>
+            </tr>
+            <tr>
+                <th>Ejercicio</th>
+                <td>{{ solicitud.ejercicio }}</td>
+            </tr>
+            <tr>
+                <th>Observaciones</th>
+                <td>{{ solicitud.observaciones }}</td>
+            </tr>
+            <tr>
+                <th>Nronota</th>
+                <td>{{ solicitud.nroNota }}</td>
+            </tr>
+            <tr>
+                <th>Fecharevision</th>
+                <td>{% if solicitud.fechaRevision %}{{ solicitud.fechaRevision|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('solicitud_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('solicitud_edit', { 'id': solicitud.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
