@@ -3,7 +3,9 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * Usuario
@@ -11,8 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="usuario")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
  */
-class Usuario
-{
+class Usuario {
+
     /**
      * @var int
      *
@@ -21,51 +23,50 @@ class Usuario
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-	
+
     /**
-     * @var string
-     *
-     * @ORM\Column(name="iup", type="string", length=255, unique=true)
+     * @ORM\Column(name="roles", type="array")
+     * @var array
      */
-    private $iup;
+    private $roles;
 
     /**
      * @var string
+     * 
+     * @Assert\NotBlank() 
+     * @Assert\Length(min="3", max="35")
      *
-     * @ORM\Column(name="clave", type="string", length=255)
-     */
-    private $clave;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="rol", type="string", length=255)
-     */
-    private $rol;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nombre", type="string", length=255)
+     * @ORM\Column(name="nombre", type="string", length=35)
      */
     private $nombre;
 
     /**
      * @var string
+     * 
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @Assert\Length(min="3", max="35")
      *
-     * @ORM\Column(name="direccion", type="string", length=255)
+     * @ORM\Column(name="apellido", type="string", length=35)
      */
-    private $direccion;
+    private $apellido;
 
     /**
      * @var string
+     * 
+     * @Assert\NotBlank()
      *
-     * @ORM\Column(name="telefono", type="string", length=255, nullable=true)
+     * @ORM\Column(name="telefono", type="string", length=35, nullable=true)
      */
     private $telefono;
 
     /**
      * @var string
+     * 
+     * @Assert\Email(
+     *     message = "El email '{{ value }}' no es válido.",
+     *     checkMX = true
+     * )
      *
      * @ORM\Column(name="mail", type="string", length=255)
      */
@@ -93,54 +94,64 @@ class Usuario
     private $fechaUltimaModificacion;
 
     /**
+     * @ORM\Column(type="string", length=6)
+     * @Assert\Choice( choices = {"DNI", "LC", "LE"}, message = "Seleccione el tipo de documento")
+     */
+    protected $tipoDni;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="dni", type="integer", unique=true)
      */
     private $dni;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="Localidad")
-     * @ORM\JoinColumn(name="id_localidad", referencedColumnName="id", nullable=false)
-     */
-    
-    private $localidad;
-    
+
     /**
      *
      *
      * @ORM\OneToMany(targetEntity="Solicitud", mappedBy="usuario")
      */
     private $solicitudes;
-    
+
     /**
      *
      *
      * @ORM\OneToMany(targetEntity="Asignacion", mappedBy="usuario")
      */
     private $asignaciones;
-    
-    
+
     /**
      *
      * @ORM\OneToMany(targetEntity="ProyectoGrupo", mappedBy="usuario")
      */
     private $proyectosGrupos;
-    
-    public function __construct()
-    {
+
+    public function __construct() {
         $this->solicitudes = new ArrayCollection();
         $this->asignaciones = new ArrayCollection();
+        $this->roles = Array();
     }
-    
-   
 
+    function getRoles() {
+        return $this->roles;
+    }
 
-    /**
+    function setRoles($roles) {
+        $this->roles = $roles;
+    }
+
+        
+    function getTipoDni() {
+        return $this->tipoDni;
+    }
+
+    function setTipoDni($tipoDni) {
+        $this->tipoDni = $tipoDni;
+    }
+        /**
      * @param \Doctrine\Common\Collections\ArrayCollection $asignaciones
      */
-    public function setAsignaciones($asignaciones)
-    {
+    public function setAsignaciones($asignaciones) {
         $this->asignaciones = $asignaciones;
     }
 
@@ -149,54 +160,27 @@ class Usuario
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
-	
-	/**
-	*Set solicitud
-	*
-	*@param solicitudes
-	*/
-	public function setSolicitudes($solicitudes)
-	{
-		
-		$this->solicitudes = $solicitudes;
-	}
-	
-	/**
-	* Get solicitudes
-	*
-	* @return solicitudes
-	*/
-	public function getSolicitudes()
-	{
-		return $this->solicitudes;
-	}
 
     /**
-     * Set iup
+     * Set solicitud
      *
-     * @param string $iup
-     *
-     * @return Usuario
+     * @param solicitudes
      */
-    public function setIup($iup)
-    {
-        $this->iup = $iup;
+    public function setSolicitudes($solicitudes) {
 
-        return $this;
+        $this->solicitudes = $solicitudes;
     }
 
     /**
-     * Get iup
+     * Get solicitudes
      *
-     * @return string
+     * @return solicitudes
      */
-    public function getIup()
-    {
-        return $this->iup;
+    public function getSolicitudes() {
+        return $this->solicitudes;
     }
 
     /**
@@ -206,8 +190,7 @@ class Usuario
      *
      * @return Usuario
      */
-    public function setClave($clave)
-    {
+    public function setClave($clave) {
         $this->clave = $clave;
 
         return $this;
@@ -218,33 +201,8 @@ class Usuario
      *
      * @return string
      */
-    public function getClave()
-    {
+    public function getClave() {
         return $this->clave;
-    }
-
-    /**
-     * Set rol
-     *
-     * @param string $rol
-     *
-     * @return Usuario
-     */
-    public function setRol($rol)
-    {
-        $this->rol = $rol;
-
-        return $this;
-    }
-
-    /**
-     * Get rol
-     *
-     * @return string
-     */
-    public function getRol()
-    {
-        return $this->rol;
     }
 
     /**
@@ -254,8 +212,7 @@ class Usuario
      *
      * @return Usuario
      */
-    public function setNombre($nombre)
-    {
+    public function setNombre($nombre) {
         $this->nombre = $nombre;
 
         return $this;
@@ -266,33 +223,16 @@ class Usuario
      *
      * @return string
      */
-    public function getNombre()
-    {
+    public function getNombre() {
         return $this->nombre;
     }
 
-    /**
-     * Set direccion
-     *
-     * @param string $direccion
-     *
-     * @return Usuario
-     */
-    public function setDireccion($direccion)
-    {
-        $this->direccion = $direccion;
-
-        return $this;
+    function getApellido() {
+        return $this->apellido;
     }
 
-    /**
-     * Get direccion
-     *
-     * @return string
-     */
-    public function getDireccion()
-    {
-        return $this->direccion;
+    function setApellido($apellido) {
+        $this->apellido = $apellido;
     }
 
     /**
@@ -302,8 +242,7 @@ class Usuario
      *
      * @return Usuario
      */
-    public function setTelefono($telefono)
-    {
+    public function setTelefono($telefono) {
         $this->telefono = $telefono;
 
         return $this;
@@ -314,8 +253,7 @@ class Usuario
      *
      * @return string
      */
-    public function getTelefono()
-    {
+    public function getTelefono() {
         return $this->telefono;
     }
 
@@ -326,8 +264,7 @@ class Usuario
      *
      * @return Usuario
      */
-    public function setMail($mail)
-    {
+    public function setMail($mail) {
         $this->mail = $mail;
 
         return $this;
@@ -338,8 +275,7 @@ class Usuario
      *
      * @return string
      */
-    public function getMail()
-    {
+    public function getMail() {
         return $this->mail;
     }
 
@@ -350,8 +286,7 @@ class Usuario
      *
      * @return Usuario
      */
-    public function setFechaAlta($fechaAlta)
-    {
+    public function setFechaAlta($fechaAlta) {
         $this->fechaAlta = $fechaAlta;
 
         return $this;
@@ -362,8 +297,7 @@ class Usuario
      *
      * @return \DateTime
      */
-    public function getFechaAlta()
-    {
+    public function getFechaAlta() {
         return $this->fechaAlta;
     }
 
@@ -374,8 +308,7 @@ class Usuario
      *
      * @return Usuario
      */
-    public function setFechaBaja($fechaBaja)
-    {
+    public function setFechaBaja($fechaBaja) {
         $this->fechaBaja = $fechaBaja;
 
         return $this;
@@ -386,8 +319,7 @@ class Usuario
      *
      * @return \DateTime
      */
-    public function getFechaBaja()
-    {
+    public function getFechaBaja() {
         return $this->fechaBaja;
     }
 
@@ -398,8 +330,7 @@ class Usuario
      *
      * @return Usuario
      */
-    public function setFechaUltimaModificacion($fechaUltimaModificacion)
-    {
+    public function setFechaUltimaModificacion($fechaUltimaModificacion) {
         $this->fechaUltimaModificacion = $fechaUltimaModificacion;
 
         return $this;
@@ -410,8 +341,7 @@ class Usuario
      *
      * @return \DateTime
      */
-    public function getFechaUltimaModificacion()
-    {
+    public function getFechaUltimaModificacion() {
         return $this->fechaUltimaModificacion;
     }
 
@@ -422,8 +352,7 @@ class Usuario
      *
      * @return Usuario
      */
-    public function setDni($dni)
-    {
+    public function setDni($dni) {
         $this->dni = $dni;
 
         return $this;
@@ -434,12 +363,10 @@ class Usuario
      *
      * @return int
      */
-    public function getDni()
-    {
+    public function getDni() {
         return $this->dni;
     }
-    
-    
+
     /**
      * Set proyectosGrupos
      *
@@ -447,21 +374,19 @@ class Usuario
      *
      * @return Usuario
      */
-    public function setProyectosGrupos($proyectosGrupos)
-    {
-    	$this->proyectosGrupos = $proyectosGrupos;
-    
-    	return $this;
+    public function setProyectosGrupos($proyectosGrupos) {
+        $this->proyectosGrupos = $proyectosGrupos;
+
+        return $this;
     }
-    
+
     /**
      * Get proyectosGrupos
      *
      * @return \Object
      */
-    public function getProyectosGrupos()
-    {
-    	return $this->proyectosGrupos;
+    public function getProyectosGrupos() {
+        return $this->proyectosGrupos;
     }
 
     /**
@@ -471,8 +396,7 @@ class Usuario
      *
      * @return Usuario
      */
-    public function addSolicitude(\AppBundle\Entity\Solicitud $solicitude)
-    {
+    public function addSolicitude(\AppBundle\Entity\Solicitud $solicitude) {
         $this->solicitudes[] = $solicitude;
 
         return $this;
@@ -483,8 +407,7 @@ class Usuario
      *
      * @param \AppBundle\Entity\Solicitud $solicitude
      */
-    public function removeSolicitude(\AppBundle\Entity\Solicitud $solicitude)
-    {
+    public function removeSolicitude(\AppBundle\Entity\Solicitud $solicitude) {
         $this->solicitudes->removeElement($solicitude);
     }
 
@@ -495,8 +418,7 @@ class Usuario
      *
      * @return Usuario
      */
-    public function addAsignacione(\AppBundle\Entity\Asignacion $asignacione)
-    {
+    public function addAsignacione(\AppBundle\Entity\Asignacion $asignacione) {
         $this->asignaciones[] = $asignacione;
 
         return $this;
@@ -507,8 +429,7 @@ class Usuario
      *
      * @param \AppBundle\Entity\Asignacion $asignacione
      */
-    public function removeAsignacione(\AppBundle\Entity\Asignacion $asignacione)
-    {
+    public function removeAsignacione(\AppBundle\Entity\Asignacion $asignacione) {
         $this->asignaciones->removeElement($asignacione);
     }
 
@@ -517,33 +438,8 @@ class Usuario
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getAsignaciones()
-    {
+    public function getAsignaciones() {
         return $this->asignaciones;
-    }
-
-    /**
-     * Set localidad
-     *
-     * @param \AppBundle\Entity\Localidad $localidad
-     *
-     * @return Usuario
-     */
-    public function setLocalidad(\AppBundle\Entity\Localidad $localidad)
-    {
-        $this->localidad = $localidad;
-
-        return $this;
-    }
-
-    /**
-     * Get localidad
-     *
-     * @return \AppBundle\Entity\Localidad
-     */
-    public function getLocalidad()
-    {
-        return $this->localidad;
     }
 
     /**
@@ -553,8 +449,7 @@ class Usuario
      *
      * @return Usuario
      */
-    public function addProyectosGrupo(\AppBundle\Entity\ProyectoGrupo $proyectosGrupo)
-    {
+    public function addProyectosGrupo(\AppBundle\Entity\ProyectoGrupo $proyectosGrupo) {
         $this->proyectosGrupos[] = $proyectosGrupo;
 
         return $this;
@@ -565,8 +460,8 @@ class Usuario
      *
      * @param \AppBundle\Entity\ProyectoGrupo $proyectosGrupo
      */
-    public function removeProyectosGrupo(\AppBundle\Entity\ProyectoGrupo $proyectosGrupo)
-    {
+    public function removeProyectosGrupo(\AppBundle\Entity\ProyectoGrupo $proyectosGrupo) {
         $this->proyectosGrupos->removeElement($proyectosGrupo);
     }
+
 }
