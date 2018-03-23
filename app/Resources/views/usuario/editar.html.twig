@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1 class="display-4">Modificar Usuario</h1>
+        <div class="row justify-content-md-center">
+            <div class="col-12 col-md-auto">
+                {{ form_start(edit_form) }}
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Nombre</span>
+                            </div>
+                            {{ form_widget(edit_form.nombre, {'attr' : {'class' : 'form-control' }}) }}
+                        </div>
+                        <span class="text-danger"> {{form_errors(edit_form.nombre)}}</span>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Apellido</span>
+                            </div>
+                            {{ form_widget(edit_form.apellido, {'attr' : {'class' : 'form-control' }}) }}
+                        </div>
+                        <span class="text-danger"> {{form_errors(edit_form.apellido)}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Teléfono</span>
+                            </div>
+                            {{ form_widget(edit_form.telefono, {'attr' : {'class' : 'form-control' }}) }}
+                        </div>
+                        <span class="text-danger"> {{form_errors(edit_form.telefono)}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Tipo Documento</span>
+                            </div>
+                            {{ form_widget(edit_form.tipoDni, {'attr' : {'class' : 'form-control' }}) }}
+                        </div>
+                        <span class="text-danger"> {{form_errors(edit_form.tipoDni)}}</span>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Número</span>
+                            </div>
+                            {{ form_widget(edit_form.dni, {'attr' : {'class' : 'form-control' }}) }}
+                        </div>
+                        <span class="text-danger"> {{form_errors(edit_form.dni)}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">    
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Correo Electrónico</span>
+                            </div>
+                            {{ form_widget(edit_form.mail, {'attr' : {'class' : 'form-control' }}) }} 
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">@example.com</span>
+                            </div>
+                        </div>
+                        <span class="text-danger"> {{form_errors(edit_form.mail)}}</span>
+                    </div>                 
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{form_label(edit_form.roles)}}
+                        {{ form_widget(edit_form.roles)}}
+                        <span class="text-danger"> {{form_errors(edit_form.roles)}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="btn-group btn-group-toggle">
+                            <input class="btn btn-success" type="submit" value="Editar" />
+            {{ form_end(edit_form) }}
+                            {{ form_start(delete_form) }}
+                            <input class="btn btn-danger" type="submit" value="Borrar">
+                            {{ form_end(delete_form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

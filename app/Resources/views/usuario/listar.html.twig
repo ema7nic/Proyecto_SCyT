@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Lista de Usuarios</h1>
+    <div class="container-fluid">
+        <table class="table table-striped table-bordered table-responsive ">
+            <thead class="thead-default">
+                <tr>
+                    <th>Nombres</th>
+                    <th>Apellido</th>
+                    <th>Telefono</th>
+                    <th>Mail</th>
+                    <th>Dni</th>
+                    <th>Roles</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                    <tr class="table-active">
+                        <td>{{ usuario.nombre }}</td>
+                        <td>{{ usuario.apellido }}</td>
+                        <td>{{ usuario.telefono }}</td>
+                        <td>{{ usuario.mail }}</td>
+                        <td>{{ usuario.dni }}</td>
+                        <td>
+                            {% for rol in usuario.roles %}
+                                {{ rol|e }}
+                            {% endfor %}                
+                        </td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('usuario_mostrar', { 'id': usuario.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('usuario_editar', { 'id': usuario.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

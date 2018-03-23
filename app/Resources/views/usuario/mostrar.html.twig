@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-fluid">
+        <h1 class="display-4">Visualización Usuario</h1>
+        <table class="table table-striped table-responsive ">
+            <tbody>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ usuario.nombre }}</td>
+                </tr>
+                <tr>
+                    <th>Telefono</th>
+                    <td>{{ usuario.telefono }}</td>
+                </tr>
+                <tr>
+                    <th>Mail</th>
+                    <td>{{ usuario.mail }}</td>
+                </tr>
+                <tr>
+                    <th>Rol</th>
+                    <td>
+                        {% for rol in usuario.roles %}
+                            {{ rol|e }}
+                        {% endfor %}                
+                    </td>
+                </tr>
+                <tr>
+                    <th>Dni</th>
+                    <td>{{ usuario.dni }}</td>
+                </tr>
+                <tr>
+                    <th>Fechaalta</th>
+                    <td>{% if usuario.fechaAlta %}{{ usuario.fechaAlta|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Fechabaja</th>
+                    <td>{% if usuario.fechaBaja %}{{ usuario.fechaBaja|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Fechaultimamodificacion</th>
+                    <td>{% if usuario.fechaUltimaModificacion %}{{ usuario.fechaUltimaModificacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="btn-group btn-group-toggle">
+            <a class="btn btn-success" href="{{ path('usuario_editar', { 'id': usuario.id }) }}">Editar</a>
+            {{ form_start(delete_form) }}
+            <input class="btn btn-danger" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+{% endblock %}

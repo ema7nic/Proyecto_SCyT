@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-fluid">
+        <h1 class="display-4">Alta Usuario</h1>
+        <div class="row justify-content-md-center">
+            <div class="col-12 col-md-auto">
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Nombre</span>
+                            </div>
+                            {{ form_widget(form.nombre, {'attr' : {'class' : 'form-control' }}) }}
+                        </div>
+                        <span class="text-danger"> {{form_errors(form.nombre)}}</span>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Apellido</span>
+                            </div>
+                            {{ form_widget(form.apellido, {'attr' : {'class' : 'form-control' }}) }}
+                        </div>
+                        <span class="text-danger"> {{form_errors(form.apellido)}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Teléfono</span>
+                            </div>
+                            {{ form_widget(form.telefono, {'attr' : {'class' : 'form-control' }}) }}
+                        </div>
+                        <span class="text-danger"> {{form_errors(form.telefono)}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Tipo Documento</span>
+                            </div>
+                            {{ form_widget(form.tipoDni, {'attr' : {'class' : 'form-control' }}) }}
+                        </div>
+                        <span class="text-danger"> {{form_errors(form.tipoDni)}}</span>
+                    </div>
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Número</span>
+                            </div>
+                            {{ form_widget(form.dni, {'attr' : {'class' : 'form-control' }}) }}
+                        </div>
+                        <span class="text-danger"> {{form_errors(form.dni)}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">    
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Correo Electrónico</span>
+                            </div>
+                            {{ form_widget(form.mail, {'attr' : {'class' : 'form-control' }}) }} 
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2">@example.com</span>
+                            </div>
+                        </div>
+                        <span class="text-danger"> {{form_errors(form.mail)}}</span>
+                    </div>                 
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{form_label(form.roles)}}
+                        {{ form_widget(form.roles)}}
+                        <span class="text-danger"> {{form_errors(form.roles)}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col align-self-end align-items-end">
+                        <input class="btn btn-success" type="submit" value="Crear" />
+                    </div> 
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
