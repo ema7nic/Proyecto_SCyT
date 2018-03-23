@@ -3,6 +3,9 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 /**
  * Solicitud
@@ -26,6 +29,7 @@ class Solicitud
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_generacion", type="datetime")
+     * @Assert\NotBlank()
      */
     private $fechaGeneracion;
 
@@ -33,6 +37,8 @@ class Solicitud
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_ultima_modificacion", type="datetime")
+     * 
+     * @Assert\NotBlank()
      */
     private $fechaUltimaModificacion;
 
@@ -40,6 +46,12 @@ class Solicitud
      * @var string
      *
      * @ORM\Column(name="direccion", type="string", length=255)
+     * 
+     * @Assert\NotBlank()
+     *  @Assert\Type(
+     * 		type = "string", 
+     * 		message = "El valor {{value}} no es valido, debe ser: {{type}}."
+     * 		)
      */
     private $direccion;
 
@@ -47,6 +59,8 @@ class Solicitud
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_inicio", type="datetime")
+     * 
+     * @Assert\NotBlank()
      */
     private $fechaInicio;
 
@@ -54,6 +68,8 @@ class Solicitud
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_fin", type="datetime")
+     * 
+     * @Assert\NotBlank()
      */
     private $fechaFin;
 
@@ -61,6 +77,12 @@ class Solicitud
      * @var string
      *
      * @ORM\Column(name="nombre_evento", type="string", length=255)
+     * 
+     * @Assert\NotBlank()
+     *  @Assert\Type(
+     * 		type = "string", 
+     * 		message = "El valor {{value}} no es valido, debe ser: {{type}}."
+     * 		)
      */
     private $nombreEvento;
 
@@ -68,6 +90,8 @@ class Solicitud
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_salida", type="datetime")
+     * 
+     * @Assert\NotBlank()
      */
     private $fechaSalida;
 
@@ -75,13 +99,21 @@ class Solicitud
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_llegada", type="datetime")
+     * 
+     * @Assert\NotBlank()
      */
     private $fechaLlegada;
 
     /**
-     * @var string
+     * @var NumberType
      *
      * @ORM\Column(name="importe_total", type="decimal", precision=10, scale=2)
+     * 
+     * @Assert\NotBlank()
+     *  @Assert\Type(
+     * 		type = "float", 
+     * 		message = "El valor {{value}} no es valido, debe ser: {{type}}."
+     * 		)
      */
     private $importeTotal;
 
@@ -89,6 +121,9 @@ class Solicitud
      * @var string
      *
      * @ORM\Column(name="estado", type="string", length=255)
+     * 
+     * @Assert\NotBlank()
+     * 
      */
     private $estado;
 
@@ -96,6 +131,12 @@ class Solicitud
      * @var string
      *
      * @ORM\Column(name="autores", type="string", length=255)
+     * 
+     * @Assert\NotBlank()
+     *  @Assert\Type(
+     * 		type = "string", 
+     * 		message = "El valor {{value}} no es valido, debe ser: {{type}}."
+     * 		)
      */
     private $autores;
 
@@ -103,6 +144,12 @@ class Solicitud
      * @var string
      *
      * @ORM\Column(name="contratados", type="string", length=255)
+     * 
+     * @Assert\NotBlank()
+     *  @Assert\Type(
+     * 		type = "string", 
+     * 		message = "El valor {{value}} no es valido, debe ser: {{type}}."
+     * 		)
      */
     private $contratados;
     
@@ -110,6 +157,8 @@ class Solicitud
      * @var int
      *
      * @ORM\Column(name="ejercicio", type="integer")
+     * 
+     * @Assert\NotBlank()
      */
     private $ejercicio;
 
@@ -117,6 +166,12 @@ class Solicitud
      * @var string
      *
      * @ORM\Column(name="observaciones", type="string", length=255)
+     * 
+     * @Assert\NotBlank()
+     *  @Assert\Type(
+     * 		type = "string", 
+     * 		message = "El valor {{value}} no es valido, debe ser: {{type}}."
+     * 		)
      */
     private $observaciones;
 
@@ -124,6 +179,8 @@ class Solicitud
      * @var int
      *
      * @ORM\Column(name="nro_nota", type="integer")
+     * 
+     * @Assert\NotBlank()
      */
     private $nroNota;
 
@@ -131,6 +188,8 @@ class Solicitud
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_revision", type="datetime")
+     * 
+     * @Assert\NotBlank()
      */
     private $fechaRevision;
     
@@ -173,6 +232,21 @@ class Solicitud
 	 * @ORM\OneToMany(targetEntity="TipoEvento", mappedBy="solicitud")
 	 */
 	private $tiposEventos;
+	
+	/**
+	 * 
+	 * 
+	 * @var CheckboxType
+	 */
+	private $chkpasajes;
+	
+	
+	/**
+	 * 
+	 * @var NumberType
+	 */
+	private $mntpasajes;
+	
 	
     /**
      * Get id
@@ -811,5 +885,44 @@ class Solicitud
     public function removeTiposEvento(\AppBundle\Entity\TipoEvento $tiposEvento)
     {
         $this->tiposEventos->removeElement($tiposEvento);
+    }
+    
+    /**
+     * 
+     * @return \Symfony\Component\Form\Extension\Core\Type\CheckboxType
+     */
+    public function getchkpasajes()
+    {
+    	return $this->chkpasajes;
+    }
+    
+    /**
+     * 
+     * @param unknown $chkpasaje
+     */
+    public function setChkPasajes($chkpasaje)
+    {
+    	$this->chkpasajes = $chkpasaje;
+    	return $this;
+    }
+    
+    /**
+     * 
+     * @return \Symfony\Component\Form\Extension\Core\Type\NumberType
+     */
+    public function getmntPasajes()
+    {
+    	return $this->mntpasajes;
+    }
+    
+    /**
+     * 
+     * @param unknown $mntpasaje
+     * @return \AppBundle\Entity\Solicitud
+     */
+    public function setmntPasajes($mntpasaje)
+    {
+    	$this->mntpasajes = $mntpasaje;
+    	return $this;
     }
 }

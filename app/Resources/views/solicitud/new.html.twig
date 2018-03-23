@@ -1,6 +1,78 @@
 {% extends 'base.html.twig' %}
 
+{% block head %}
+
+
+   
+   
+	            <script> 
+	             
+		            $(document).ready(function(){
+		            
+		            
+		            $("#chkpasajes").on('change', function() {
+					    if( $("#chkpasajes".is(':checked') ) {
+					        $("#montoPasajes").prop('required',true);
+					    } else {
+					         $("#montoPasajes").removeAttr('required');
+					    }
+					});
+					
+					
+					$("#chkviaticos").on('change', function() {
+					    if( $("#chkviaticos".is(':checked') ) {
+					        $("#montoviaticos").prop('required',true);
+					    } else {
+					         $("#montoviaticos").removeAttr('required');
+					    }
+					});
+					
+					
+					$("#chkhorarios").on('change', function() {
+					    if( $("#chkhorarios".is(':checked') ) {
+					        $("#montohorarios").prop('required',true);
+					    } else {
+					         $("#montohorarios").removeAttr('required');
+					    }
+					});
+					
+					
+					$("#chkservicios").on('change', function() {
+					    if( $("#chkservicios".is(':checked') ) {
+					        $("#montoservicios").prop('required',true);
+					    } else {
+					         $("#montoservicios").removeAttr('required');
+					    }
+					});
+					
+					
+					
+					$("#chkinscripcion").on('change', function() {
+					    if( $("#chkinscripcion".is(':checked') ) {
+					        $("#montoinscripcion").prop('required',true);
+					    } else {
+					         $("#montoinscripcion").removeAttr('required');
+					    }
+					});
+					
+					
+					$("#chkotros").on('change', function() {
+					    if( $("#chkotros".is(':checked') ) {
+					        $("#otros").prop('required',true);
+					         $("#montootros").prop('required',true);
+					    } else {
+					         $("#otros").removeAttr('required');
+					         $("#montootros").removeAttr('required');
+					    }
+					});
+			    
+				
+    			</script>
+
+{% endblock %}
+
 {% block body %}
+ 
     <div class="container-fluid">
         <div class="row">
             <div class="col">
@@ -58,50 +130,50 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="checkbox">
-                                            <label><input type="checkbox" value="">Pasajes</label>
+                                            <label><input type="checkbox" value="1" id="chkpasajes">Pasajes</label>
                                         </div>
                                         <div class="checkbox">
-                                            <label><input type="checkbox" value="">Viaticos</label>
-                                        </div>
-
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" value="">Honorarios</label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" value="">Servicios</label>
+                                            <label><input type="checkbox" value="2" id="chkviaticos">Viaticos</label>
                                         </div>
 
                                         <div class="checkbox">
-                                            <label><input type="checkbox" value="">Inscripcion</label>
+                                            <label><input type="checkbox" value="3" id="chkhorarios">Honorarios</label>
                                         </div>
                                         <div class="checkbox">
-                                            <label><input type="checkbox" value="">Otros</label>
+                                            <label><input type="checkbox" value="4" id="chkservicios">Servicios</label>
+                                        </div>
+
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="5" id="chkinscripcion">Inscripcion</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="6" id="chkotros">Otros</label>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="checkbox">
-                                            <input type="number" id="montoPasajes" placeholder="Monto">
+                                            <input type="float" id="montoPasajes" placeholder="Monto"  >
                                         </div>
                                         <div class="checkbox">
-                                            <input type="number" id="montoViaticos" placeholder="Monto">
+                                            <input type="float" id="montoViaticos" placeholder="Monto" >
                                         </div>
 
                                         <div class="checkbox">
-                                            <input type="number" id="montoHonorarios" placeholder="Monto">
+                                            <input type="float" id="montoHonorarios" placeholder="Monto" >
                                         </div>
                                         <div class="checkbox">
-                                            <input type="number" id="montoServicios" placeholder="Monto">
+                                            <input type="float" id="montoServicios" placeholder="Monto" >
                                         </div>
                                         <div class="checkbox">
-                                            <input type="number" id="montoInscripcion" placeholder="Monto">
+                                            <input type="float" id="montoInscripcion" placeholder="Monto" >
                                         </div>
                                         <div class="checkbox">
                                             <input type="text" id="otros" placeholder="Detallar">
-                                            <input type="number" id="montoOtros" placeholder="Monto">
+                                            <input type="float" id="montoOtros" placeholder="Monto">
                                         </div>
                                     </div>
                                 </div>
-                            </td>                            
+                            </td>                         
                         </tr>
                         <tr>
                             <th>Tipo de Evento:</th>
