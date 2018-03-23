@@ -46,41 +46,33 @@
                     -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Usuarios
+                            Administrador
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item"  href="{{ path('usuario_new')}}">Crear</a>
-                            <a class="dropdown-item" href="{{ path('usuario_index')}}">Consultar</a>
+                            <a class="dropdown-item"  href="{{ path('usuario_nuevo')}}">Crear usuario</a>
+                            <a class="dropdown-item" href="{{ path('usuario_listar')}}">Listar usuarior</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Solicitudes
+                            Investigador
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="{{ path('solicitud_new')}}">Crear</a>
-                            <a class="dropdown-item" href="{{ path('solicitud_index')}}">Consultar</a>
-
+                            <a class="dropdown-item" href="{{ path('solicitud_new')}}">Crear soliciutd</a>
+                            <a class="dropdown-item" href="{{ path('solicitud_index')}}">Listar solicitudes</a>
+                            <a class="dropdown-item" href="{{ path('usuario_balance')}}">Consultar Cuenta Propia.</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Proyectos/Grupos
+                            Coordinador
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="{{ path('proyectogrupo_new')}}">Crear</a>
-                            <a class="dropdown-item" href="{{ path('proyectogrupo_new')}}">Consultar</a>
+                            <a class="dropdown-item" href="{{ path('proyectogrupo_new')}}">Crear Proyecto/Grupo</a>
+                            <a class="dropdown-item" href="{{ path('proyectogrupo_new')}}">Listar Proyectos/Grupos</a>
+                            <a class="dropdown-item" href="{{ path('usuario_balance_general')}}">Consultar Balance Gral.</a>
                         </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Cuentas
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="{{ path('usuario_balance')}}">Consultar Balance Gral.</a>
-                            <a class="dropdown-item" href="{{ path('usuario_balance_general')}}">Consultar Cuenta Propia</a>
-                        </div>
-                    </li>                    
+                    </li>                 
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
