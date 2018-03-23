@@ -18,7 +18,7 @@ class UsuarioController extends Controller {
     /**
      * Lists all usuario entities.
      *
-     * @Route("/", name="usuario_index")
+     * @Route("/listar", name="usuario_listar")
      * @Method("GET")
      */
     public function indexAction() {
@@ -26,7 +26,7 @@ class UsuarioController extends Controller {
 
         $usuarios = $em->getRepository('AppBundle:Usuario')->findAll();
 
-        return $this->render('usuario/index.html.twig', array(
+        return $this->render('usuario/listar.html.twig', array(
                     'usuarios' => $usuarios,
         ));
     }
@@ -68,11 +68,13 @@ class UsuarioController extends Controller {
     /**
      * Creates a new usuario entity.
      *
-     * @Route("/new", name="usuario_new")
+     * @Route("/nuevo", name="usuario_nuevo")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
         $usuario = new Usuario();
+        //$usuario->setFechaAlta(new \DateTime('NOW'));
+        //$usuario->setFechaUltimaModificacion(new \DateTime('NOW'));
         $form = $this->createForm('AppBundle\Form\UsuarioType', $usuario);
         $form->handleRequest($request);
 
@@ -81,10 +83,10 @@ class UsuarioController extends Controller {
             $em->persist($usuario);
             $em->flush();
 
-            return $this->redirectToRoute('usuario_show', array('id' => $usuario->getId()));
+            return $this->redirectToRoute('usuario_mostrar', array('id' => $usuario->getId()));
         }
 
-        return $this->render('usuario/new.html.twig', array(
+        return $this->render('usuario/nuevo.html.twig', array(
                     'usuario' => $usuario,
                     'form' => $form->createView(),
         ));
@@ -93,13 +95,13 @@ class UsuarioController extends Controller {
     /**
      * Finds and displays a usuario entity.
      *
-     * @Route("/{id}", name="usuario_show")
+     * @Route("/{id}", name="usuario_mostrar")
      * @Method("GET")
      */
     public function showAction(Usuario $usuario) {
         $deleteForm = $this->createDeleteForm($usuario);
 
-        return $this->render('usuario/show.html.twig', array(
+        return $this->render('usuario/mostrar.html.twig', array(
                     'usuario' => $usuario,
                     'delete_form' => $deleteForm->createView(),
         ));
@@ -108,7 +110,7 @@ class UsuarioController extends Controller {
     /**
      * Displays a form to edit an existing usuario entity.
      *
-     * @Route("/{id}/edit", name="usuario_edit")
+     * @Route("/{id}/editar", name="usuario_editar")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Usuario $usuario) {
@@ -118,11 +120,10 @@ class UsuarioController extends Controller {
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('usuario_edit', array('id' => $usuario->getId()));
+            return $this->redirectToRoute('usuario_editar', array('id' => $usuario->getId()));
         }
 
-        return $this->render('usuario/edit.html.twig', array(
+        return $this->render('usuario/editar.html.twig', array(
                     'usuario' => $usuario,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
@@ -132,7 +133,7 @@ class UsuarioController extends Controller {
     /**
      * Deletes a usuario entity.
      *
-     * @Route("/{id}", name="usuario_delete")
+     * @Route("/{id}", name="usuario_eliminar")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Usuario $usuario) {
@@ -140,12 +141,12 @@ class UsuarioController extends Controller {
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $usuario->setFechaBaja(new \DateTime('NOW'));
             $em = $this->getDoctrine()->getManager();
-            $em->remove($usuario);
+            //$em->remove($usuario);
             $em->flush();
         }
-
-        return $this->redirectToRoute('usuario_index');
+        return $this->redirectToRoute('usuario_listar');
     }
 
     /**
@@ -157,7 +158,7 @@ class UsuarioController extends Controller {
      */
     private function createDeleteForm(Usuario $usuario) {
         return $this->createFormBuilder()
-                        ->setAction($this->generateUrl('usuario_delete', array('id' => $usuario->getId())))
+                        ->setAction($this->generateUrl('usuario_eliminar', array('id' => $usuario->getId())))
                         ->setMethod('DELETE')
                         ->getForm()
         ;
