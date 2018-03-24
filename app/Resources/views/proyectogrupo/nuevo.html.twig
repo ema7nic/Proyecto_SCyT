@@ -11,22 +11,54 @@
                         {{ form_start(form) }}
                         <div class="row">
                             <div class="col">
-                                {{form_label(form.codigo)}}
-                                {{ form_widget(form.codigo, {'attr' : {'class' : 'form-control' }}) }}
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Código</span>
+                                    </div>
+                                    {{ form_widget(form.codigo, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
                                 <span class="text-danger"> {{form_errors(form.codigo)}}</span>
-
                             </div>
                             <div class="col">
-                                {{form_label(form.codigoUtn)}}
-                                {{ form_widget(form.codigoUtn, {'attr' : {'class' : 'form-control' }}) }}
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Código UTN</span>
+                                    </div>
+                                    {{ form_widget(form.codigoUtn, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+
                                 <span class="text-danger"> {{form_errors(form.codigoUtn)}}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                {{form_label(form.nombre)}}
-                                {{ form_widget(form.nombre, {'attr' : {'class' : 'form-control' }}) }}
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Nombre</span>
+                                    </div>
+                                    {{ form_widget(form.nombre, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
                                 <span class="text-danger"> {{form_errors(form.nombre)}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Usuario</span>
+                                    </div>
+                                    {{ form_widget(form.usuario, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(form.usuario)}}</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Saldo</span>
+                                    </div>
+                                    {{ form_widget(form.saldo, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(form.saldo)}}</span>
                             </div>
                         </div>
                         <div class="row">
@@ -39,18 +71,6 @@
                                 {{form_label(form.fechaFin)}}
                                 {{ form_widget(form.fechaFin, {'attr' : {'class' : 'input-group date' }}) }}
                                 <span class="text-danger"> {{form_errors(form.fechaFin)}}</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                {{form_label(form.usuario)}}
-                                {{ form_widget(form.usuario, {'attr' : {'class' : 'form-control' }}) }}
-                                <span class="text-danger"> {{form_errors(form.usuario)}}</span>
-                            </div>
-                            <div class="col">
-                                {{form_label(form.saldo)}}
-                                {{ form_widget(form.saldo, {'attr' : {'class' : 'form-control' }}) }}
-                                <span class="text-danger"> {{form_errors(form.saldo)}}</span>
                             </div>
                         </div>
                         <div class="row">
