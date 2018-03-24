@@ -28,14 +28,10 @@
                                 <td>{{ proyectoGrupo.saldo }}</td>
                                 <td>{{ proyectoGrupo.usuario.nombre }}</td>
                                 <td>
-                                    <ul>
-                                        <li>
-                                            <a href="{{ path('proyectogrupo_mostrar', { 'id': proyectoGrupo.id }) }}">show</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('proyectogrupo_editar', { 'id': proyectoGrupo.id }) }}">edit</a>
-                                        </li>
-                                    </ul>
+                                    <div class="btn-group btn-group-toggle">
+                                        <a class="btn btn-info" href="{{ path('proyectogrupo_mostrar', { 'id': proyectoGrupo.id }) }}">Mostar</a>
+                                        <a  class="btn btn-success" href="{{ path('proyectogrupo_editar', { 'id': proyectoGrupo.id }) }}">Editar</a>
+                                    </div>
                                 </td>
                             </tr>
                         {% endfor %}
