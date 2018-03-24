@@ -52,7 +52,7 @@ class AsignacionGlobal
     /**
      * @var integer
      *
-     * @ORM\OneToMany(targetEntity="Asignacion", mappedBy="proyectoGrupo")
+     * @ORM\OneToMany(targetEntity="Asignacion", mappedBy="asignacionGlobal")
      */
     private $asignaciones;
     
