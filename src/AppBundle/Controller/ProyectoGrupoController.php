@@ -17,7 +17,7 @@ class ProyectoGrupoController extends Controller
     /**
      * Lists all proyectoGrupo entities.
      *
-     * @Route("/", name="proyectogrupo_index")
+     * @Route("/listar", name="proyectogrupo_listar")
      * @Method("GET")
      */
     public function indexAction()
@@ -26,7 +26,7 @@ class ProyectoGrupoController extends Controller
 
         $proyectoGrupos = $em->getRepository('AppBundle:ProyectoGrupo')->findAll();
 
-        return $this->render('proyectogrupo/index.html.twig', array(
+        return $this->render('proyectogrupo/listar.html.twig', array(
             'proyectoGrupos' => $proyectoGrupos,
         ));
     }
@@ -34,7 +34,7 @@ class ProyectoGrupoController extends Controller
     /**
      * Creates a new proyectoGrupo entity.
      *
-     * @Route("/new", name="proyectogrupo_new")
+     * @Route("/nuevo", name="proyectogrupo_nuevo")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -48,10 +48,10 @@ class ProyectoGrupoController extends Controller
             $em->persist($proyectoGrupo);
             $em->flush();
 
-            return $this->redirectToRoute('proyectogrupo_show', array('id' => $proyectoGrupo->getId()));
+            return $this->redirectToRoute('proyectogrupo_mostrar', array('id' => $proyectoGrupo->getId()));
         }
 
-        return $this->render('proyectogrupo/new.html.twig', array(
+        return $this->render('proyectogrupo/nuevo.html.twig', array(
             'proyectoGrupo' => $proyectoGrupo,
             'form' => $form->createView(),
         ));
@@ -60,14 +60,14 @@ class ProyectoGrupoController extends Controller
     /**
      * Finds and displays a proyectoGrupo entity.
      *
-     * @Route("/{id}", name="proyectogrupo_show")
+     * @Route("/{id}", name="proyectogrupo_mostrar")
      * @Method("GET")
      */
     public function showAction(ProyectoGrupo $proyectoGrupo)
     {
         $deleteForm = $this->createDeleteForm($proyectoGrupo);
 
-        return $this->render('proyectogrupo/show.html.twig', array(
+        return $this->render('proyectogrupo/mostrar.html.twig', array(
             'proyectoGrupo' => $proyectoGrupo,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -76,7 +76,7 @@ class ProyectoGrupoController extends Controller
     /**
      * Displays a form to edit an existing proyectoGrupo entity.
      *
-     * @Route("/{id}/edit", name="proyectogrupo_edit")
+     * @Route("/{id}/editar", name="proyectogrupo_editar")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, ProyectoGrupo $proyectoGrupo)
@@ -88,10 +88,10 @@ class ProyectoGrupoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('proyectogrupo_edit', array('id' => $proyectoGrupo->getId()));
+            return $this->redirectToRoute('proyectogrupo_mostrar', array('id' => $proyectoGrupo->getId()));
         }
 
-        return $this->render('proyectogrupo/edit.html.twig', array(
+        return $this->render('proyectogrupo/editar.html.twig', array(
             'proyectoGrupo' => $proyectoGrupo,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -101,7 +101,7 @@ class ProyectoGrupoController extends Controller
     /**
      * Deletes a proyectoGrupo entity.
      *
-     * @Route("/{id}", name="proyectogrupo_delete")
+     * @Route("/{id}", name="proyectogrupo_borrar")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, ProyectoGrupo $proyectoGrupo)
@@ -115,7 +115,7 @@ class ProyectoGrupoController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('proyectogrupo_index');
+        return $this->redirectToRoute('proyectogrupo_listar');
     }
 
     /**
@@ -128,7 +128,7 @@ class ProyectoGrupoController extends Controller
     private function createDeleteForm(ProyectoGrupo $proyectoGrupo)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('proyectogrupo_delete', array('id' => $proyectoGrupo->getId())))
+            ->setAction($this->generateUrl('proyectogrupo_borrar', array('id' => $proyectoGrupo->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
