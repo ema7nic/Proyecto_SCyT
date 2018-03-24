@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="page-header">
+                    <h2>Nuevo Proyecto / Grupo </h2>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col-12 col-md-auto">
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="col">
+                                {{form_label(form.codigo)}}
+                                {{ form_widget(form.codigo, {'attr' : {'class' : 'form-control' }}) }}
+                                <span class="text-danger"> {{form_errors(form.codigo)}}</span>
+
+                            </div>
+                            <div class="col">
+                                {{form_label(form.codigoUtn)}}
+                                {{ form_widget(form.codigoUtn, {'attr' : {'class' : 'form-control' }}) }}
+                                <span class="text-danger"> {{form_errors(form.codigoUtn)}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                {{form_label(form.nombre)}}
+                                {{ form_widget(form.nombre, {'attr' : {'class' : 'form-control' }}) }}
+                                <span class="text-danger"> {{form_errors(form.nombre)}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                {{form_label(form.fechaInicio)}}
+                                {{ form_widget(form.fechaInicio, {'attr' : {'class' : 'input-group date' }}) }}
+                                <span class="text-danger"> {{form_errors(form.fechaInicio)}}</span>
+                            </div>
+                            <div class="col">
+                                {{form_label(form.fechaFin)}}
+                                {{ form_widget(form.fechaFin, {'attr' : {'class' : 'input-group date' }}) }}
+                                <span class="text-danger"> {{form_errors(form.fechaFin)}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                {{form_label(form.usuario)}}
+                                {{ form_widget(form.usuario, {'attr' : {'class' : 'form-control' }}) }}
+                                <span class="text-danger"> {{form_errors(form.usuario)}}</span>
+                            </div>
+                            <div class="col">
+                                {{form_label(form.saldo)}}
+                                {{ form_widget(form.saldo, {'attr' : {'class' : 'form-control' }}) }}
+                                <span class="text-danger"> {{form_errors(form.saldo)}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col align-self-end align-items-end">
+                                <input class="btn btn-success" type="submit" value="Crear" />
+                            </div> 
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
