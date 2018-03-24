@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Usuario
  *
  * @ORM\Table(name="usuario")
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
  */
 class Usuario {
@@ -82,7 +83,7 @@ class Usuario {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_baja", type="datetime")
+     * @ORM\Column(name="fecha_baja", type="datetime", nullable=true)
      */
     private $fechaBaja;
 
@@ -181,28 +182,6 @@ class Usuario {
      */
     public function getSolicitudes() {
         return $this->solicitudes;
-    }
-
-    /**
-     * Set clave
-     *
-     * @param string $clave
-     *
-     * @return Usuario
-     */
-    public function setClave($clave) {
-        $this->clave = $clave;
-
-        return $this;
-    }
-
-    /**
-     * Get clave
-     *
-     * @return string
-     */
-    public function getClave() {
-        return $this->clave;
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
-use Symfony\Component\Validator\Constraints as Assert;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,10 +25,6 @@ class ProyectoGrupo
      * @var string
      *
      * @ORM\Column(name="codigo", type="string", length=255)
-     * 
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @Assert\Length(min="3", max="255")
      */
     private $codigo;
 
@@ -36,10 +32,6 @@ class ProyectoGrupo
      * @var string
      *
      * @ORM\Column(name="codigo_utn", type="string", length=255)
-     * 
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @Assert\Length(min="3", max="255")
      */
     private $codigoUtn;
 
@@ -47,10 +39,6 @@ class ProyectoGrupo
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=255)
-     * 
-     * @Assert\NotBlank()
-     * @Assert\Type("string")
-     * @Assert\Length(min="3", max="255")
      */
     private $nombre;
 
@@ -58,9 +46,6 @@ class ProyectoGrupo
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_inicio", type="datetime")
-     * 
-     * @Assert\NotBlank()
-     * @Assert\Type("DateTime")
      */
     private $fechaInicio;
 
@@ -68,9 +53,6 @@ class ProyectoGrupo
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_fin", type="datetime")
-     * 
-     * @Assert\NotBlank()
-     * @Assert\Type("DateTime")
      */
     private $fechaFin;
 
@@ -84,8 +66,6 @@ class ProyectoGrupo
     /**
      * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="proyectosGrupos")
      * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id", nullable=false)
-     * 
-     * @Assert\NotBlank()
      */
     private $usuario;
     
@@ -93,7 +73,6 @@ class ProyectoGrupo
      * @var integer
      *
      * @ORM\OneToMany(targetEntity="Asignacion", mappedBy="proyectoGrupo")
-     * 
      */
     private $asignaciones;
 
