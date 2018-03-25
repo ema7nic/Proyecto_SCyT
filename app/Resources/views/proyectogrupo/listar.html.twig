@@ -2,6 +2,10 @@
 {% block body %}
     <h1>Lista de Proyectos/Grupos</h1>
     <div class="container-fluid">
+
+        <div class="row  justify-content-md-center">
+
+        </div>
         <div class="row  justify-content-md-center">
             <div class="col-12 col-md-auto">
                 <p>
@@ -12,29 +16,59 @@
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body mb-2">
 
+                        {{ form_start(formProyectoGrupoFilter, {attr: {novalidate: 'novalidate'}}) }}
+                        {{ form_errors(formProyectoGrupoFilter) }}
                         <div class="row">
-                            {{ form_start(formProyectoGrupoFilter, {attr: {novalidate: 'novalidate'}}) }}
-                            {{ form_errors(formProyectoGrupoFilter) }}
-                            <div class="row">
-                                <div class="col">
-                                    {{ form_label(formProyectoGrupoFilter.codigo, 'Nombre') }}
-                                    {{ form_widget(formProyectoGrupoFilter.codigo) }}
-                                    <div class="help-block with-errors">
-                                        {{ form_errors(formProyectoGrupoFilter.codigo) }}
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Código</span>
                                     </div>
+                                    {{ form_widget(formProyectoGrupoFilter.codigo, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <div class="help-block with-errors">
+                                    {{ form_errors(formProyectoGrupoFilter.codigo) }}
                                 </div>
                             </div>
-                            {{ form_end(formProyectoGrupoFilter) }}
                         </div>
-
-                        {{ form_widget(formProyectoGrupoFilter.filter, {'attr' : {'class' : 'form-control' }}) }}
-                        {{ form_widget(formProyectoGrupoFilter.filter, {'attr' : {'class' : 'form-control' }}) }}
-
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Código UTN</span>
+                                    </div>
+                                    {{ form_widget(formProyectoGrupoFilter.codigoUtn, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <div class="help-block with-errors">
+                                    {{ form_errors(formProyectoGrupoFilter.codigoUtn) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Nombre</span>
+                                    </div>
+                                    {{ form_widget(formProyectoGrupoFilter.nombre, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <div class="help-block with-errors">
+                                    {{ form_errors(formProyectoGrupoFilter.nombre) }}
+                                </div>
+                            </div>
+                        </div>
+                        {{ form_end(formProyectoGrupoFilter) }}
+                        <div class="row">
+                            <div class="col">
+                                <div class="btn-group btn-group-toggle">
+                                    {{ form_widget(formProyectoGrupoFilter.filter)}}                        
+                                    {{ form_widget(formProyectoGrupoFilter.filter)}}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row  justify-content-md-center">
             <div class="col-12 col-md-auto">
                 <table class="table table-responsive table-striped">
                     <thead class="thead-default">
@@ -54,7 +88,7 @@
                             <tr>
                                 <td>{{ proyectoGrupo.codigo }}</td>
                                 <td>{{ proyectoGrupo.codigoUtn }}</td>
-                                <td>{{ proyectoGrupo.codigo }}</td>
+                                <td>{{ proyectoGrupo.nombre }}</td>
                                 <td>{% if proyectoGrupo.fechaInicio %}{{ proyectoGrupo.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
                                 <td>{% if proyectoGrupo.fechaFin %}{{ proyectoGrupo.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
                                 <td>{{ proyectoGrupo.saldo }}</td>
@@ -69,11 +103,6 @@
                         {% endfor %}
                     </tbody>
                 </table>
-
-                <div class="btn-group" role="group" aria-label="false">
-                    <button type="buttom" class="btn btn-success"  
-                            onclick="location.href = '{#{{ path('proyectogrupo_new') }}'#}">Crear</button>
-                </div>
             </div>
         </div>
     </div>
