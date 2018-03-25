@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Lexik\Bundle\FormFilterBundle\Filter\Form\Type as Filters;
 use Symfony\Component\Form\Extension\Core\Type as Submit;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class ProyectoGrupoFilterType extends AbstractType implements Filters\EmbeddedFilterTypeInterface {
 
@@ -24,12 +25,34 @@ class ProyectoGrupoFilterType extends AbstractType implements Filters\EmbeddedFi
             }
         ));
 
+        $builder->add('codigoUtn', Filters\TextFilterType::class, array(
+            'apply_filter' => function(QueryInterface $filterQuery, $field, $values) {
+                if (!empty($values['value'])) {
+                    $qb = $filterQuery->getQueryBuilder();
+                    $qb->andWhere($filterQuery->getExpr()->like($field, ':codigoUtn'));
+                    $qb->setParameter('codigoUtn', '%' . $values['value'] . '%');
+                }
+            }
+        ));
+
+        $builder->add('nombre', Filters\TextFilterType::class, array(
+            'apply_filter' => function(QueryInterface $filterQuery, $field, $values) {
+                if (!empty($values['value'])) {
+                    $qb = $filterQuery->getQueryBuilder();
+                    $qb->andWhere($filterQuery->getExpr()->like($field, ':nombre'));
+                    $qb->setParameter('nombre', '%' . $values['value'] . '%');
+                }
+            }
+        ));
+
         $builder->add('filter', Submit\SubmitType::class, array(
-            'label' => 'Filtrar'
+            'label' => 'Filtrar',
+            'attr' => array('class' => 'btn btn-info'),
         ));
 
         $builder->add('reset', Submit\SubmitType::class, array(
-            'label' => 'Reiniciar'
+            'label' => 'Reiniciar',
+            'attr' => array('class' => 'btn btn-danger'),
         ));
     }
 
