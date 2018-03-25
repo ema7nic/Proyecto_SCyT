@@ -8,10 +8,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Doctrine\DBAL\Types\FloatType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
 class SolicitudType extends AbstractType
@@ -23,16 +25,58 @@ class SolicitudType extends AbstractType
     {
         $builder
         ->add('direccion',TextType::class, array("required" => "required"))
-        ->add('localidad')
-        ->add('fechaInicio',DateType::class, array("required" => "required"))
-        ->add('fechaFin',DateType::class, array("required" => "required"))
+        ->add('localidad', EntityType::class, array(
+            'class' => 'AppBundle:Localidad',
+            'choice_label' => 'nombre'
+        ))
+        //->add('fechaInicio',DateType::class, array("required" => "required"))
+        ->add('fechaInicio', DateType::class, array(
+            'required' => true,
+            'widget' => 'single_text',
+            'attr' => [
+                'class' => 'form-control input-inline datetimepicker',
+                'data-provide' => 'datetimepicker',
+                'html5' => false,
+            ],
+            ))
+        //->add('fechaFin',DateType::class, array("required" => "required"))
+        ->add('fechaFin', DateType::class, array(
+            'required' => true,
+            'widget' => 'single_text',
+            'attr' => [
+                'class' => 'form-control input-inline datetimepicker',
+                'data-provide' => 'datetimepicker',
+                'html5' => false,
+            ],
+            ))
         ->add('nombreEvento',TextType::class, array("required" => "required"))
-        ->add('proyectoGrupo')
+        ->add('proyectoGrupo', EntityType::class, array(
+            'class' => 'AppBundle:ProyectoGrupo',
+            'choice_label' => 'nombre'
+        ))
         ->add('autores',TextType::class, array("required" => "required"))
         ->add('contratados',TextType::class, array("required" => "required"))
-        ->add('fechaSalida',DateType::class, array("required" => "required"))
-        ->add('fechaLlegada',DateType::class, array("required" => "required"))
-        ->add('importeTotal',IntegerType::class, array("required" => "required"))
+        //->add('fechaSalida',DateType::class, array("required" => "required"))
+        ->add('fechaSalida', DateType::class, array(
+            'required' => true,
+            'widget' => 'single_text',
+            'attr' => [
+                'class' => 'form-control input-inline datetimepicker',
+                'data-provide' => 'datetimepicker',
+                'html5' => false,
+            ],
+            ))
+        //->add('fechaLlegada',DateType::class, array("required" => "required"))
+        ->add('fechaLlegada', DateType::class, array(
+            'required' => true,
+            'widget' => 'single_text',
+            'attr' => [
+                'class' => 'form-control input-inline datetimepicker',
+                'data-provide' => 'datetimepicker',
+                'html5' => false,
+            ],
+            ))
+        ->add('importeTotal',NumberType::class, array("required" => "required"))
         ->add('observaciones',TextType::class);
 
       
