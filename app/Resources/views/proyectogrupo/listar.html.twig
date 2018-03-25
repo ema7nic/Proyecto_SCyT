@@ -4,6 +4,38 @@
     <div class="container-fluid">
         <div class="row  justify-content-md-center">
             <div class="col-12 col-md-auto">
+                <p>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Filtros
+                    </button>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body mb-2">
+
+                        <div class="row">
+                            {{ form_start(formProyectoGrupoFilter, {attr: {novalidate: 'novalidate'}}) }}
+                            {{ form_errors(formProyectoGrupoFilter) }}
+                            <div class="row">
+                                <div class="col">
+                                    {{ form_label(formProyectoGrupoFilter.codigo, 'Nombre') }}
+                                    {{ form_widget(formProyectoGrupoFilter.codigo) }}
+                                    <div class="help-block with-errors">
+                                        {{ form_errors(formProyectoGrupoFilter.codigo) }}
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_end(formProyectoGrupoFilter) }}
+                        </div>
+
+                        {{ form_widget(formProyectoGrupoFilter.filter, {'attr' : {'class' : 'form-control' }}) }}
+                        {{ form_widget(formProyectoGrupoFilter.filter, {'attr' : {'class' : 'form-control' }}) }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row  justify-content-md-center">
+            <div class="col-12 col-md-auto">
                 <table class="table table-responsive table-striped">
                     <thead class="thead-default">
                         <tr>
@@ -22,7 +54,7 @@
                             <tr>
                                 <td>{{ proyectoGrupo.codigo }}</td>
                                 <td>{{ proyectoGrupo.codigoUtn }}</td>
-                                <td>{{ proyectoGrupo.nombre }}</td>
+                                <td>{{ proyectoGrupo.codigo }}</td>
                                 <td>{% if proyectoGrupo.fechaInicio %}{{ proyectoGrupo.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
                                 <td>{% if proyectoGrupo.fechaFin %}{{ proyectoGrupo.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
                                 <td>{{ proyectoGrupo.saldo }}</td>
