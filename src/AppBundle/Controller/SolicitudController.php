@@ -110,8 +110,9 @@ class SolicitudController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $solicitud->setFechaBaja(new \DateTime('NOW'));
             $em = $this->getDoctrine()->getManager();
-            $em->remove($solicitud);
+            //$em->remove($solicitud);
             $em->flush();
         }
 
