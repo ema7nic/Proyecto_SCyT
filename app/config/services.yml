@@ -33,8 +33,9 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
-    AppBundle\EventListener\UsuarioListener:
+    AppBundle\EventListener\EntityListener:
         tags:
             - { name: doctrine.event_listener, event: prePersist, connection: default}
             - { name: doctrine.event_listener, event: preUpdate, connection: default}
-            
+
+   

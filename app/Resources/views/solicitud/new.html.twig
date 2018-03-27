@@ -11,7 +11,9 @@
 		            
 		            
 		            $("#chkpasajes").on('change', function() {
-					    if( $("#chkpasajes".is(':checked') ) {
+					    if( $("#chkpasajes").is(':checked')) {
+                            
+                            
 					        $("#montoPasajes").prop('required',true);
 					    } else {
 					         $("#montoPasajes").removeAttr('required');
@@ -20,7 +22,7 @@
 					
 					
 					$("#chkviaticos").on('change', function() {
-					    if( $("#chkviaticos".is(':checked') ) {
+					    if( $("#chkviaticos").is(':checked') ) {
 					        $("#montoviaticos").prop('required',true);
 					    } else {
 					         $("#montoviaticos").removeAttr('required');
@@ -29,7 +31,7 @@
 					
 					
 					$("#chkhorarios").on('change', function() {
-					    if( $("#chkhorarios".is(':checked') ) {
+					    if( $("#chkhorarios").is(':checked') ) {
 					        $("#montohorarios").prop('required',true);
 					    } else {
 					         $("#montohorarios").removeAttr('required');
@@ -38,7 +40,7 @@
 					
 					
 					$("#chkservicios").on('change', function() {
-					    if( $("#chkservicios".is(':checked') ) {
+					    if( $("#chkservicios").is(':checked') ) {
 					        $("#montoservicios").prop('required',true);
 					    } else {
 					         $("#montoservicios").removeAttr('required');
@@ -48,7 +50,7 @@
 					
 					
 					$("#chkinscripcion").on('change', function() {
-					    if( $("#chkinscripcion".is(':checked') ) {
+					    if( $("#chkinscripcion").is(':checked') ) {
 					        $("#montoinscripcion").prop('required',true);
 					    } else {
 					         $("#montoinscripcion").removeAttr('required');
@@ -57,7 +59,7 @@
 					
 					
 					$("#chkotros").on('change', function() {
-					    if( $("#chkotros".is(':checked') ) {
+					    if( $("#chkotros").is(':checked') ) {
 					        $("#otros").prop('required',true);
 					         $("#montootros").prop('required',true);
 					    } else {
@@ -290,6 +292,16 @@
 
 
                         <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Nro. Nota</span>
+                                    </div>
+                                     {{ form_widget(form.nroNota, {'attr' : {'class' : 'form-control' }}) }}
+                                       
+                                </div>
+                              <span class="text-danger"> {{form_errors(form.nroNota)}}</span>
+                            </div>
                             <div class="col">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
