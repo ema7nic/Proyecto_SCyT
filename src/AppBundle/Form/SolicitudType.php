@@ -76,6 +76,7 @@ class SolicitudType extends AbstractType
                 'html5' => false,
             ],
             ))
+        ->add('nroNota',NumberType::class)
         ->add('importeTotal',NumberType::class, array("required" => "required"))
         ->add('observaciones',TextType::class);
 
