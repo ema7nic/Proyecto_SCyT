@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
  * Solicitud
  *
  * @ORM\Table(name="solicitud")
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SolicitudRepository")
  */
 class Solicitud
@@ -29,7 +30,6 @@ class Solicitud
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_generacion", type="datetime")
-     * @Assert\NotBlank()
      */
     private $fechaGeneracion;
 
@@ -38,9 +38,15 @@ class Solicitud
      *
      * @ORM\Column(name="fecha_ultima_modificacion", type="datetime")
      * 
-     * @Assert\NotBlank()
      */
     private $fechaUltimaModificacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_baja", type="datetime", nullable=true)
+     */
+    private $fechaBaja;
 
     /**
      * @var string
@@ -122,7 +128,6 @@ class Solicitud
      *
      * @ORM\Column(name="estado", type="string", length=255)
      * 
-     * @Assert\NotBlank()
      * 
      */
     private $estado;
@@ -158,7 +163,6 @@ class Solicitud
      *
      * @ORM\Column(name="ejercicio", type="integer")
      * 
-     * @Assert\NotBlank()
      */
     private $ejercicio;
 
@@ -178,18 +182,16 @@ class Solicitud
     /**
      * @var int
      *
-     * @ORM\Column(name="nro_nota", type="integer")
+     * @ORM\Column(name="nro_nota", type="integer", nullable=true)
      * 
-     * @Assert\NotBlank()
      */
     private $nroNota;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_revision", type="datetime")
+     * @ORM\Column(name="fecha_revision", type="datetime", nullable=true)
      * 
-     * @Assert\NotBlank()
      */
     private $fechaRevision;
     
@@ -305,6 +307,31 @@ class Solicitud
     {
         return $this->fechaUltimaModificacion;
     }
+
+    /**
+     * Get fechaBaja
+     * 
+     * @return \DateTime
+     */
+    public function getFechaBaja()
+    {
+        return $this->fechaBaja;
+    }
+
+    /**
+     * Set fechaBja
+     * 
+     * @param DateTIme $fechaBaja
+     * 
+     * @return Solicitud
+     */
+
+     public function setFechaBaja($fechaBaja)
+     {
+         $this->fechaBaja = $fechaBaja;
+
+         return $this;
+     }
 
     /**
      * Set direccion
