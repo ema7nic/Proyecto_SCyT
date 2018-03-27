@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Lista de Solicitudes</h1>
+ 	<div class="container-fluid">
+        <table class="table table-responsive table-striped table-bordered">
+            <thead class="thead-default">
+                <tr>
+                    <th>Fecha Generacion</th>
+	                <th>Direccion</th>
+	                <th>Fecha Inicio</th>
+	                <th>Fecha Fin</th>
+	                <th>Nombre Evento</th>
+	                <th>Fecha Salida</th>
+	                <th>Fecha Llegada</th>
+	                <th>Importe Total</th>
+	                <th>Estado</th>
+	                <th>Autores</th>
+	                <th>Observaciones</th>
+	                <th>Nronota</th>
+	                <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for solicitud in solicituds %}
+                    <tr>
+                        <td><a href="{{ path('solicitud_show', { 'id': solicitud.id }) }}">{{ solicitud.id }}</a></td>
+		                <td>{% if solicitud.fechaGeneracion %}{{ solicitud.fechaGeneracion|date('Y-m-d H:i:s') }}{% endif %}</td>
+		                <td>{{ solicitud.direccion }}</td>
+		                <td>{% if solicitud.fechaInicio %}{{ solicitud.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+		                <td>{% if solicitud.fechaFin %}{{ solicitud.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+		                <td>{{ solicitud.nombreEvento }}</td>
+		                <td>{% if solicitud.fechaSalida %}{{ solicitud.fechaSalida|date('Y-m-d H:i:s') }}{% endif %}</td>
+		                <td>{% if solicitud.fechaLlegada %}{{ solicitud.fechaLlegada|date('Y-m-d H:i:s') }}{% endif %}</td>
+		                <td>{{ solicitud.importeTotal }}</td>
+		                <td>{{ solicitud.estado }}</td>
+		                <td>{{ solicitud.autores }}</td>
+		                <td>{{ solicitud.observaciones }}</td>
+		                <td>{{ solicitud.nroNota }}</td>
+		                <td>
+		                    <ul>
+		                        <li>
+		                            <a href="{{ path('solicitud_show', { 'id': solicitud.id }) }}">show</a>
+		                        </li>
+		                        <li>
+		                            <a href="{{ path('solicitud_edit', { 'id': solicitud.id }) }}">edit</a>
+		                        </li>
+		                    </ul>
+            			</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="btn-group" role="group" aria-label="false">
+            <button type="buttom" class="btn btn-default"  
+                    onclick="location.href = '{#{{ path('solicitud_new') }}'#}">Crear</button>
+        </div>
+    </div>
+
+
+
+{% endblock %}
