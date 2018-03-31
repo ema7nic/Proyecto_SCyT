@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-
 /**
  * Proyectogrupo controller.
  *
@@ -23,37 +22,45 @@ class ProyectoGrupoController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function listarAction(Request $request) {
+        /*  $em = $this->getDoctrine()->getManager();
+          $proyectoGrupos = $em->getRepository('AppBundle:ProyectoGrupo')->queryBuilderTodosAlfabeticamente();
+
+          $formProyectoGrupoFilter = $this->createForm('AppBundle\Form\ProyectoGrupoFilterType');
+
+          $formProyectoGrupoFilter->handleRequest($request);
+          if ($formProyectoGrupoFilter->isSubmitted() == false && $this->get('session')->get('proyectogrupo_listar_request')) {
+          $formProyectoGrupoFilter->handleRequest($this->get('session')->get('proyectogrupo_listar_request'));
+          }
+          if ($formProyectoGrupoFilter->isValid()) {
+          $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($formProyectoGrupoFilter, $proyectoGrupos);
+          $proyectoGrupos = $proyectoGrupos->getQuery()->getResult();
+          }
+
+          if ($formProyectoGrupoFilter->get('reset')->isClicked()) {
+          $this->get('session')->remove('proyectogrupo_listar_request');
+          return $this->redirect($this->generateUrl('proyectogrupo_listar'));
+          }
+
+          if ($formProyectoGrupoFilter->get('filter')->isClicked()) {
+
+          $request->query->set('page', 1);
+          $obraListarFilterRequest = $request->request->get('obra_filter');
+          unset($obraListarFilterRequest['filter']);
+          $request->request->set('obra_filter', $obraListarFilterRequest);
+          $this->get('session')->set('proyectogrupo_listar_request', $request);
+          }
+
+          return $this->render('proyectogrupo/listar.html.twig', array(
+          'proyectoGrupos' => $proyectoGrupos,
+          'formProyectoGrupoFilter' => $formProyectoGrupoFilter->createView(),
+          )); */
+
         $em = $this->getDoctrine()->getManager();
-        $proyectoGrupos = $em->getRepository('AppBundle:ProyectoGrupo')->queryBuilderTodosAlfabeticamente();
-           
-        $formProyectoGrupoFilter = $this->createForm('AppBundle\Form\ProyectoGrupoFilterType');
 
-        $formProyectoGrupoFilter->handleRequest($request);
-        if ($formProyectoGrupoFilter->isSubmitted() == false && $this->get('session')->get('proyectogrupo_listar_request')) {
-            $formProyectoGrupoFilter->handleRequest($this->get('session')->get('proyectogrupo_listar_request'));
-        }
-        if ($formProyectoGrupoFilter->isValid()) {
-            $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($formProyectoGrupoFilter, $proyectoGrupos);
-            $proyectoGrupos = $proyectoGrupos->getQuery()->getResult();           
-        }
-
-        if ($formProyectoGrupoFilter->get('reset')->isClicked()) {
-            $this->get('session')->remove('proyectogrupo_listar_request');
-            return $this->redirect($this->generateUrl('proyectogrupo_listar'));
-        }
-
-        if ($formProyectoGrupoFilter->get('filter')->isClicked()) {
-
-            $request->query->set('page', 1);
-            $obraListarFilterRequest = $request->request->get('obra_filter');
-            unset($obraListarFilterRequest['filter']);
-            $request->request->set('obra_filter', $obraListarFilterRequest);
-            $this->get('session')->set('proyectogrupo_listar_request', $request);
-        }
+        $proyectoGrupos = $em->getRepository('AppBundle:ProyectoGrupo')->findAll();
 
         return $this->render('proyectogrupo/listar.html.twig', array(
                     'proyectoGrupos' => $proyectoGrupos,
-                    'formProyectoGrupoFilter' => $formProyectoGrupoFilter->createView(),
         ));
     }
 
@@ -153,17 +160,5 @@ class ProyectoGrupoController extends Controller {
                         ->setMethod('DELETE')
                         ->getForm()
         ;
-    }
-    public function valido()
-    {
-        if (!$this->submitted) {
-            return false;
-        }
-
-        if ($this->isDisabled()) {
-            return true;
-        }
-
-        return 0 === count($this->getErrors(true));
     }
 }
