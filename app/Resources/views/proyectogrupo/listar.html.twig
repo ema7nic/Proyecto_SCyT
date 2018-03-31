@@ -1,109 +1,42 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <h1>Lista de Proyectos/Grupos</h1>
-    <div class="container-fluid">
-
-        <div class="row  justify-content-md-center">
-
-        </div>
-        <div class="row  justify-content-md-center">
-            <div class="col-12 col-md-auto">
-                <p>
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Filtros
-                    </button>
-                </p>
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body mb-2">
-
-                        {{ form_start(formProyectoGrupoFilter, {attr: {novalidate: 'novalidate'}}) }}
-                        {{ form_errors(formProyectoGrupoFilter) }}
-                        <div class="row">
-                            <div class="col">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Código</span>
-                                    </div>
-                                    {{ form_widget(formProyectoGrupoFilter.codigo, {'attr' : {'class' : 'form-control' }}) }}
-                                </div>
-                                <div class="help-block with-errors">
-                                    {{ form_errors(formProyectoGrupoFilter.codigo) }}
-                                </div>
+    
+    <div class="row  justify-content-md-center">
+    <div class="col-12 col-md-auto">
+        <table id="table_id" class="table table-responsive table-striped">
+            <thead class="thead-default">
+                <tr>
+                    <th class="awesome">Codigo</th>
+                    <th class="awesome">Codigo UTN</th>
+                    <th class="awesome">Nombre</th>
+                    <th class="awesome">Fecha Inicio</th>
+                    <th class="awesome">Fecha Fin</th>
+                    <th class="awesome">Saldo</th>
+                    <th class="awesome">Usuario</th>
+                    <th class="awesome">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proyectoGrupo in proyectoGrupos %}
+                    <tr>
+                        <td>{{ proyectoGrupo.codigo }}</td>
+                        <td>{{ proyectoGrupo.codigoUtn }}</td>
+                        <td>{{ proyectoGrupo.nombre }}</td>
+                        <td>{% if proyectoGrupo.fechaInicio %}{{ proyectoGrupo.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if proyectoGrupo.fechaFin %}{{ proyectoGrupo.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ proyectoGrupo.saldo }}</td>
+                        <td>{{ proyectoGrupo.usuario.nombre }}</td>
+                        <td>
+                            <div class="btn-group btn-group-toggle">
+                                <a class="btn btn-info" href="{{ path('proyectogrupo_mostrar', { 'id': proyectoGrupo.id }) }}">Mostar</a>
+                                <a  class="btn btn-success" href="{{ path('proyectogrupo_editar', { 'id': proyectoGrupo.id }) }}">Editar</a>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Código UTN</span>
-                                    </div>
-                                    {{ form_widget(formProyectoGrupoFilter.codigoUtn, {'attr' : {'class' : 'form-control' }}) }}
-                                </div>
-                                <div class="help-block with-errors">
-                                    {{ form_errors(formProyectoGrupoFilter.codigoUtn) }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Nombre</span>
-                                    </div>
-                                    {{ form_widget(formProyectoGrupoFilter.nombre, {'attr' : {'class' : 'form-control' }}) }}
-                                </div>
-                                <div class="help-block with-errors">
-                                    {{ form_errors(formProyectoGrupoFilter.nombre) }}
-                                </div>
-                            </div>
-                        </div>
-                        {{ form_end(formProyectoGrupoFilter) }}
-                        <div class="row">
-                            <div class="col">
-                                <div class="btn-group btn-group-toggle">
-                                    {{ form_widget(formProyectoGrupoFilter.filter)}}                        
-                                    {{ form_widget(formProyectoGrupoFilter.filter)}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-auto">
-                <table id="table_id" class="table table-responsive table-striped">
-                    <thead class="thead-default">
-                        <tr>
-                            <th class="awesome">Codigo</th>
-                            <th class="awesome">Codigo UTN</th>
-                            <th class="awesome">Nombre</th>
-                            <th class="awesome">Fecha Inicio</th>
-                            <th class="awesome">Fecha Fin</th>
-                            <th class="awesome">Saldo</th>
-                            <th class="awesome">Usuario</th>
-                            <th class="awesome">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for proyectoGrupo in proyectoGrupos %}
-                            <tr>
-                                <td>{{ proyectoGrupo.codigo }}</td>
-                                <td>{{ proyectoGrupo.codigoUtn }}</td>
-                                <td>{{ proyectoGrupo.nombre }}</td>
-                                <td>{% if proyectoGrupo.fechaInicio %}{{ proyectoGrupo.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                <td>{% if proyectoGrupo.fechaFin %}{{ proyectoGrupo.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                <td>{{ proyectoGrupo.saldo }}</td>
-                                <td>{{ proyectoGrupo.usuario.nombre }}</td>
-                                <td>
-                                    <div class="btn-group btn-group-toggle">
-                                        <a class="btn btn-info" href="{{ path('proyectogrupo_mostrar', { 'id': proyectoGrupo.id }) }}">Mostar</a>
-                                        <a  class="btn btn-success" href="{{ path('proyectogrupo_editar', { 'id': proyectoGrupo.id }) }}">Editar</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+</div>
 {% endblock %}
