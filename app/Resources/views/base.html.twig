@@ -4,24 +4,34 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}SCyT{% endblock %}</title>  
-        <link rel="stylesheet" href="//bootswatch.com/4/slate/bootstrap.min.css" type="text/css" />  
-        <!--
-        {% stylesheets '@AppBundle/Resources/public/css/bootstrap.min.css' filter='cssrewrite' %}
-        <link rel="stylesheet" href="{{ asset_url }}" /> 
+        <link rel="stylesheet" href="//bootswatch.com/4/slate/bootstrap.min.css" type="text/css" /> 
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.css"/>
         <style type="text/css">
-            .col-12{
-                border:1px solid #ccc;
-                background-color:#e4e5e6;
-                border-top-width: 5px;
-                border-bottom-width: 5px;
-                border-right-width: 5px;
-                border-left-width: 5px;
-                padding-top: 15px;
-                padding-bottom: 15px;
+            .input-group-text{
+                border: 1px solid rgba(0, 0, 0, 0.6);
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+                background-color: transparent;
+                background-image: -webkit-gradient(linear, left top, left bottom, from(#484e55), color-stop(60%, #3A3F44), to(#313539));
+                background-image: linear-gradient(#484e55, #3A3F44 60%, #313539);
+                background-repeat: no-repeat;
+                -webkit-filter: none;
+                filter: none;
+                color: #fff;
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+            }
+            .awesome{
+                border: 1px solid rgba(0, 0, 0, 0.6);
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+                background-color: transparent;
+                background-image: -webkit-gradient(linear, left top, left bottom, from(#484e55), color-stop(60%, #3A3F44), to(#313539));
+                background-image: linear-gradient(#484e55, #3A3F44 60%, #313539);
+                background-repeat: no-repeat;
+                -webkit-filter: none;
+                filter: none;
+                color: #fff;
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
             }
         </style>
-        {% endstylesheets %}
-        -->
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
 
@@ -33,17 +43,6 @@
             <a class="navbar-brand" href="#">Gestor de Proyectos</a>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mr-auto">
-                    <!-- <li class="nav-item active">
-                         <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-                     </li>-->
-                    <!--
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Usuarios</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Administrador
@@ -88,7 +87,6 @@
         {% block body %}
         {% endblock %}
 
-
         <div id="myProgressBar" style="visibility: hidden;"></div>
         {% block javascripts %}
             {% javascripts 
@@ -103,7 +101,13 @@
                 }, function () {
                     $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeOut(500);
                 });
-            </script>          
+            </script>     
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#table_id').DataTable();
+                });
+            </script> 
+            <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
         {% endblock %}
     </body>
 </html>
