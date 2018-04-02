@@ -4,8 +4,12 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}SCyT{% endblock %}</title>  
-        <link rel="stylesheet" href="//bootswatch.com/4/slate/bootstrap.min.css" type="text/css" /> 
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.css"/>
+        {% stylesheets
+            '@AppBundle/Resources/public/css/bootstrap.min.css'
+            '@AppBundle/Resources/public/css/dataTables.bootstrap4.min.css'
+            filter='cssrewrite' output='css/compiled/app.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
         <style type="text/css">
             .input-group-text, .awesome{
                 border: 1px solid rgba(0, 0, 0, 0.6);
@@ -44,7 +48,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Investigador
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                                
                             <a class="dropdown-item" href="{{ path('solicitud_new')}}">Crear soliciutd</a>
                             <a class="dropdown-item" href="{{ path('solicitud_index')}}">Listar solicitudes</a>
                             <a class="dropdown-item" href="{{ path('usuario_balance')}}">Consultar Cuenta</a>
@@ -78,11 +82,14 @@
         <div id="myProgressBar" style="visibility: hidden;"></div>
         {% block javascripts %}
             {% javascripts 
-                '@AppBundle/Resources/public/js/jquery-3.2.1.min.js'               
-            	'@AppBundle/Resources/public/js/bootstrap.min.js'	              
+                '@AppBundle/Resources/public/js/jquery-3.2.1.min.js'  
+                '@AppBundle/Resources/public/js/jquery.dataTables.min.js'
+            	'@AppBundle/Resources/public/js/bootstrap.min.js'
+                '@AppBundle/Resources/public/js/dataTables.bootstrap4.min.js' 
+                output='js/compiled/main.js'      	                                             
             %}
             <script src="{{ asset_url }}"></script> 
-            {% endjavascripts %}                                      
+            {% endjavascripts %}                                         
             <script type="text/javascript">
                 $('ul.navbar-nav li.nav-item').hover(function () {
                     $(this).find('.dropdown-menu').stop(true, true).delay(50).fadeIn(500);
@@ -97,7 +104,7 @@
                             "sProcessing": "Procesando...",
                             "sLengthMenu": "Mostrar _MENU_ registros",
                             "sZeroRecords": "No se encontraron resultados",
-                            "sEmptyTable": "Ningún dato disponible en esta tabla",
+                            "sEmptyTable": "NingÃºn dato disponible en esta tabla",
                             "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
                             "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
                             "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
@@ -108,7 +115,7 @@
                             "sLoadingRecords": "Cargando...",
                             "oPaginate": {
                                 "sFirst": "Primero",
-                                "sLast": "Último",
+                                "sLast": "Ãšltimo",
                                 "sNext": "Siguiente",
                                 "sPrevious": "Anterior"
                             },
@@ -119,8 +126,7 @@
                         }
                     });
                 });
-            </script> 
-            <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
+            </script>          
         {% endblock %}
     </body>
 </html>
