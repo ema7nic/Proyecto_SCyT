@@ -26,7 +26,6 @@
         </style>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-
     <body id="top"> 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #e3f2fd;">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,8 +73,7 @@
                     </li>
                 </ul>
             </div>
-        </nav>
-
+        </nav>                       
         {% block body %}
         {% endblock %}
 
@@ -85,7 +83,7 @@
                 '@AppBundle/Resources/public/js/jquery-3.2.1.min.js'  
                 '@AppBundle/Resources/public/js/jquery.dataTables.min.js'
             	'@AppBundle/Resources/public/js/bootstrap.min.js'
-                '@AppBundle/Resources/public/js/dataTables.bootstrap4.min.js' 
+                '@AppBundle/Resources/public/js/dataTables.bootstrap4.min.js'
                 output='js/compiled/main.js'      	                                             
             %}
             <script src="{{ asset_url }}"></script> 
@@ -126,7 +124,57 @@
                         }
                     });
                 });
-            </script>          
+            </script>    
+            {% if app.request.get('_route') ==  "solicitud_new"%}
+                <script>
+                    $(document).ready(function () {
+                        $("#chkpasajes").on('change', function () {
+                            if ($("#chkpasajes").is(':checked')) {
+                                $("#montoPasajes").prop('required', true);
+                            } else {
+                                $("#montoPasajes").removeAttr('required');
+                            }
+                        });
+                        $("#chkviaticos").on('change', function () {
+                            if ($("#chkviaticos").is(':checked')) {
+                                $("#montoviaticos").prop('required', true);
+                            } else {
+                                $("#montoviaticos").removeAttr('required');
+                            }
+                        });
+                        $("#chkhorarios").on('change', function () {
+                            if ($("#chkhorarios").is(':checked')) {
+                                $("#montohorarios").prop('required', true);
+                            } else {
+                                $("#montohorarios").removeAttr('required');
+                            }
+                        });
+                        $("#chkservicios").on('change', function () {
+                            if ($("#chkservicios").is(':checked')) {
+                                $("#montoservicios").prop('required', true);
+                            } else {
+                                $("#montoservicios").removeAttr('required');
+                            }
+                        });
+                        $("#chkinscripcion").on('change', function () {
+                            if ($("#chkinscripcion").is(':checked')) {
+                                $("#montoinscripcion").prop('required', true);
+                            } else {
+                                $("#montoinscripcion").removeAttr('required');
+                            }
+                        });
+                        $("#chkotros").on('change', function () {
+                            if ($("#chkotros").is(':checked')) {
+                                $("#otros").prop('required', true);
+                                $("#montootros").prop('required', true);
+                            } else {
+                                $("#otros").removeAttr('required');
+                                $("#montootros").removeAttr('required');
+                            }
+                        });
+                    });
+                </script>
+            {% endif %}
         {% endblock %}
     </body>
 </html>
