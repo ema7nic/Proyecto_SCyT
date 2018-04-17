@@ -48,6 +48,8 @@ class SolicitudController extends Controller
             $em->persist($solicitud);
             $em->flush();
 
+            
+
             return $this->redirectToRoute('solicitud_show', array('id' => $solicitud->getId()));
         }
 
