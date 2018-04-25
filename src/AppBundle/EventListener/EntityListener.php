@@ -41,12 +41,37 @@ class EntityListener {
                 $entity->setEjercicio(2018);
                 $proy = $entity->getProyectoGrupo();
                 $entity->setUsuario($proy->getUsuario());
-            }
-            else
-            {
-                return;
-            }
+
+              
+                // $montoPasaje = $form->newAction.mntPasajes;
+                    $montoPasaje = $entity->getmntPasajes();
+                    if ($montoPasaje = null )
+                    {
+                     
+                    }
+                    else
+                    {
+                       
+                        if ($montoPasaje > 0)
+                        {
+                           
+                            $conceptoImpSol = new ConceptoImporteSolicitud();
+                            $conceptoImpSol->setConcepto('PASAJES');
+                            $conceptoImpSol->setImporte($montoPasaje);
+                            $conceptoImpSol->setSolicitud($entity);
             
+                            
+                            $entity->addConceptosImportesSolicitude($conceptoImpSol);
+                           
+                        }
+                        
+                    }
+                }
+                else
+                {
+                    return;
+                }
+                
         }
         
        

@@ -133,50 +133,67 @@
             {% if app.request.get('_route') ==  "solicitud_new"%}
                 <script>
                     $(document).ready(function () {
-                        $("#chkpasajes").on('change', function () {
-                            if ($("#chkpasajes").is(':checked')) {
-                                $("#montoPasajes").prop('required', true);
+                       // $("#chkpasajes").on('change', function () {
+                       //     if ($("#chkpasajes").is(':checked')) {
+                       //         $("#mntPasajes").prop('required', true);
+                       //     } else {
+                       //         $("#mntPasajes").removeAttr('required');
+                       //     }
+                       // });
+
+                      /*  $(document).getElementById("form_nueva_solicitud").chkpasajes.on('change', function () {
+                            if ( $(document).getElementById("form_nueva_solicitud").chkpasajes.is(':checked')) {
+                                 $(document).getElementById("form_nueva_solicitud").mntPasajes.prop('required', true);
                             } else {
-                                $("#montoPasajes").removeAttr('required');
+                                 $(document).getElementById("form_nueva_solicitud").mntPasajes.removeAttr('required');
                             }
-                        });
-                        $("#chkviaticos").on('change', function () {
+                        });*/
+                       //  $("#form_nueva_solicitud").chkpasajes.on('change', function () {
+                        //    if ($("#form_nueva_solicitud").chkpasajes.is(':checked')) {
+                         //       $("#form_nueva_solicitud").mntPasajes.prop('required', true);
+                         //   } else {
+                         //       $("#form_nueva_solicitud").mntPasajes.removeAttr('required');
+                         //   }
+                       // });
+                     /*   $("#chkviaticos").on('change', function () {
                             if ($("#chkviaticos").is(':checked')) {
-                                $("#montoviaticos").prop('required', true);
+                                $("#mntviaticos").prop('required', true);
                             } else {
-                                $("#montoviaticos").removeAttr('required');
+                                $("#mntviaticos").removeAttr('required');
                             }
                         });
                         $("#chkhorarios").on('change', function () {
                             if ($("#chkhorarios").is(':checked')) {
-                                $("#montohorarios").prop('required', true);
+                                $("#mnthorarios").prop('required', true);
                             } else {
-                                $("#montohorarios").removeAttr('required');
+                                $("#mnthorarios").removeAttr('required');
                             }
                         });
                         $("#chkservicios").on('change', function () {
                             if ($("#chkservicios").is(':checked')) {
-                                $("#montoservicios").prop('required', true);
+                                $("#mntservicios").prop('required', true);
                             } else {
-                                $("#montoservicios").removeAttr('required');
+                                $("#mntservicios").removeAttr('required');
                             }
                         });
                         $("#chkinscripcion").on('change', function () {
                             if ($("#chkinscripcion").is(':checked')) {
-                                $("#montoinscripcion").prop('required', true);
+                                $("#mntinscripcion").prop('required', true);
                             } else {
-                                $("#montoinscripcion").removeAttr('required');
+                                $("#mntinscripcion").removeAttr('required');
                             }
                         });
                         $("#chkotros").on('change', function () {
                             if ($("#chkotros").is(':checked')) {
                                 $("#otros").prop('required', true);
-                                $("#montootros").prop('required', true);
+                                $("#mntotros").prop('required', true);
                             } else {
                                 $("#otros").removeAttr('required');
-                                $("#montootros").removeAttr('required');
+                                $("#mntotros").removeAttr('required');
                             }
                         });
+*/
+                        
                     });
                 </script>
             {% endif %}

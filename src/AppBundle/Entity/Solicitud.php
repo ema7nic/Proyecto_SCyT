@@ -222,7 +222,7 @@ class Solicitud
 	private $proyectoGrupo;
 		
 	
-	/**
+/**
 	 * 
 	 * @ORM\OneToMany(targetEntity="ConceptoImporteSolicitud", mappedBy="solicitud")
 	 */
@@ -247,9 +247,64 @@ class Solicitud
 	 * 
 	 * @var NumberType
 	 */
-	private $mntpasajes;
-	
-	
+	private $mntPasajes;
+    
+    /**
+     * @var CheckboxType
+     */
+    private $chkviaticos;
+
+    /**
+     * @var NumberType
+     */
+    private $mntViaticos;
+
+    /**
+     * @var CheckboxType
+     */
+    private $chkhonorarios;
+
+    /**
+     * @var NumberType
+     */
+    private $mntHonorarios;
+
+    /**
+     * @var CheckboxType
+     */
+    private $chkservicios;
+
+    /**
+     * @var NumberType
+     */
+    private $mntServicios;
+    
+     /**
+     * @var CheckboxType
+     */
+    private $chkinscripcion;
+
+    /**
+     * @var NumberType
+     */
+    private $mntInscripcion;
+    
+     /**
+     * @var CheckboxType
+     */
+    private $chkotros;
+
+    /**
+     * @var TextType
+     */
+    private $otros;
+
+    /**
+     * @var NumberType
+     */
+    private $mntOtros;
+    
+        
     /**
      * Get id
      *
@@ -939,7 +994,7 @@ class Solicitud
      */
     public function getmntPasajes()
     {
-    	return $this->mntpasajes;
+    	return $this->mntPasajes;
     }
     
     /**
@@ -950,6 +1005,243 @@ class Solicitud
     public function setmntPasajes($mntpasaje)
     {
     	$this->mntpasajes = $mntpasaje;
+    	return $this;
+    }
+
+
+
+
+    /**
+     * 
+     * @return \Symfony\Component\Form\Extension\Core\Type\CheckboxType
+     */
+    public function getchkviaticos()
+    {
+    	return $this->chkviaticos;
+    }
+    
+    /**
+     * 
+     * @param unknown $chkpasaje
+     */
+    public function setchkviaticos($chkviaticos)
+    {
+    	$this->chkviaticos = $chkviaticos;
+    	return $this;
+    }
+    
+    /**
+     * 
+     * @return \Symfony\Component\Form\Extension\Core\Type\NumberType
+     */
+    public function getmntViaticos()
+    {
+    	return $this->mntViaticos;
+    }
+    
+    /**
+     * 
+     * @param unknown $mntpasaje
+     * @return \AppBundle\Entity\Solicitud
+     */
+    public function setmntViaticos($mntViaticos)
+    {
+    	$this->mntViaticos = $mntViaticos;
+    	return $this;
+    }
+
+
+
+
+
+
+    /**
+     * 
+     * @return \Symfony\Component\Form\Extension\Core\Type\CheckboxType
+     */
+    public function getchkhonorarios()
+    {
+    	return $this->chkhonorarios;
+    }
+    
+    /**
+     * 
+     * @param unknown $chkpasaje
+     */
+    public function setchkhonorarios($chkhonorarios)
+    {
+    	$this->chkhonorarios = $chkhonorarios;
+    	return $this;
+    }
+    
+    /**
+     * 
+     * @return \Symfony\Component\Form\Extension\Core\Type\NumberType
+     */
+    public function getmntHonorarios()
+    {
+    	return $this->mntHonorarios;
+    }
+    
+    /**
+     * 
+     * @param unknown $mntpasaje
+     * @return \AppBundle\Entity\Solicitud
+     */
+    public function setmntHonorarios($mntHonorarios)
+    {
+    	$this->mntHonorarios = $mntHonorarios;
+    	return $this;
+    }
+
+    
+
+
+
+
+
+    /**
+     * 
+     * @return \Symfony\Component\Form\Extension\Core\Type\CheckboxType
+     */
+    public function getchkservicios()
+    {
+    	return $this->chkservicios;
+    }
+    
+    /**
+     * 
+     * @param unknown $chkservicios
+     */
+    public function setchkservicios($chkservicios)
+    {
+    	$this->chkservicios = $chkservicios;
+    	return $this;
+    }
+    
+    /**
+     * 
+     * @return \Symfony\Component\Form\Extension\Core\Type\NumberType
+     */
+    public function getmntServicios()
+    {
+    	return $this->mntServicios;
+    }
+    
+    /**
+     * 
+     * @param unknown $mntServicios
+     * @return \AppBundle\Entity\Solicitud
+     */
+    public function setmntServicios($mntServicios)
+    {
+    	$this->mntServicios = $mntServicios;
+    	return $this;
+    }
+
+    
+
+
+
+
+    /**
+     * 
+     * @return \Symfony\Component\Form\Extension\Core\Type\CheckboxType
+     */
+    public function getchkinscripcion()
+    {
+    	return $this->chkinscripcion;
+    }
+    
+    /**
+     * 
+     * @param unknown $chkinscripcion
+     */
+    public function setchkinscripcion($chkinscripcion)
+    {
+    	$this->chkinscripcion = $chkinscripcion;
+    	return $this;
+    }
+    
+    /**
+     * 
+     * @return \Symfony\Component\Form\Extension\Core\Type\NumberType
+     */
+    public function getmntInscripcion()
+    {
+    	return $this->mntInscripcion;
+    }
+    
+    /**
+     * 
+     * @param unknown $mntInscripcion
+     * @return \AppBundle\Entity\Solicitud
+     */
+    public function setmntInscripcion($mntInscripcion)
+    {
+    	$this->mntInscripcion = $mntInscripcion;
+    	return $this;
+    }
+
+    
+
+
+
+    /**
+     * 
+     * @return \Symfony\Component\Form\Extension\Core\Type\CheckboxType
+     */
+    public function getchkotros()
+    {
+    	return $this->chkotros;
+    }
+    
+    /**
+     * 
+     * @param unknown $chkotros
+     */
+    public function setchkotros($chkotros)
+    {
+    	$this->chkotros = $chkotros;
+    	return $this;
+    }
+    
+    /**
+     * 
+     * @return \Symfony\Component\Form\Extension\Core\Type\NumberType
+     */
+    public function getmntOtros()
+    {
+    	return $this->mntOtros;
+    }
+    
+    /**
+     * 
+     * @param unknown $mntOtros
+     * @return \AppBundle\Entity\Solicitud
+     */
+    public function setmntOtros($mntOtros)
+    {
+    	$this->mntOtros = $mntOtros;
+    	return $this;
+    }
+
+     /**
+     * 
+     * @return \Symfony\Component\Form\Extension\Core\Type\TextType
+     */
+    public function getotros()
+    {
+    	return $this->otros;
+    }
+    
+    /**
+     * 
+     * @param unknown $otros
+     */
+    public function setotros($otros)
+    {
+    	$this->otros = $otros;
     	return $this;
     }
 }
