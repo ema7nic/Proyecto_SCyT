@@ -134,51 +134,61 @@
                             <td>
                                 <div class="row">
                                     <div class="col">
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" value="1" id="chkpasajes">Pasajes</label>
+                                        
+                                    
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Pasajes</span>
+                                            </div>
+                                            {{form_widget(edit_form.mntPasajes, {'attr' : {'id' : 'mntPasajes' }}) }}
                                         </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" value="2" id="chkviaticos">Viaticos</label>
+                                       
+                                        
+                                        <div class="input-group-prepend">
+                                             <div class="input-group-prepend">
+                                                <span class="input-group-text">Viaticos</span>
+                                            </div>
+                                            {{form_widget(edit_form.mntViaticos, {'attr' : {'id' : 'mntViaticos' }}) }}
                                         </div>
 
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" value="3" id="chkhorarios">Honorarios</label>
+                                         
+                                        <div class="input-group-prepend">
+                                         <div class="input-group-prepend">
+                                            <span class="input-group-text">Honorarios</span>
                                         </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" value="4" id="chkservicios">Servicios</label>
+                                            {{form_widget(edit_form.mntHonorarios, {'attr' : {'id' : 'mntHonorarios' }}) }}
                                         </div>
 
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" value="5" id="chkinscripcion">Inscripcion</label>
+                                         
+                                        <div class="input-group-prepend">
+                                         <div class="input-group-prepend">
+                                            <span class="input-group-text">Servicios</span>
                                         </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" value="6" id="chkotros">Otros</label>
+                                            {{form_widget(edit_form.mntServicios, {'attr' : {'id' : 'mntServicios' }}) }}
                                         </div>
+
+                                        
+                                        <div class="input-group-prepend">
+                                             <div class="input-group-prepend">
+                                            <span class="input-group-text">Inscripcion</span>
+                                        </div>
+                                            {{form_widget(edit_form.mntInscripcion, {'attr' : {'id' : 'mntInscripcion' }}) }}
+                                        </div>
+
+                                         
+                                        <div class="input-group-prepend">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Otros</span>
+                                        </div>
+                                            {{form_widget(edit_form.otros, {'attr' : {'id' : 'otros' }}) }}
+                                            {{form_widget(edit_form.mntOtros, {'attr' : {'id' : 'mntOtros' }}) }}
+                                        </div>
+                                        
                                     </div>
-                                    <div class="col">
-                                        <div class="checkbox">
-                                            <input type="float" id="montoPasajes" placeholder="Monto"  >
-                                        </div>
-                                        <div class="checkbox">
-                                            <input type="float" id="montoViaticos" placeholder="Monto" >
-                                        </div>
-
-                                        <div class="checkbox">
-                                            <input type="float" id="montoHonorarios" placeholder="Monto" >
-                                        </div>
-                                        <div class="checkbox">
-                                            <input type="float" id="montoServicios" placeholder="Monto" >
-                                        </div>
-                                        <div class="checkbox">
-                                            <input type="float" id="montoInscripcion" placeholder="Monto" >
-                                        </div>
-                                        <div class="checkbox">
-                                            <input type="text" id="otros" placeholder="Detallar">
-                                            <input type="float" id="montoOtros" placeholder="Monto">
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </td>                         
+                        </tr>                         
                         </tr>
                         <tr>
                             <th class="awesome">Tipo de Evento:</th>
