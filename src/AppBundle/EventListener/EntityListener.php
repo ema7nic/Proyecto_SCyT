@@ -51,20 +51,107 @@ class EntityListener {
                     }
                     else
                     {
-                       
                         if ($montoPasaje > 0)
                         {
-                           
                             $conceptoImpSol = new ConceptoImporteSolicitud();
                             $conceptoImpSol->setConcepto('PASAJES');
                             $conceptoImpSol->setImporte($montoPasaje);
                             $conceptoImpSol->setSolicitud($entity);
-            
                             
                             $entity->addConceptosImportesSolicitude($conceptoImpSol);
-                           
                         }
-                        
+                    }
+
+                    $montoViaticos = $entity->getmntViaticos();
+                    if ($montoViaticos = null )
+                    {
+                     
+                    }
+                    else
+                    {
+                        if ($montoViaticos > 0)
+                        {
+                            $conceptoImpSol = new ConceptoImporteSolicitud();
+                            $conceptoImpSol->setConcepto('VIATICOS');
+                            $conceptoImpSol->setImporte($montoViaticos);
+                            $conceptoImpSol->setSolicitud($entity);
+                            
+                            $entity->addConceptosImportesSolicitude($conceptoImpSol);
+                        }
+                    }
+
+                    $montoHonorarios = $entity->getmntHonorarios();
+                    if ($montoHonorarios = null )
+                    {
+                     
+                    }
+                    else
+                    {
+                        if ($montoHonorarios > 0)
+                        {
+                            $conceptoImpSol = new ConceptoImporteSolicitud();
+                            $conceptoImpSol->setConcepto('HONORARIOS');
+                            $conceptoImpSol->setImporte($montoHonorarios);
+                            $conceptoImpSol->setSolicitud($entity);
+                            
+                            $entity->addConceptosImportesSolicitude($conceptoImpSol);
+                        }
+                    }
+
+                    $montoServicios = $entity->getmntServicios();
+                    if ($montoServicios = null )
+                    {
+                     
+                    }
+                    else
+                    {
+                        if ($montoServicios > 0)
+                        {
+                            $conceptoImpSol = new ConceptoImporteSolicitud();
+                            $conceptoImpSol->setConcepto('SERVICIOS');
+                            $conceptoImpSol->setImporte($montoServicios);
+                            $conceptoImpSol->setSolicitud($entity);
+                            
+                            $entity->addConceptosImportesSolicitude($conceptoImpSol);
+                        }
+                    }
+
+                    $montoInscripcion = $entity->getmntInscripcion();
+                    if ($montoInscripcion = null )
+                    {
+                     
+                    }
+                    else
+                    {
+                        if ($montoInscripcion > 0)
+                        {
+                            $conceptoImpSol = new ConceptoImporteSolicitud();
+                            $conceptoImpSol->setConcepto('INSCRIPCION');
+                            $conceptoImpSol->setImporte($montoInscripcion);
+                            $conceptoImpSol->setSolicitud($entity);
+                            
+                            $entity->addConceptosImportesSolicitude($conceptoImpSol);
+                        }
+                    }
+
+                    $montoOtros = $entity->getmntOtros();
+
+                    if ($montoOtros = null )
+                    {
+                     
+                    }
+                    else
+                    {
+                        if ($montoOtros > 0)
+                        {
+                            $otros          = $entity->getOtros();
+                            $conceptoImpSol = new ConceptoImporteSolicitud();
+                            $conceptoImpSol->setConcepto($otros);
+                            $conceptoImpSol->setImporte($montoOtros);
+                            $conceptoImpSol->setSolicitud($entity);
+                            
+                            $entity->addConceptosImportesSolicitude($conceptoImpSol);
+                        }
                     }
                 }
                 else

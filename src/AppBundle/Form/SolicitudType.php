@@ -24,7 +24,7 @@ class SolicitudType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('direccion',TextType::class, array("required" => "required"))
+        ->add('direccion',TextType::class, array('required' => true))
         ->add('localidad', EntityType::class, array(
             'class' => 'AppBundle:Localidad',
             'choice_label' => 'nombre'
@@ -49,13 +49,13 @@ class SolicitudType extends AbstractType
                 'html5' => false,
             ],
             ))
-        ->add('nombreEvento',TextType::class, array("required" => "required"))
+        ->add('nombreEvento',TextType::class, array('required' => true))
         ->add('proyectoGrupo', EntityType::class, array(
             'class' => 'AppBundle:ProyectoGrupo',
             'choice_label' => 'nombre'
         ))
-        ->add('autores',TextType::class, array("required" => "required"))
-        ->add('contratados',TextType::class, array("required" => "required"))
+        ->add('autores',TextType::class, array('required' => true))
+        ->add('contratados',TextType::class, array('required' => true))
         //->add('fechaSalida',DateType::class, array("required" => "required"))
         ->add('fechaSalida', DateType::class, array(
             'required' => true,
@@ -76,9 +76,16 @@ class SolicitudType extends AbstractType
                 'html5' => false,
             ],
             ))
-        ->add('nroNota',NumberType::class)
-        ->add('importeTotal',NumberType::class, array("required" => "required"))
-        ->add('observaciones',TextType::class);
+            ->add('mntPasajes',NumberType::class, array('required' => false))
+            ->add('mntViaticos',NumberType::class, array('required' => false))
+            ->add('mntHonorarios',NumberType::class, array('required' => false))
+            ->add('mntServicios',NumberType::class, array('required' => false))
+            ->add('mntInscripcion',NumberType::class, array('required' => false))
+            ->add('otros',NumberType::class, array('required' => false))
+            ->add('mntOtros',TextType::class, array('required' => false))
+        ->add('nroNota',NumberType::class, array('required' => false))
+        ->add('importeTotal',NumberType::class, array('required' => true))
+        ->add('observaciones',TextType::class, array('required' => false));
 
       
     }/**

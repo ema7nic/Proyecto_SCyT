@@ -35,12 +35,12 @@ class ConceptoImporteSolicitud
      */
     private $importe;
 
-
     /**
-     * @ORM\ManyToOne(targetEntity="Solicitud", inversedBy="conceptosImportesSolicitudes")
-     * @ORM\JoinColumn(name="id_solicitud", referencedColumnName="id", nullable=false)
-     */
-    private $solicitud;
+    * @ORM\ManyToOne(targetEntity="Solicitud", inversedBy="conceptosImportesSolicitudes")
+    * @ORM\JoinColumn(name="id_solicitud", referencedColumnName="id", nullable=false)
+    */
+   private $solicitud;
+
     
     
     
