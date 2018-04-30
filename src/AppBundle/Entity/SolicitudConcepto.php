@@ -74,5 +74,21 @@ class SolicitudConcepto
     {
         return $this->monto;
     }
+    
+    function getSolicitud() {
+        return $this->solicitud;
+    }
+
+    function getConcepto() {
+        return $this->concepto;
+    }
+
+    function setSolicitud($solicitud) {
+        $this->solicitud = $solicitud;
+    }
+
+    function setConcepto($concepto) {
+        $this->concepto = $concepto;
+    }
 }
 
