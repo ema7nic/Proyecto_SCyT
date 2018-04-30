@@ -76,14 +76,11 @@ class SolicitudType extends AbstractType
                 'html5' => false,
             ],
             ))
-            ->add('mntPasajes',NumberType::class, array('required' => false))
-            ->add('mntViaticos',NumberType::class, array('required' => false))
-            ->add('mntHonorarios',NumberType::class, array('required' => false))
-            ->add('mntServicios',NumberType::class, array('required' => false))
-            ->add('mntInscripcion',NumberType::class, array('required' => false))
-            ->add('otros',NumberType::class, array('required' => false))
-            ->add('mntOtros',TextType::class, array('required' => false))
-        ->add('nroNota',NumberType::class, array('required' => false))
+            ->add('tipoevento', EntityType::class, array(
+                'class' => 'AppBundle:TipoEvento',
+                'choice_label' => 'nombre'
+            ))
+            ->add('nroNota',NumberType::class, array('required' => false))
         ->add('importeTotal',NumberType::class, array('required' => true))
         ->add('observaciones',TextType::class, array('required' => false));
 
