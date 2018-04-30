@@ -223,9 +223,9 @@ class Solicitud
 		
 	
     /**
-     * @ORM\ManyToMany(targetEntity="ConceptoSolicitud", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Concepto", cascade={"persist"})
      */
-	private $conceptosSolicitudes;
+	private $conceptos;
 	
      
     /**
@@ -239,7 +239,7 @@ class Solicitud
     *   Constructor
     */
     public function __construct() {
-        $this->conceptosImportesSolicitudes = new ArrayCollection();
+        $this->conceptos = new ArrayCollection();
         $this->comprobantes = new ArrayCollection();
         $this->roles = Array();
     }
@@ -768,28 +768,16 @@ class Solicitud
 	}
 	
 	/**
-	 * Set conceptosImportesSolicitudes
-	 **@param \Object $conceptosImportesSolicitudes
+	 * Set conceptos
+	 **@param \Object $conceptos
 	 *
 	 *@return Solicitud
 	 */
 	
-	public function setConceptosImportesSolicitudes($conceptosImportesSolicitudes)
+	public function setConceptos($conceptos)
 	{
-		$this->conceptosImportesSolicitudes = $conceptosImportesSolicitudes;
+		$this->conceptos = $conceptos;
 		return $this;
-	}
-	
-	/**
-	 * Get conceptosImportesSolicitudes
-	 *
-	 * @return \Object
-	 */
-	
-	public function getConcpetosImportesSolicitudes()
-	{
-		return $this->conceptosImportesSolicitudes;
-	
 	}
 	
 	
@@ -844,37 +832,37 @@ class Solicitud
     }
 
     /**
-     * Add conceptoSolicitud
+     * Add conceptos
      *
-     * @param \AppBundle\Entity\ConceptoSolicitud $conceptoSolicitud
+     * @param \AppBundle\Entity\Concepto $conceptos
      *
      * @return Solicitud
      */
-    public function addConceptoSolicitud(\AppBundle\Entity\ConceptoSolicitud $conceptoSolicitud)
+    public function addConcepto(\AppBundle\Entity\Concepto $conceptos)
     {
-        $this->conceptoSolicitud->add($conceptoSolicitud);
+        $this->conceptos->add($conceptos);
 
         return $this;
     }
 
     /**
-     * Remove conceptosImportesSolicitud
+     * Remove conceptos
      *
-     * @param \AppBundle\Entity\ConceptoSolicitud $conceptosImportesSolicitud
+     * @param \AppBundle\Entity\Concepto $conceptos
      */
-    public function removeConceptosImportesSolicitud(\AppBundle\Entity\ConceptoSolicitud $conceptosImportesSolicitud)
+    public function removeConceptos(\AppBundle\Entity\Concepto $conceptos)
     {
-        $this->conceptosImportesSolicitudes->removeElement($conceptoSolicitud);
+        $this->conceptos->removeElement($conceptos);
     }
 
     /**
-     * Get conceptosImportesSolicitudes
+     * Get conceptos
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getConceptosImportesSolicitudes()
+    public function getConceptos()
     {
-        return $this->conceptosImportesSolicitudes;
+        return $this->conceptos;
     }
 
    
