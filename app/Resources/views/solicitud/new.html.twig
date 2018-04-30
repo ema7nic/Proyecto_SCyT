@@ -125,101 +125,21 @@
                     </div>
                 </div>
 
-                
+                <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Tipo Evento</span>
+                            </div>
+                            {{ form_widget(form.tipoevento, {'attr' : {'class' : 'form-control' }}) }}
+                        </div>
+                        <span class="text-danger"> {{form_errors(form.tipoevento)}}</span>
+                    </div>     
+                </div>
 
 
 
-                <table class="table table-bordered">
-                    <tbody>
-
-                        <tr>
-                            <th class="awesome">Concepto de gasto:</th>
-                            <td>
-                                <div class="row">
-                                    <div class="col">
-                                        
-                                    
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Pasajes</span>
-                                            </div>
-                                            {{form_widget(form.mntPasajes, {'attr' : {'id' : 'mntPasajes' }}) }}
-                                        </div>
-                                       
-                                        
-                                        <div class="input-group-prepend">
-                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">Viaticos</span>
-                                            </div>
-                                            {{form_widget(form.mntViaticos, {'attr' : {'id' : 'mntViaticos' }}) }}
-                                        </div>
-
-                                         
-                                        <div class="input-group-prepend">
-                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">Honorarios</span>
-                                        </div>
-                                            {{form_widget(form.mntHonorarios, {'attr' : {'id' : 'mntHonorarios' }}) }}
-                                        </div>
-
-                                         
-                                        <div class="input-group-prepend">
-                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">Servicios</span>
-                                        </div>
-                                            {{form_widget(form.mntServicios, {'attr' : {'id' : 'mntServicios' }}) }}
-                                        </div>
-
-                                        
-                                        <div class="input-group-prepend">
-                                             <div class="input-group-prepend">
-                                            <span class="input-group-text">Inscripcion</span>
-                                        </div>
-                                            {{form_widget(form.mntInscripcion, {'attr' : {'id' : 'mntInscripcion' }}) }}
-                                        </div>
-
-                                         
-                                        <div class="input-group-prepend">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Otros</span>
-                                        </div>
-                                            {{form_widget(form.otros, {'attr' : {'id' : 'otros' }}) }}
-                                            {{form_widget(form.mntOtros, {'attr' : {'id' : 'mntOtros' }}) }}
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                </div>
-                            </td>                         
-                        </tr>
-                        <tr>
-                            <th class="awesome">Tipo de Evento:</th>
-                            <td>
-                                <div class="row">
-                                    <div class="col">		
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio">Congreso</label>
-                                        </div>
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio">Curso</label>
-                                        </div>
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio">Reunion Cientifica</label>
-                                        </div>
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio">Otros</label>
-                                            <input type="text" id="otrs" placeholder="Detallar">
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-
-
-                    </tbody>
-                </table>
-
+             
 
 
                 <div class="row">
