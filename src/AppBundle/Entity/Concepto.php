@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="concepto")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ConceptoRepository")
  */
-class Concepto
-{
+class Concepto {
+
     /**
      * @var int
      *
@@ -28,14 +28,21 @@ class Concepto
      */
     private $concepto;
 
+    /**
+     * @ORM\OneToMany(targetEntity="SolicitudConcepto" , mappedBy="solicitud" , cascade={"all"})
+     */
+    private $solicitudes;
+
+    public function __construct() {
+        $this->solicitudes = new ArrayCollection();
+    }
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -46,8 +53,7 @@ class Concepto
      *
      * @return ConceptoSolicitud
      */
-    public function setConcepto($concepto)
-    {
+    public function setConcepto($concepto) {
         $this->concepto = $concepto;
 
         return $this;
@@ -58,9 +64,26 @@ class Concepto
      *
      * @return string
      */
-    public function getConcepto()
-    {
+    public function getConcepto() {
         return $this->concepto;
     }
-}
 
+    function getSolicitudes() {
+        return $this->solicitudes;
+    }
+
+    function setSolicitudes($solicitudes) {
+        $this->solicitudes = $solicitudes;
+    }
+        
+    public function addSolicitud(\AppBundle\Entity\Solicitud $solicitud) {
+        $this->solicituds->add($solicitud);
+
+        return $this;
+    }
+
+    public function removeSolicitud(\AppBundle\Entity\Solicitud $solicitud) {
+        $this->solicituds->removeElement($solicitud);
+    }
+
+}

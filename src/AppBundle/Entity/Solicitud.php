@@ -14,8 +14,8 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
  * @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="AppBundle\Repository\SolicitudRepository")
  */
-class Solicitud
-{
+class Solicitud {
+
     /**
      * @var int
      *
@@ -25,7 +25,6 @@ class Solicitud
      */
     private $id;
 
-	
     /**
      * @var \DateTime
      *
@@ -157,7 +156,7 @@ class Solicitud
      * 		)
      */
     private $contratados;
-    
+
     /**
      * @var int
      *
@@ -194,64 +193,59 @@ class Solicitud
      * 
      */
     private $fechaRevision;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="Usuario", inversedBy="solicitudes")
      * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id", nullable=false)
      */
     private $usuario;
 
-
-	/**
-	*@ORM\ManyToOne(targetEntity="Localidad")
+    /**
+     * @ORM\ManyToOne(targetEntity="Localidad")
      * @ORM\JoinColumn(name="id_localidad", referencedColumnName="id", nullable=false)
-	 */
-	private $localidad;
-	
-	
-	 /**
+     */
+    private $localidad;
+
+    /**
      * @var integer
      * 
      * @ORM\OneToMany(targetEntity="Comprobante", mappedBy="solicitud")
-	*/
-	private $comprobantes;
-	/**
-	*@ORM\ManyToOne(targetEntity="ProyectoGrupo")
-     * @ORM\JoinColumn(name="id_proyecto_grupo", referencedColumnName="id", nullable=false)
-	 */
-	private $proyectoGrupo;
-		
-	
-    /**
-     * @ORM\ManyToMany(targetEntity="Concepto", cascade={"persist"})
      */
-	private $conceptos;
-	
-     
+    private $comprobantes;
+
     /**
-	*@ORM\ManyToOne(targetEntity="TipoEvento")
+     * @ORM\ManyToOne(targetEntity="ProyectoGrupo")
+     * @ORM\JoinColumn(name="id_proyecto_grupo", referencedColumnName="id", nullable=false)
+     */
+    private $proyectoGrupo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="SolicitudConcepto" , mappedBy="concepto" , cascade={"all"})
+     */
+    private $conceptos;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="TipoEvento")
      * @ORM\JoinColumn(name="id_tipoEvento", referencedColumnName="id", nullable=false)
-	 */
-	private $tipoEvento;
-    
+     */
+    private $tipoEvento;
 
     /*
-    *   Constructor
-    */
+     *   Constructor
+     */
+
     public function __construct() {
         $this->conceptos = new ArrayCollection();
         $this->comprobantes = new ArrayCollection();
         $this->roles = Array();
     }
-     
-        
+
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -262,8 +256,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setFechaGeneracion($fechaGeneracion)
-    {
+    public function setFechaGeneracion($fechaGeneracion) {
         $this->fechaGeneracion = $fechaGeneracion;
 
         return $this;
@@ -274,8 +267,7 @@ class Solicitud
      *
      * @return \DateTime
      */
-    public function getFechaGeneracion()
-    {
+    public function getFechaGeneracion() {
         return $this->fechaGeneracion;
     }
 
@@ -286,8 +278,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setFechaUltimaModificacion($fechaUltimaModificacion)
-    {
+    public function setFechaUltimaModificacion($fechaUltimaModificacion) {
         $this->fechaUltimaModificacion = $fechaUltimaModificacion;
 
         return $this;
@@ -298,8 +289,7 @@ class Solicitud
      *
      * @return \DateTime
      */
-    public function getFechaUltimaModificacion()
-    {
+    public function getFechaUltimaModificacion() {
         return $this->fechaUltimaModificacion;
     }
 
@@ -308,8 +298,7 @@ class Solicitud
      * 
      * @return \DateTime
      */
-    public function getFechaBaja()
-    {
+    public function getFechaBaja() {
         return $this->fechaBaja;
     }
 
@@ -320,13 +309,11 @@ class Solicitud
      * 
      * @return Solicitud
      */
+    public function setFechaBaja($fechaBaja) {
+        $this->fechaBaja = $fechaBaja;
 
-     public function setFechaBaja($fechaBaja)
-     {
-         $this->fechaBaja = $fechaBaja;
-
-         return $this;
-     }
+        return $this;
+    }
 
     /**
      * Set direccion
@@ -335,8 +322,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setDireccion($direccion)
-    {
+    public function setDireccion($direccion) {
         $this->direccion = $direccion;
 
         return $this;
@@ -347,8 +333,7 @@ class Solicitud
      *
      * @return string
      */
-    public function getDireccion()
-    {
+    public function getDireccion() {
         return $this->direccion;
     }
 
@@ -359,8 +344,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setFechaInicio($fechaInicio)
-    {
+    public function setFechaInicio($fechaInicio) {
         $this->fechaInicio = $fechaInicio;
 
         return $this;
@@ -371,8 +355,7 @@ class Solicitud
      *
      * @return \DateTime
      */
-    public function getFechaInicio()
-    {
+    public function getFechaInicio() {
         return $this->fechaInicio;
     }
 
@@ -383,8 +366,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setFechaFin($fechaFin)
-    {
+    public function setFechaFin($fechaFin) {
         $this->fechaFin = $fechaFin;
 
         return $this;
@@ -395,8 +377,7 @@ class Solicitud
      *
      * @return \DateTime
      */
-    public function getFechaFin()
-    {
+    public function getFechaFin() {
         return $this->fechaFin;
     }
 
@@ -407,8 +388,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setNombreEvento($nombreEvento)
-    {
+    public function setNombreEvento($nombreEvento) {
         $this->nombreEvento = $nombreEvento;
 
         return $this;
@@ -419,8 +399,7 @@ class Solicitud
      *
      * @return string
      */
-    public function getNombreEvento()
-    {
+    public function getNombreEvento() {
         return $this->nombreEvento;
     }
 
@@ -431,8 +410,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setFechaSalida($fechaSalida)
-    {
+    public function setFechaSalida($fechaSalida) {
         $this->fechaSalida = $fechaSalida;
 
         return $this;
@@ -443,8 +421,7 @@ class Solicitud
      *
      * @return \DateTime
      */
-    public function getFechaSalida()
-    {
+    public function getFechaSalida() {
         return $this->fechaSalida;
     }
 
@@ -455,8 +432,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setFechaLlegada($fechaLlegada)
-    {
+    public function setFechaLlegada($fechaLlegada) {
         $this->fechaLlegada = $fechaLlegada;
 
         return $this;
@@ -467,8 +443,7 @@ class Solicitud
      *
      * @return \DateTime
      */
-    public function getFechaLlegada()
-    {
+    public function getFechaLlegada() {
         return $this->fechaLlegada;
     }
 
@@ -479,8 +454,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setImporteTotal($importeTotal)
-    {
+    public function setImporteTotal($importeTotal) {
         $this->importeTotal = $importeTotal;
 
         return $this;
@@ -491,8 +465,7 @@ class Solicitud
      *
      * @return string
      */
-    public function getImporteTotal()
-    {
+    public function getImporteTotal() {
         return $this->importeTotal;
     }
 
@@ -503,8 +476,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setEstado($estado)
-    {
+    public function setEstado($estado) {
         $this->estado = $estado;
 
         return $this;
@@ -515,8 +487,7 @@ class Solicitud
      *
      * @return string
      */
-    public function getEstado()
-    {
+    public function getEstado() {
         return $this->estado;
     }
 
@@ -527,8 +498,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setAutores($autores)
-    {
+    public function setAutores($autores) {
         $this->autores = $autores;
 
         return $this;
@@ -539,12 +509,10 @@ class Solicitud
      *
      * @return string
      */
-    public function getAutores()
-    {
+    public function getAutores() {
         return $this->autores;
     }
-    
-    
+
     /**
      * Set contratados
      *
@@ -552,21 +520,19 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setContratados($contratados)
-    {
-    	$this->contratados = $contratados;
-    
-    	return $this;
+    public function setContratados($contratados) {
+        $this->contratados = $contratados;
+
+        return $this;
     }
-    
+
     /**
      * Get contratados
      *
      * @return string
      */
-    public function getContratados()
-    {
-    	return $this->contratados;
+    public function getContratados() {
+        return $this->contratados;
     }
 
     /**
@@ -576,8 +542,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setEjercicio($ejercicio)
-    {
+    public function setEjercicio($ejercicio) {
         $this->ejercicio = $ejercicio;
 
         return $this;
@@ -588,8 +553,7 @@ class Solicitud
      *
      * @return int
      */
-    public function getEjercicio()
-    {
+    public function getEjercicio() {
         return $this->ejercicio;
     }
 
@@ -600,8 +564,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setObservaciones($observaciones)
-    {
+    public function setObservaciones($observaciones) {
         $this->observaciones = $observaciones;
 
         return $this;
@@ -612,8 +575,7 @@ class Solicitud
      *
      * @return string
      */
-    public function getObservaciones()
-    {
+    public function getObservaciones() {
         return $this->observaciones;
     }
 
@@ -624,8 +586,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setNroNota($nroNota)
-    {
+    public function setNroNota($nroNota) {
         $this->nroNota = $nroNota;
 
         return $this;
@@ -636,8 +597,7 @@ class Solicitud
      *
      * @return int
      */
-    public function getNroNota()
-    {
+    public function getNroNota() {
         return $this->nroNota;
     }
 
@@ -648,8 +608,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function setFechaRevision($fechaRevision)
-    {
+    public function setFechaRevision($fechaRevision) {
         $this->fechaRevision = $fechaRevision;
 
         return $this;
@@ -660,153 +619,121 @@ class Solicitud
      *
      * @return \DateTime
      */
-    public function getFechaRevision()
-    {
+    public function getFechaRevision() {
         return $this->fechaRevision;
     }
-	
-	/**
-	* Set usuario
-	**@param \Usuario $usuario
-	*
-	*@return Solicitud
-	*/
-	
-	public function setUsuario($usuario)
-	{
-		$this->usuario = $usuario;
-		return $this;
-	}
-	
-	/**
-	* Get usuario
-	*
-	* @return \Usuario
-	*/
-	
-	public function getUsuario()
-	{
-		return $this->usuario;
-		
-	}
-	
-	
-	/**
-	* Set localidad
-	**@param \Localidad $localidad
-	*
-	*@return Solicitud
-	*/
-	
-	public function setLocalidad($localidad)
-	{
-		$this->localidad = $localidad;
-		return $this;
-	}
-	
-	/**
-	* Get localidad
-	*
-	* @return \Localidad
-	*/
-	
-	public function getLocalidad()
-	{
-		return $this->localidad;
-		
-	}
-	
-	
-	/**
-	* Set proyectoGrupo
-	**@param \ProyectoGrupo $proyectoGrupo
-	*
-	*@return Solicitud
-	*/
-	
-	public function setProyectoGrupo($proyectoGrupo)
-	{
-		$this->proyectoGrupo = $proyectoGrupo;
-		return $this;
-	}
-	
-	/**
-	* Get proyectoGrupo
-	*
-	* @return \ProyectoGrupo
-	*/
-	
-	public function getProyectoGrupo()
-	{
-		return $this->proyectoGrupo;
-		
-	}
-	
-	/**
-	 * Set comprobantes
-	 **@param \Object $comprobantes
-	 *
-	 *@return Solicitud
-	 */
-	
-	public function setComprobantes($comprobantes)
-	{
-		$this->comprobantes = $comprobantes;
-		return $this;
-	}
-	
-	/**
-	 * Get comprobantes
-	 *
-	 * @return \Object
-	 */
-	
-	public function getComprobantes()
-	{
-		return $this->comprobantes;
-	
-	}
-	
-	/**
-	 * Set conceptos
-	 **@param \Object $conceptos
-	 *
-	 *@return Solicitud
-	 */
-	
-	public function setConceptos($conceptos)
-	{
-		$this->conceptos = $conceptos;
-		return $this;
-	}
-	
-	
-	/**
-	 * Set tipoEvento
-	 **@param \Object $tipoEvento
-	 *
-	 *@return Solicitud
-	 */
-	
-	public function setTipoEvento($tipoEvento)
-	{
-		$this->tipoEvento = $tipoEvento;
-		return $this;
-	}
-	
-	/**
-	 * Get tipoEvento
-	 *
-	 * @return \Object
-	 */
-	
-	public function getTipoEvento()
-	{
-		return $this->tipoEvento;
-	
+
+    /**
+     * Set usuario
+     * *@param \Usuario $usuario
+     *
+     * @return Solicitud
+     */
+    public function setUsuario($usuario) {
+        $this->usuario = $usuario;
+        return $this;
     }
-    
-    
+
+    /**
+     * Get usuario
+     *
+     * @return \Usuario
+     */
+    public function getUsuario() {
+        return $this->usuario;
+    }
+
+    /**
+     * Set localidad
+     * *@param \Localidad $localidad
+     *
+     * @return Solicitud
+     */
+    public function setLocalidad($localidad) {
+        $this->localidad = $localidad;
+        return $this;
+    }
+
+    /**
+     * Get localidad
+     *
+     * @return \Localidad
+     */
+    public function getLocalidad() {
+        return $this->localidad;
+    }
+
+    /**
+     * Set proyectoGrupo
+     * *@param \ProyectoGrupo $proyectoGrupo
+     *
+     * @return Solicitud
+     */
+    public function setProyectoGrupo($proyectoGrupo) {
+        $this->proyectoGrupo = $proyectoGrupo;
+        return $this;
+    }
+
+    /**
+     * Get proyectoGrupo
+     *
+     * @return \ProyectoGrupo
+     */
+    public function getProyectoGrupo() {
+        return $this->proyectoGrupo;
+    }
+
+    /**
+     * Set comprobantes
+     * *@param \Object $comprobantes
+     *
+     * @return Solicitud
+     */
+    public function setComprobantes($comprobantes) {
+        $this->comprobantes = $comprobantes;
+        return $this;
+    }
+
+    /**
+     * Get comprobantes
+     *
+     * @return \Object
+     */
+    public function getComprobantes() {
+        return $this->comprobantes;
+    }
+
+    /**
+     * Set conceptos
+     * *@param \Object $conceptos
+     *
+     * @return Solicitud
+     */
+    public function setConceptos($conceptos) {
+        $this->conceptos = $conceptos;
+        return $this;
+    }
+
+    /**
+     * Set tipoEvento
+     * *@param \Object $tipoEvento
+     *
+     * @return Solicitud
+     */
+    public function setTipoEvento($tipoEvento) {
+        $this->tipoEvento = $tipoEvento;
+        return $this;
+    }
+
+    /**
+     * Get tipoEvento
+     *
+     * @return \Object
+     */
+    public function getTipoEvento() {
+        return $this->tipoEvento;
+    }
+
     /**
      * Add comprobante
      *
@@ -814,8 +741,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function addComprobante(\AppBundle\Entity\Comprobante $comprobante)
-    {
+    public function addComprobante(\AppBundle\Entity\Comprobante $comprobante) {
         $this->comprobantes->add($comprobante);
 
         return $this;
@@ -826,8 +752,7 @@ class Solicitud
      *
      * @param \AppBundle\Entity\Comprobante $comprobante
      */
-    public function removeComprobante(\AppBundle\Entity\Comprobante $comprobante)
-    {
+    public function removeComprobante(\AppBundle\Entity\Comprobante $comprobante) {
         $this->comprobantes->removeElement($comprobante);
     }
 
@@ -838,8 +763,7 @@ class Solicitud
      *
      * @return Solicitud
      */
-    public function addConcepto(\AppBundle\Entity\Concepto $conceptos)
-    {
+    public function addConcepto(\AppBundle\Entity\Concepto $conceptos) {
         $this->conceptos->add($conceptos);
 
         return $this;
@@ -850,8 +774,7 @@ class Solicitud
      *
      * @param \AppBundle\Entity\Concepto $conceptos
      */
-    public function removeConceptos(\AppBundle\Entity\Concepto $conceptos)
-    {
+    public function removeConceptos(\AppBundle\Entity\Concepto $conceptos) {
         $this->conceptos->removeElement($conceptos);
     }
 
@@ -860,13 +783,8 @@ class Solicitud
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getConceptos()
-    {
+    public function getConceptos() {
         return $this->conceptos;
     }
 
-   
-
-
-   
 }
