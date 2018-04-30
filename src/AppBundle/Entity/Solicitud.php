@@ -222,88 +222,28 @@ class Solicitud
 	private $proyectoGrupo;
 		
 	
-/**
-	 * 
-	 * @ORM\OneToMany(targetEntity="ConceptoImporteSolicitud", mappedBy="solicitud")
+    /**
+     * @ORM\ManyToMany(targetEntity="ConceptoSolicitud", cascade={"persist"})
+     */
+	private $conceptosSolicitudes;
+	
+     
+    /**
+	*@ORM\ManyToOne(targetEntity="TipoEvento")
+     * @ORM\JoinColumn(name="id_tipoEvento", referencedColumnName="id", nullable=false)
 	 */
-	private $conceptosImportesSolicitudes;
-	
-	
-	/**
-	 *
-	 * @ORM\OneToMany(targetEntity="TipoEvento", mappedBy="solicitud")
-	 */
-	private $tiposEventos;
-	
-	/**
-	 * 
-	 * 
-	 * @var CheckboxType
-	 */
-	private $chkpasajes;
-	
-	
-	/**
-	 * 
-	 * @var NumberType
-	 */
-	private $mntPasajes;
+	private $tipoEvento;
     
-    /**
-     * @var CheckboxType
-     */
-    private $chkviaticos;
 
-    /**
-     * @var NumberType
-     */
-    private $mntViaticos;
-
-    /**
-     * @var CheckboxType
-     */
-    private $chkhonorarios;
-
-    /**
-     * @var NumberType
-     */
-    private $mntHonorarios;
-
-    /**
-     * @var CheckboxType
-     */
-    private $chkservicios;
-
-    /**
-     * @var NumberType
-     */
-    private $mntServicios;
-    
-     /**
-     * @var CheckboxType
-     */
-    private $chkinscripcion;
-
-    /**
-     * @var NumberType
-     */
-    private $mntInscripcion;
-    
-     /**
-     * @var CheckboxType
-     */
-    private $chkotros;
-
-    /**
-     * @var TextType
-     */
-    private $otros;
-
-    /**
-     * @var NumberType
-     */
-    private $mntOtros;
-    
+    /*
+    *   Constructor
+    */
+    public function __construct() {
+        $this->conceptosImportesSolicitudes = new ArrayCollection();
+        $this->comprobantes = new ArrayCollection();
+        $this->roles = Array();
+    }
+     
         
     /**
      * Get id
@@ -854,39 +794,31 @@ class Solicitud
 	
 	
 	/**
-	 * Set tiposEventos
-	 **@param \Object $tiposEventos
+	 * Set tipoEvento
+	 **@param \Object $tipoEvento
 	 *
 	 *@return Solicitud
 	 */
 	
-	public function setTiposEventos($tiposEventos)
+	public function setTipoEvento($tipoEvento)
 	{
-		$this->tiposEventos = $tiposEventos;
+		$this->tipoEvento = $tipoEvento;
 		return $this;
 	}
 	
 	/**
-	 * Get tiposEventos
+	 * Get tipoEvento
 	 *
 	 * @return \Object
 	 */
 	
-	public function getTiposEventos()
+	public function getTipoEvento()
 	{
-		return $this->tiposEventos;
+		return $this->tipoEvento;
 	
-	}
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->comprobantes = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->conceptosImportesSolicitudes = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->tiposEventos = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+    
+    
     /**
      * Add comprobante
      *
@@ -896,7 +828,7 @@ class Solicitud
      */
     public function addComprobante(\AppBundle\Entity\Comprobante $comprobante)
     {
-        $this->comprobantes[] = $comprobante;
+        $this->comprobantes->add($comprobante);
 
         return $this;
     }
@@ -912,27 +844,27 @@ class Solicitud
     }
 
     /**
-     * Add conceptosImportesSolicitude
+     * Add conceptoSolicitud
      *
-     * @param \AppBundle\Entity\ConceptoImporteSolicitud $conceptosImportesSolicitude
+     * @param \AppBundle\Entity\ConceptoSolicitud $conceptoSolicitud
      *
      * @return Solicitud
      */
-    public function addConceptosImportesSolicitude(\AppBundle\Entity\ConceptoImporteSolicitud $conceptosImportesSolicitude)
+    public function addConceptoSolicitud(\AppBundle\Entity\ConceptoSolicitud $conceptoSolicitud)
     {
-        $this->conceptosImportesSolicitudes[] = $conceptosImportesSolicitude;
+        $this->conceptoSolicitud->add($conceptoSolicitud);
 
         return $this;
     }
 
     /**
-     * Remove conceptosImportesSolicitude
+     * Remove conceptosImportesSolicitud
      *
-     * @param \AppBundle\Entity\ConceptoImporteSolicitud $conceptosImportesSolicitude
+     * @param \AppBundle\Entity\ConceptoSolicitud $conceptosImportesSolicitud
      */
-    public function removeConceptosImportesSolicitude(\AppBundle\Entity\ConceptoImporteSolicitud $conceptosImportesSolicitude)
+    public function removeConceptosImportesSolicitud(\AppBundle\Entity\ConceptoSolicitud $conceptosImportesSolicitud)
     {
-        $this->conceptosImportesSolicitudes->removeElement($conceptosImportesSolicitude);
+        $this->conceptosImportesSolicitudes->removeElement($conceptoSolicitud);
     }
 
     /**
@@ -945,303 +877,8 @@ class Solicitud
         return $this->conceptosImportesSolicitudes;
     }
 
-    /**
-     * Add tiposEvento
-     *
-     * @param \AppBundle\Entity\TipoEvento $tiposEvento
-     *
-     * @return Solicitud
-     */
-    public function addTiposEvento(\AppBundle\Entity\TipoEvento $tiposEvento)
-    {
-        $this->tiposEventos[] = $tiposEvento;
-
-        return $this;
-    }
-
-    /**
-     * Remove tiposEvento
-     *
-     * @param \AppBundle\Entity\TipoEvento $tiposEvento
-     */
-    public function removeTiposEvento(\AppBundle\Entity\TipoEvento $tiposEvento)
-    {
-        $this->tiposEventos->removeElement($tiposEvento);
-    }
-    
-    /**
-     * 
-     * @return \Symfony\Component\Form\Extension\Core\Type\CheckboxType
-     */
-    public function getchkpasajes()
-    {
-    	return $this->chkpasajes;
-    }
-    
-    /**
-     * 
-     * @param unknown $chkpasaje
-     */
-    public function setChkPasajes($chkpasaje)
-    {
-    	$this->chkpasajes = $chkpasaje;
-    	return $this;
-    }
-    
-    /**
-     * 
-     * @return \Symfony\Component\Form\Extension\Core\Type\NumberType
-     */
-    public function getmntPasajes()
-    {
-    	return $this->mntPasajes;
-    }
-    
-    /**
-     * 
-     * @param unknown $mntpasaje
-     * @return \AppBundle\Entity\Solicitud
-     */
-    public function setmntPasajes($mntpasaje)
-    {
-    	$this->mntpasajes = $mntpasaje;
-    	return $this;
-    }
+   
 
 
-
-
-    /**
-     * 
-     * @return \Symfony\Component\Form\Extension\Core\Type\CheckboxType
-     */
-    public function getchkviaticos()
-    {
-    	return $this->chkviaticos;
-    }
-    
-    /**
-     * 
-     * @param unknown $chkpasaje
-     */
-    public function setchkviaticos($chkviaticos)
-    {
-    	$this->chkviaticos = $chkviaticos;
-    	return $this;
-    }
-    
-    /**
-     * 
-     * @return \Symfony\Component\Form\Extension\Core\Type\NumberType
-     */
-    public function getmntViaticos()
-    {
-    	return $this->mntViaticos;
-    }
-    
-    /**
-     * 
-     * @param unknown $mntpasaje
-     * @return \AppBundle\Entity\Solicitud
-     */
-    public function setmntViaticos($mntViaticos)
-    {
-    	$this->mntViaticos = $mntViaticos;
-    	return $this;
-    }
-
-
-
-
-
-
-    /**
-     * 
-     * @return \Symfony\Component\Form\Extension\Core\Type\CheckboxType
-     */
-    public function getchkhonorarios()
-    {
-    	return $this->chkhonorarios;
-    }
-    
-    /**
-     * 
-     * @param unknown $chkpasaje
-     */
-    public function setchkhonorarios($chkhonorarios)
-    {
-    	$this->chkhonorarios = $chkhonorarios;
-    	return $this;
-    }
-    
-    /**
-     * 
-     * @return \Symfony\Component\Form\Extension\Core\Type\NumberType
-     */
-    public function getmntHonorarios()
-    {
-    	return $this->mntHonorarios;
-    }
-    
-    /**
-     * 
-     * @param unknown $mntpasaje
-     * @return \AppBundle\Entity\Solicitud
-     */
-    public function setmntHonorarios($mntHonorarios)
-    {
-    	$this->mntHonorarios = $mntHonorarios;
-    	return $this;
-    }
-
-    
-
-
-
-
-
-    /**
-     * 
-     * @return \Symfony\Component\Form\Extension\Core\Type\CheckboxType
-     */
-    public function getchkservicios()
-    {
-    	return $this->chkservicios;
-    }
-    
-    /**
-     * 
-     * @param unknown $chkservicios
-     */
-    public function setchkservicios($chkservicios)
-    {
-    	$this->chkservicios = $chkservicios;
-    	return $this;
-    }
-    
-    /**
-     * 
-     * @return \Symfony\Component\Form\Extension\Core\Type\NumberType
-     */
-    public function getmntServicios()
-    {
-    	return $this->mntServicios;
-    }
-    
-    /**
-     * 
-     * @param unknown $mntServicios
-     * @return \AppBundle\Entity\Solicitud
-     */
-    public function setmntServicios($mntServicios)
-    {
-    	$this->mntServicios = $mntServicios;
-    	return $this;
-    }
-
-    
-
-
-
-
-    /**
-     * 
-     * @return \Symfony\Component\Form\Extension\Core\Type\CheckboxType
-     */
-    public function getchkinscripcion()
-    {
-    	return $this->chkinscripcion;
-    }
-    
-    /**
-     * 
-     * @param unknown $chkinscripcion
-     */
-    public function setchkinscripcion($chkinscripcion)
-    {
-    	$this->chkinscripcion = $chkinscripcion;
-    	return $this;
-    }
-    
-    /**
-     * 
-     * @return \Symfony\Component\Form\Extension\Core\Type\NumberType
-     */
-    public function getmntInscripcion()
-    {
-    	return $this->mntInscripcion;
-    }
-    
-    /**
-     * 
-     * @param unknown $mntInscripcion
-     * @return \AppBundle\Entity\Solicitud
-     */
-    public function setmntInscripcion($mntInscripcion)
-    {
-    	$this->mntInscripcion = $mntInscripcion;
-    	return $this;
-    }
-
-    
-
-
-
-    /**
-     * 
-     * @return \Symfony\Component\Form\Extension\Core\Type\CheckboxType
-     */
-    public function getchkotros()
-    {
-    	return $this->chkotros;
-    }
-    
-    /**
-     * 
-     * @param unknown $chkotros
-     */
-    public function setchkotros($chkotros)
-    {
-    	$this->chkotros = $chkotros;
-    	return $this;
-    }
-    
-    /**
-     * 
-     * @return \Symfony\Component\Form\Extension\Core\Type\NumberType
-     */
-    public function getmntOtros()
-    {
-    	return $this->mntOtros;
-    }
-    
-    /**
-     * 
-     * @param unknown $mntOtros
-     * @return \AppBundle\Entity\Solicitud
-     */
-    public function setmntOtros($mntOtros)
-    {
-    	$this->mntOtros = $mntOtros;
-    	return $this;
-    }
-
-     /**
-     * 
-     * @return \Symfony\Component\Form\Extension\Core\Type\TextType
-     */
-    public function getotros()
-    {
-    	return $this->otros;
-    }
-    
-    /**
-     * 
-     * @param unknown $otros
-     */
-    public function setotros($otros)
-    {
-    	$this->otros = $otros;
-    	return $this;
-    }
+   
 }

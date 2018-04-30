@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * TipoEvento
+ * ConceptoSolicitud
  *
- * @ORM\Table(name="tipo_evento")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TipoEventoRepository")
+ * @ORM\Table(name="concepto_solicitud")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ConceptoSolicitudRepository")
  */
-class TipoEvento
+class ConceptoSolicitud
 {
     /**
      * @var int
@@ -24,10 +24,11 @@ class TipoEvento
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=255)
+     * @ORM\Column(name="concepto", type="text")
      */
-    private $nombre;
-    
+    private $concepto;
+
+
     /**
      * Get id
      *
@@ -39,28 +40,27 @@ class TipoEvento
     }
 
     /**
-     * Set nombre
+     * Set concepto
      *
-     * @param string $nombre
+     * @param string $concepto
      *
-     * @return TipoEvento
+     * @return ConceptoSolicitud
      */
-    public function setNombre($nombre)
+    public function setConcepto($concepto)
     {
-        $this->nombre = $nombre;
+        $this->concepto = $concepto;
 
         return $this;
     }
 
     /**
-     * Get nombre
+     * Get concepto
      *
      * @return string
      */
-    public function getNombre()
+    public function getConcepto()
     {
-        return $this->nombre;
+        return $this->concepto;
     }
-
-
 }
+
