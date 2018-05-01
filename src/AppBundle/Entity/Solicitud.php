@@ -220,7 +220,7 @@ class Solicitud {
     private $proyectoGrupo;
 
     /**
-     * @ORM\OneToMany(targetEntity="SolicitudConcepto" , mappedBy="concepto" , cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="SolicitudConcepto" , mappedBy="solicitud" , cascade={"persist"})
      * 
      */
     private $conceptos;

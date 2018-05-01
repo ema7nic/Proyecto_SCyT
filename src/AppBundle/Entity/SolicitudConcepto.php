@@ -30,13 +30,13 @@ class SolicitudConcepto
     
     /**
      * @ORM\ManyToOne(targetEntity="Solicitud", inversedBy="conceptos", cascade={"persist"})
-     * @ORM\JoinColumn(name="solicitud_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="solicitud_id", referencedColumnName="id", nullable=FALSE)
      * */
     protected $solicitud;
 
     /**
      * @ORM\ManyToOne(targetEntity="Concepto", inversedBy="solicitudes", cascade={"persist"})
-     * @ORM\JoinColumn(name="concepto_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="concepto_id", referencedColumnName="id", nullable=FALSE)
      * */
     protected $concepto;
 
