@@ -10,7 +10,6 @@
         </div>
         <div class="row justify-content-md-center">
             <div class="col-12 col-md-auto">
-                <!--{{ form_start(form, {'attr': {'id': 'form_nueva_solicitud'}}) }}-->
                 {{ form_start(form) }}
                 <div class="row">
                     <div class="col">
@@ -33,8 +32,6 @@
                         <span class="text-danger"> {{form_errors(form.localidad)}}</span>
                     </div>
                 </div>
-
-
                 <div class="row">
                     <div class="col">
                         <div class="input-group mb-3">
@@ -56,8 +53,6 @@
                         <span class="text-danger"> {{form_errors(form.fechaFin)}}</span>
                     </div>
                 </div>
-
-
                 <div class="row">
                     <div class="col">
                         <div class="input-group mb-3">
@@ -89,7 +84,6 @@
                         <span class="text-danger"> {{form_errors(form.autores)}}</span>
                     </div>     
                 </div>
-
                 <div class="row">
                     <div class="col">
                         <div class="input-group mb-3">
@@ -101,8 +95,6 @@
                         <span class="text-danger"> {{form_errors(form.contratados)}}</span>
                     </div>     
                 </div>
-
-
                 <div class="row">
                     <div class="col">
                         <div class="input-group mb-3">
@@ -124,24 +116,52 @@
                         <span class="text-danger"> {{form_errors(form.fechaLlegada)}}</span>
                     </div>
                 </div>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th class="awesome">Concepto de gasto:</th>
+                            <td>
+                                <div class="row">
+                                    <div class="col conceptoImporte" data-prototype="{{ form_row(form.conceptos.vars.prototype)|e('html_attr') }}">                                           
+                                        {% for elemento in form.conceptos %} 
+                                            <div class="row mb-2">
+                                                <div class="col"> 
+                                                    {{ form_widget(elemento.concepto, {'attr' : {'class' : 'form-control' }}) }}                                                      
+                                                </div>
+                                                <div class="col"> 
+                                                    {{ form_widget(elemento.importe, {'attr' : {'class' : 'form-control' }}) }} 
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>                               
+                            </td>                         
+                        </tr>
+                        <tr>
+                            <th class="awesome">Tipo de Evento:</th>
+                            <td>
+                                <div class="row">
+                                    <div class="col">		
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio">Congreso</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio">Curso</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio">Reunion Cientifica</label>
+                                        </div>
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio">Otros</label>
+                                            <input type="text" id="otrs" placeholder="Detallar">
+                                        </div>
 
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Tipo Evento</span>
-                            </div>
-                            {{ form_widget(form.tipoevento, {'attr' : {'class' : 'form-control' }}) }}
-                        </div>
-                        <span class="text-danger"> {{form_errors(form.tipoevento)}}</span>
-                    </div>     
-                </div>
-
-
-
-             
-
-
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <div class="row">
                     <div class="col">
                         <div class="input-group mb-3">
@@ -163,9 +183,6 @@
                         <span class="text-danger"> {{form_errors(form.importeTotal)}}</span>
                     </div>     
                 </div>
-
-
-
                 <div class="row">
                     <div class="col">
                         <div class="input-group mb-3">
@@ -177,11 +194,6 @@
                         <span class="text-danger"> {{form_errors(form.observaciones)}}</span>
                     </div>     
                 </div>
-
-
-
-
-
                 <div class="row">
                     <div class="col align-self-end align-items-end">
                         <input class="btn btn-success" type="submit" value="Crear" />

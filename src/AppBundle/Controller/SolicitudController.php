@@ -44,29 +44,10 @@ class SolicitudController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            
-            echo "<script>
-            alert('antes de persist');
-            window.location= 'url.php'
-             </script>";
            
             $em = $this->getDoctrine()->getManager();
-            $em->persist($solicitud);
-            
-
-            foreach ($solicitud->getConceptosImportesSolicitudes() as $concepto) {
-                
-                $em->persist($concepto);
-                
-            }
-            
+            $em->persist($solicitud);                       
             $em->flush();
-       
-
-            
-
-
             return $this->redirectToRoute('solicitud_show', array('id' => $solicitud->getId()));
         }
 

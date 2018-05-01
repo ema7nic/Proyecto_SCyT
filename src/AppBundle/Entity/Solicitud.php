@@ -4,7 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 /**
@@ -220,7 +220,8 @@ class Solicitud {
     private $proyectoGrupo;
 
     /**
-     * @ORM\OneToMany(targetEntity="SolicitudConcepto" , mappedBy="concepto" , cascade={"all"})
+     * @ORM\OneToMany(targetEntity="SolicitudConcepto" , mappedBy="concepto" , cascade={"persist"})
+     * 
      */
     private $conceptos;
 

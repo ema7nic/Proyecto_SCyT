@@ -29,7 +29,8 @@ class Concepto {
     private $concepto;
 
     /**
-     * @ORM\OneToMany(targetEntity="SolicitudConcepto" , mappedBy="solicitud" , cascade={"all"})
+     * @ORM\OneToMany(targetEntity="SolicitudConcepto" , mappedBy="solicitud", cascade={"persist"})
+     * 
      */
     private $solicitudes;
 
