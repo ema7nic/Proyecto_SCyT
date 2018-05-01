@@ -5,29 +5,29 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Solicitud;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Solicitud controller.
  *
  * @Route("solicitud")
  */
-class SolicitudController extends Controller
-{
+class SolicitudController extends Controller {
+
     /**
      * Lists all solicitud entities.
      *
      * @Route("/", name="solicitud_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $solicituds = $em->getRepository('AppBundle:Solicitud')->findAll();
 
         return $this->render('solicitud/index.html.twig', array(
-            'solicituds' => $solicituds,
+                    'solicituds' => $solicituds,
         ));
     }
 
@@ -37,23 +37,26 @@ class SolicitudController extends Controller
      * @Route("/new", name="solicitud_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $solicitud = new Solicitud();
         $form = $this->createForm('AppBundle\Form\SolicitudType', $solicitud, ['attr' => ['id' => 'task-form']]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-           
+
+            foreach ($solicitud->getConceptos() as $solicitudConcepto) {
+                $solicitudConcepto->setSolicitud($solicitud);
+            }
+
             $em = $this->getDoctrine()->getManager();
-            $em->persist($solicitud);                       
+            $em->persist($solicitud);
             $em->flush();
             return $this->redirectToRoute('solicitud_show', array('id' => $solicitud->getId()));
         }
 
         return $this->render('solicitud/new.html.twig', array(
-            'solicitud' => $solicitud,
-            'form' => $form->createView(),
+                    'solicitud' => $solicitud,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -63,13 +66,12 @@ class SolicitudController extends Controller
      * @Route("/{id}", name="solicitud_show")
      * @Method("GET")
      */
-    public function showAction(Solicitud $solicitud)
-    {
+    public function showAction(Solicitud $solicitud) {
         $deleteForm = $this->createDeleteForm($solicitud);
 
         return $this->render('solicitud/show.html.twig', array(
-            'solicitud' => $solicitud,
-            'delete_form' => $deleteForm->createView(),
+                    'solicitud' => $solicitud,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -79,8 +81,7 @@ class SolicitudController extends Controller
      * @Route("/{id}/edit", name="solicitud_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Solicitud $solicitud)
-    {
+    public function editAction(Request $request, Solicitud $solicitud) {
         $deleteForm = $this->createDeleteForm($solicitud);
         $editForm = $this->createForm('AppBundle\Form\SolicitudType', $solicitud);
         $editForm->handleRequest($request);
@@ -92,9 +93,9 @@ class SolicitudController extends Controller
         }
 
         return $this->render('solicitud/edit.html.twig', array(
-            'solicitud' => $solicitud,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'solicitud' => $solicitud,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -104,8 +105,7 @@ class SolicitudController extends Controller
      * @Route("/{id}", name="solicitud_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Solicitud $solicitud)
-    {
+    public function deleteAction(Request $request, Solicitud $solicitud) {
         $form = $this->createDeleteForm($solicitud);
         $form->handleRequest($request);
 
@@ -126,12 +126,12 @@ class SolicitudController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Solicitud $solicitud)
-    {
+    private function createDeleteForm(Solicitud $solicitud) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('solicitud_delete', array('id' => $solicitud->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('solicitud_delete', array('id' => $solicitud->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }
