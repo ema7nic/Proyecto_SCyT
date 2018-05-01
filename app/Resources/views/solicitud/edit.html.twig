@@ -128,97 +128,40 @@
 
                 <table class="table table-bordered">
                     <tbody>
-<!--
                         <tr>
                             <th class="awesome">Concepto de gasto:</th>
                             <td>
                                 <div class="row">
-                                    <div class="col">
-                                        
-                                    
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Pasajes</span>
+                                    <div class="col conceptoImporte" data-prototype="{{ form_row(edit_form.conceptos.vars.prototype)|e('html_attr') }}">                                           
+                                        {% for elemento in edit_form.conceptos %} 
+                                            <div class="row mb-2">
+                                                <div class="col"> 
+                                                    {{ form_widget(elemento.concepto, {'attr' : {'class' : 'form-control' }}) }}                                                      
+                                                </div>
+                                                <div class="col"> 
+                                                    {{ form_widget(elemento.importe, {'attr' : {'class' : 'form-control' }}) }} 
+                                                </div>
                                             </div>
-                                            {{form_widget(edit_form.mntPasajes, {'attr' : {'id' : 'mntPasajes' }}) }}
-                                        </div>
-                                       
-                                        
-                                        <div class="input-group-prepend">
-                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">Viaticos</span>
-                                            </div>
-                                            {{form_widget(edit_form.mntViaticos, {'attr' : {'id' : 'mntViaticos' }}) }}
-                                        </div>
-
-                                         
-                                        <div class="input-group-prepend">
-                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">Honorarios</span>
-                                        </div>
-                                            {{form_widget(edit_form.mntHonorarios, {'attr' : {'id' : 'mntHonorarios' }}) }}
-                                        </div>
-
-                                         
-                                        <div class="input-group-prepend">
-                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">Servicios</span>
-                                        </div>
-                                            {{form_widget(edit_form.mntServicios, {'attr' : {'id' : 'mntServicios' }}) }}
-                                        </div>
-
-                                        
-                                        <div class="input-group-prepend">
-                                             <div class="input-group-prepend">
-                                            <span class="input-group-text">Inscripcion</span>
-                                        </div>
-                                            {{form_widget(edit_form.mntInscripcion, {'attr' : {'id' : 'mntInscripcion' }}) }}
-                                        </div>
-
-                                         
-                                        <div class="input-group-prepend">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Otros</span>
-                                        </div>
-                                            {{form_widget(edit_form.otros, {'attr' : {'id' : 'otros' }}) }}
-                                            {{form_widget(edit_form.mntOtros, {'attr' : {'id' : 'mntOtros' }}) }}
-                                        </div>
-                                        
+                                        {% endfor %}
                                     </div>
-                                    
-                                </div>
+                                </div>                               
                             </td>                         
-                        </tr>                         
                         </tr>
-                        -->
-                        <tr>
-                            <th class="awesome">Tipo de Evento:</th>
-                            <td>
-                                <div class="row">
-                                    <div class="col">		
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio">Congreso</label>
-                                        </div>
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio">Curso</label>
-                                        </div>
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio">Reunion Cientifica</label>
-                                        </div>
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio">Otros</label>
-                                            <input type="text" id="otrs" placeholder="Detallar">
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-
-
+                        
                     </tbody>
                 </table>
-
+                 <div class="row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Tipo de Evento</span>
+                            </div>
+                            {{ form_widget(edit_form.tipoevento, {'attr' : {'class' : 'form-control' }}) }}
+                        </div>
+                        <span class="text-danger"> {{form_errors(edit_form.tipoevento)}}</span>
+                    </div>     
+                </div>
+                
 
 
                 <div class="row">
