@@ -15,12 +15,15 @@ class SolicitudConceptoType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('concepto', EntityType::class, array(
-                    'class' => 'AppBundle:Concepto',
-                    'choice_label' => 'concepto',
-                    'attr' => array('class' => 'form-control'),
+            'class' => 'AppBundle:Concepto',
+            'choice_label' => 'concepto',
+            'label' => false,
+            'attr' => array('class' => 'form-control'),
         ));
         $builder->add('monto', TextType::class, array(
             'attr' => array('class' => 'form-control'),
+            'label' => false,
+            'empty_data' => 'John Doe',
         ));
     }
 
