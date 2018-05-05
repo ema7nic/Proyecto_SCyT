@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Solicitud controller.
@@ -82,12 +83,37 @@ class SolicitudController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Solicitud $solicitud) {
+        $entityManager = $this->getDoctrine()->getManager();
         $deleteForm = $this->createDeleteForm($solicitud);
+
+        $originalSolicitudes = new ArrayCollection();
+
+        foreach ($solicitud->getConceptos() as $conceptoSolicitud) {
+            $originalSolicitudes->add($conceptoSolicitud);
+        }
+
         $editForm = $this->createForm('AppBundle\Form\SolicitudType', $solicitud);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+
+            foreach ($originalSolicitudes as $conceptoSolicitud) {
+                if (false === $solicitud->getConceptos()->contains($conceptoSolicitud)) {
+                    $solicitud->removeConceptos($conceptoSolicitud);
+                    $conceptoSolicitud->setSolicitud(null);
+                    $conceptoSolicitud->setConcepto(null);
+
+                    $entityManager->persist($conceptoSolicitud);
+                    $entityManager->remove($conceptoSolicitud);
+                }
+            }
+
+            foreach ($solicitud->getConceptos() as $solicitudConcepto) {
+                $solicitudConcepto->setSolicitud($solicitud);
+            }
+
+            $entityManager->persist($solicitud);
+            $entityManager->flush();
 
             return $this->redirectToRoute('solicitud_edit', array('id' => $solicitud->getId()));
         }
@@ -111,9 +137,9 @@ class SolicitudController extends Controller {
 
         if ($form->isSubmitted() && $form->isValid()) {
             $solicitud->setFechaBaja(new \DateTime('NOW'));
-            $em = $this->getDoctrine()->getManager();
+            // $em = $this->getDoctrine()->getManager();
             //$em->remove($solicitud);
-            $em->flush();
+            //$em->flush();
         }
 
         return $this->redirectToRoute('solicitud_index');
