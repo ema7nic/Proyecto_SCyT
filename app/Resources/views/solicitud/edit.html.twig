@@ -2,7 +2,7 @@
 
 {% block body %}
 
- <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
             <div class="col">
                 <div class="page-header">
@@ -11,215 +11,200 @@
                 <div class="row justify-content-md-center">
                     <div class="col-12 col-md-auto">
                         {{ form_start(edit_form) }}
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Dirección de Realización</span>
-                            </div>
-                            {{ form_widget(edit_form.direccion, {'attr' : {'class' : 'form-control' }}) }}
-                        </div>
-                        <span class="text-danger"> {{form_errors(edit_form.direccion)}}</span>
-                    </div>
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Localidad de Realización</span>
-                            </div>
-                            {{ form_widget(edit_form.localidad, {'attr' : {'class' : 'form-control' }}) }}
-
-                        </div>
-                        <span class="text-danger"> {{form_errors(edit_form.localidad)}}</span>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Fecha Inicio</span>
-                            </div>
-                            {{ form_widget(edit_form.fechaInicio) }}
-                        </div>
-                        <span class="text-danger"> {{form_errors(edit_form.fechaInicio)}}</span>
-                    </div>
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Fecha Fin</span>
-                            </div>
-                            {{ form_widget(edit_form.fechaFin) }}
-
-                        </div>
-                        <span class="text-danger"> {{form_errors(edit_form.fechaFin)}}</span>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Nombre del Evento</span>
-                            </div>
-                            {{ form_widget(edit_form.nombreEvento, {'attr' : {'class' : 'form-control' }}) }}
-                        </div>
-                        <span class="text-danger"> {{form_errors(edit_form.nombreEvento)}}</span>
-                    </div>     
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Proyecto/Grupo</span>
-                            </div>
-                            {{ form_widget(edit_form.proyectoGrupo, {'attr' : {'class' : 'form-control' }}) }}
-                        </div>
-                        <span class="text-danger"> {{form_errors(edit_form.proyectoGrupo)}}</span>
-                    </div> 
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Autores</span>
-                            </div>
-                            {{ form_widget(edit_form.autores, {'attr' : {'class' : 'form-control' }}) }}
-                        </div>
-                        <span class="text-danger"> {{form_errors(edit_form.autores)}}</span>
-                    </div>     
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Contratados</span>
-                            </div>
-                            {{ form_widget(edit_form.contratados, {'attr' : {'class' : 'form-control' }}) }}
-                        </div>
-                        <span class="text-danger"> {{form_errors(edit_form.contratados)}}</span>
-                    </div>     
-                </div>
-
-
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Fecha de salida</span>
-                            </div>
-                            {{ form_widget(edit_form.fechaSalida) }}
-                        </div>
-                        <span class="text-danger"> {{form_errors(edit_form.fechaSalida)}}</span>
-                    </div>
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Fecha de llegada</span>
-                            </div>
-                            {{ form_widget(edit_form.fechaLlegada) }}
-
-                        </div>
-                        <span class="text-danger"> {{form_errors(edit_form.fechaLlegada)}}</span>
-                    </div>
-                </div>
-
-
-
-                <table class="table table-bordered">
-                    <tbody>
-                        <tr>
-                            <th class="awesome">Concepto de gasto:</th>
-                            <td>
-                                <div class="row">
-                                    <div class="col conceptoImporte" data-prototype="{{ form_row(edit_form.conceptos.vars.prototype)|e('html_attr') }}">                                           
-                                        {% for elemento in edit_form.conceptos %} 
-                                            <div class="row mb-2">
-                                                <div class="col"> 
-                                                    {{ form_widget(elemento.concepto, {'attr' : {'class' : 'form-control' }}) }}                                                      
-                                                </div>
-                                                <div class="col"> 
-                                                    {{ form_widget(elemento.monto, {'attr' : {'class' : 'form-control' }}) }} 
-                                                </div>
-                                            </div>
-                                        {% endfor %}
+                        <h3>Lugar Realización</h3>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Dirección de Realización</span>
                                     </div>
-                                </div>                               
-                            </td>                         
-                        </tr>
-                        
-                    </tbody>
-                </table>
-                 <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Tipo de Evento</span>
+                                    {{ form_widget(edit_form.direccion, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.direccion)}}</span>
                             </div>
-                            {{ form_widget(edit_form.tipoevento, {'attr' : {'class' : 'form-control' }}) }}
-                        </div>
-                        <span class="text-danger"> {{form_errors(edit_form.tipoevento)}}</span>
-                    </div>     
-                </div>
-                
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Localidad de Realización</span>
+                                    </div>
+                                    {{ form_widget(edit_form.localidad, {'attr' : {'class' : 'form-control' }}) }}
 
-
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Nro. Nota</span>
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.localidad)}}</span>
                             </div>
-                            {{ form_widget(edit_form.nroNota, {'attr' : {'class' : 'form-control' }}) }}
-
                         </div>
-                        <span class="text-danger"> {{form_errors(edit_form.nroNota)}}</span>
-                    </div>
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Importe Total</span>
+
+                        <h3>Fecha Realización</h3>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Inicio</span>
+                                    </div>
+                                    {{ form_widget(edit_form.fechaInicio) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.fechaInicio)}}</span>
                             </div>
-                            {{ form_widget(edit_form.importeTotal, {'attr' : {'class' : 'form-control' }}) }}
-                        </div>
-                        <span class="text-danger"> {{form_errors(edit_form.importeTotal)}}</span>
-                    </div>     
-                </div>
-
-
-
-                <div class="row">
-                    <div class="col">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Observaciones</span>
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Fin</span>
+                                    </div>
+                                    {{ form_widget(edit_form.fechaFin) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.fechaFin)}}</span>
                             </div>
-                            {{ form_widget(edit_form.observaciones, {'attr' : {'class' : 'form-control' }}) }}
                         </div>
-                        <span class="text-danger"> {{form_errors(edit_form.observaciones)}}</span>
-                    </div>     
-                </div>
 
+                        <h3>Datos Evento</h3> 
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Nombre del Evento</span>
+                                    </div>
+                                    {{ form_widget(edit_form.nombreEvento, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.nombreEvento)}}</span>
+                            </div>     
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Tipo de Evento</span>
+                                    </div>
+                                    {{ form_widget(edit_form.tipoevento, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.tipoevento)}}</span>
+                            </div> 
+                        </div>
 
+                        <h3>Datos Trabajo</h3>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Autores</span>
+                                    </div>
+                                    {{ form_widget(edit_form.autores, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.autores)}}</span>
+                            </div> 
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Contratados</span>
+                                    </div>
+                                    {{ form_widget(edit_form.contratados, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.contratados)}}</span>
+                            </div>     
+                        </div>
+                        <h3>Grupo o Proyecto</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Nombre</span>
+                                    </div>
+                                    {{ form_widget(edit_form.proyectoGrupo, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.proyectoGrupo)}}</span>
+                            </div>     
+                        </div>
+                        <h3>Cantidad de Días</h3>
+                        <div class="row">
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Fecha de salida</span>
+                                    </div>
+                                    {{ form_widget(edit_form.fechaSalida) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.fechaSalida)}}</span>
+                            </div>
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Fecha de llegada</span>
+                                    </div>
+                                    {{ form_widget(edit_form.fechaLlegada) }}
 
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.fechaLlegada)}}</span>
+                            </div>
+                        </div>
+                        <h3>Concepto de Gastos</h3>
+                        <div class="conceptoImporte" data-prototype="{{ form_row(edit_form.conceptos.vars.prototype)|e('html_attr') }}">                                           
+                            {% for elemento in edit_form.conceptos %} 
+                                <div class="quitar">
+                                    <div class="row mb-2">
+                                        <div class="col">                                             
+                                            {{ form_widget(elemento.concepto, {'attr' : {'class' : 'form-control' }}) }}                                                      
+                                        </div>
+                                        <div class="col"> 
+                                            {{ form_widget(elemento.monto, {'attr' : {'class' : 'form-control' }}) }} 
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="row mb-2"> 
+                                <div class="col"> 
+                                    <input class="btn btn-secondary add_tag_link" value="Agregar Concepto" />
+                                </div>                       
+                            </div>
+                        </div>
+                        <h3>Importe Total</h3>
+                        <div class="row">                    
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Observaciones</span>
+                                    </div>
+                                    {{ form_widget(edit_form.observaciones, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.observaciones)}}</span>
+                            </div> 
+                            <div class="col">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Total</span>
+                                    </div>
+                                    {{ form_widget(edit_form.importeTotal, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.importeTotal)}}</span>
+                            </div>     
+                        </div>
 
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Nro. Nota</span>
+                                    </div>
+                                    {{ form_widget(edit_form.nroNota, {'attr' : {'class' : 'form-control' }}) }}
 
-                <div class="row">
-                    <div class="col align-self-end align-items-end">
-                        <input class="btn btn-success" type="submit" value="Crear" />
-                    </div> 
-                </div>
-                {{ form_end(edit_form) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.nroNota)}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="btn-group btn-group-toggle">
+                                    <input class="btn btn-success" type="submit" value="Guardar" />
+                                    {{ form_end(edit_form) }}
                                     {{ form_start(delete_form) }}
                                     <input class="btn btn-danger" type="submit" value="Borrar">
                                     {{ form_end(delete_form) }}
-                                </div>
+                                </div> 
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
 
 {% endblock %}
