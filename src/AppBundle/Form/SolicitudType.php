@@ -76,7 +76,11 @@ class SolicitudType extends AbstractType {
                     'choice_label' => 'nombre'
                 ))
                 ->add('nroNota', NumberType::class, array('required' => false))
-                ->add('importeTotal', NumberType::class, array('required' => true))
+                ->add('importeTotal', NumberType::class, array(
+                    'required' => true,
+                    'empty_data' => '0',
+                    'attr' => array('placeholder' => '0'),
+                ))
                 ->add('observaciones', TextType::class, array('required' => false));
 
         $builder->add('conceptos', CollectionType::class, array(
@@ -86,6 +90,9 @@ class SolicitudType extends AbstractType {
             'allow_delete' => true,
             'by_reference' => false,
             'label' => false,
+            'entry_options' => array(
+                'label' => false,
+            ),
         ));
     }
 
