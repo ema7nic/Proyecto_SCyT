@@ -764,7 +764,7 @@ class Solicitud {
      *
      * @return Solicitud
      */
-    public function addConcepto(\AppBundle\Entity\Concepto $conceptos) {
+    public function addConcepto(\AppBundle\Entity\SolicitudConcepto $conceptos) {
         $this->conceptos->add($conceptos);
 
         return $this;
@@ -775,7 +775,7 @@ class Solicitud {
      *
      * @param \AppBundle\Entity\Concepto $conceptos
      */
-    public function removeConceptos(\AppBundle\Entity\Concepto $conceptos) {
+    public function removeConceptos(\AppBundle\Entity\SolicitudConcepto $conceptos) {
         $this->conceptos->removeElement($conceptos);
     }
 
