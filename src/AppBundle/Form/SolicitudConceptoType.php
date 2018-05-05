@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class SolicitudConceptoType extends AbstractType {
 
@@ -20,10 +20,10 @@ class SolicitudConceptoType extends AbstractType {
             'label' => false,
             'attr' => array('class' => 'form-control'),
         ));
-        $builder->add('monto', TextType::class, array(
-            'attr' => array('class' => 'form-control'),
+        $builder->add('monto', IntegerType::class, array(
+            'attr' => array('class' => 'form-control','placeholder' => '0'),
             'label' => false,
-            'empty_data' => 'John Doe',
+            'empty_data' => '0',
         ));
     }
 
