@@ -89,6 +89,7 @@
                 '@AppBundle/Resources/public/js/jquery.dataTables.min.js'
             	'@AppBundle/Resources/public/js/bootstrap.min.js'
                 '@AppBundle/Resources/public/js/dataTables.bootstrap4.min.js'
+                '@AppBundle/Resources/public/js/solicitud_concepto.js'
                 output='js/compiled/main.js'      	                                             
             %}
             <script src="{{ asset_url }}"></script> 
@@ -130,76 +131,6 @@
                     });
                 });
             </script>    
-            <script type="text/javascript">
-                var $collectionHolder;
-
-                // setup an "add a tag" link
-                //var $addTagLink = $('<input class="btn btn-secondary add_tag_link" value="Agregar" />');
-
-                jQuery(document).ready(function () {
-                    // Get the ul that holds the collection of tags
-                    $collectionHolder = $('div.conceptoImporte');
-                    $addTagLink = $('input.add_tag_link');
-
-                    $collectionHolder.find('div.quitar').each(function () {
-                        addTagFormDeleteLink($(this),0);
-                    });
-
-                    // add the "add a tag" anchor and li to the tags ul
-                    //$collectionHolder.append($addTagLink);
-
-                    // count the current form inputs we have (e.g. 2), use that as the new
-                    // index when inserting a new item (e.g. 2)
-                    $collectionHolder.data('index', $collectionHolder.find(':input').length);
-
-                    $addTagLink.on('click', function (e) {
-                        // prevent the link from creating a "#" on the URL
-                        e.preventDefault();
-
-                        // add a new tag form (see next code block)
-                        addTagForm($collectionHolder, $addTagLink);
-                    });
-                });
-            </script>  
-            <script type="text/javascript">
-                function addTagForm($collectionHolder, $newLinkLi) {
-                    // Get the data-prototype explained earlier
-                    var prototype = $collectionHolder.data('prototype');
-
-                    // get the new index
-                    var index = $collectionHolder.data('index');
-                    var i = index;
-
-                    var newForm = prototype;
-
-                    newForm = newForm.replace(/__name__/g, index);
-
-                    // increase the index with one for the next item
-                    $collectionHolder.data('index', index + 1);
-
-                    // Display the form in the page in an li, before the "Add a tag" link li
-                    var $newFormLi = $('<div class="quitar'+i+' mb-2"></div>').append(newForm);
-                    $newLinkLi.before($newFormLi);
-
-                    addTagFormDeleteLink($newFormLi, index);
-                }
-            </script>   
-            <script type="text/javascript">
-                function addTagFormDeleteLink($tagFormLi,index) {
-                    var $removeFormA = $('<div><input class="btn btn-secondary delete_tag_link" value="Quitar" /></div>');
-                    $tagFormLi.find('#appbundle_solicitud_conceptos_'+index).append($removeFormA);
-                    $('div.quitar'+index).find('#appbundle_solicitud_conceptos_'+index).find('div').addClass('col');
-                    $('div.quitar'+index).find('#appbundle_solicitud_conceptos_'+index).addClass('row');                    
-
-                    $removeFormA.on('click', function (e) {
-                        // prevent the link from creating a "#" on the URL
-                        e.preventDefault();
-
-                        // remove the li for the tag form
-                        $tagFormLi.remove();
-                    });
-                }
-            </script> 
         {% endblock %}
     </body>
 </html>
