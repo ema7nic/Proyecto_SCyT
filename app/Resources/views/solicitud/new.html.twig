@@ -109,7 +109,7 @@
                         <span class="text-danger"> {{form_errors(form.proyectoGrupo)}}</span>
                     </div>     
                 </div>
-                <h3>Concepto de Gastos</h3>
+                <h3>Cantidad de Días</h3>
                 <div class="row">
                     <div class="col">
                         <div class="input-group mb-3">
@@ -131,20 +131,16 @@
                         <span class="text-danger"> {{form_errors(form.fechaLlegada)}}</span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="conceptoImporte" data-prototype="{{ form_widget(form.conceptos.vars.prototype)|e('html_attr') }}">                                           
-                        {% for elemento in form.conceptos %} 
-                            <div class="row mb-2">
-                                <div class="col"> 
-                                    {{ form_widget(elemento.concepto, {'attr' : {'class' : 'form-control' }}) }}                                                      
-                                </div>
-                                <div class="col"> 
-                                    {{ form_widget(elemento.importe, {'attr' : {'class' : 'form-control' }}) }} 
-                                </div>
-                            </div>
-                        {% endfor %}
+                <h3>Concepto de Gastos</h3>
+                <div class="conceptoImporte" data-prototype="{{ form_widget(form.conceptos.vars.prototype)|e('html_attr') }}">                                           
+
+                    <div class="row mb-2"> 
+                        <div class="col"> 
+                            <input class="btn btn-secondary add_tag_link" value="Agregar Concepto" />
+                        </div>                       
                     </div>
                 </div>
+                <h3>Importe Total</h3>
                 <div class="row">                    
                     <div class="col">
                         <div class="input-group mb-3">
@@ -158,7 +154,7 @@
                     <div class="col">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Importe Total</span>
+                                <span class="input-group-text">Total</span>
                             </div>
                             {{ form_widget(form.importeTotal, {'attr' : {'class' : 'form-control' }}) }}
                         </div>
