@@ -2,54 +2,54 @@
 {% block body %}
     <h1>Lista de Solicitudes</h1>
 
- 	<div  class="row  justify-content-md-center">
-		<div  class="col-10 col-md-auto" >
-			<table id="table_id" class="table table-responsive table-striped table-bordered">
-            <thead class="thead-default">
-                <tr>
-					<th class="awesome">ID</th>
-					<th class="awesome">Nombre Evento</th>
-					<th class="awesome">Autores</th>
-	                <th class="awesome">Direccion</th>
-	                <th class="awesome">Fecha Inicio</th>
-	                <th class="awesome">Fecha Fin</th>
-	                <th class="awesome">Importe Total</th>
-	                <th class="awesome">Estado</th>
-	                <th class="awesome">Observaciones</th>
-	                <th class="awesome">Nronota</th>
-	                <th class="awesome">Acciones</th>
-                </tr>
-            </thead>
-				<tbody>
-					{% for solicitud in solicituds %}
-						<tr>
-							<td><a href="{{ path('solicitud_show', { 'id': solicitud.id }) }}">{{ solicitud.id }}</a></td>
-							<td>{{ solicitud.nombreEvento }}</td>
-							<td>{{ solicitud.autores }}</td>
-							<td>{{ solicitud.direccion }}</td>
-							<td>{% if solicitud.fechaInicio %}{{ solicitud.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
-							<td>{% if solicitud.fechaFin %}{{ solicitud.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
-							<!--<td>{% if solicitud.fechaSalida %}{{ solicitud.fechaSalida|date('Y-m-d H:i:s') }}{% endif %}</td>-->
-							<!--<td>{% if solicitud.fechaLlegada %}{{ solicitud.fechaLlegada|date('Y-m-d H:i:s') }}{% endif %}</td>-->
-							<td>{{ solicitud.importeTotal }}</td>
-							<td>{{ solicitud.estado }}</td>
-							<td>{{ solicitud.observaciones }}</td>
-							<td>{{ solicitud.nroNota }}</td>
-							<!--<td>{% if solicitud.fechaGeneracion %}{{ solicitud.fechaGeneracion|date('Y-m-d H:i:s') }}{% endif %}</td>-->
-							<td>
-								<div class="btn-group btn-group-toggle">
-									<a class="btn btn-info" href="{{ path('solicitud_show', { 'id': solicitud.id }) }}">Mostrar</a>
-									<a  class="btn btn-success" href="{{ path('solicitud_edit', { 'id': solicitud.id }) }}">Editar</a>
-								</div>
-								
-							</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-    		</table>
-		</div>
-    
-       
+    <div  class="row  justify-content-md-center">
+        <div  class="col-10 col-md-auto" >
+            <table id="table_id" class="table table-responsive table-striped table-bordered">
+                <thead class="thead-default">
+                    <tr>
+                        <th class="awesome">ID</th>
+                        <th class="awesome">Nombre Evento</th>
+                        <th class="awesome">Autores</th>
+                        <th class="awesome">Direccion</th>
+                        <th class="awesome">Fecha Inicio</th>
+                        <th class="awesome">Fecha Fin</th>
+                        <th class="awesome">Importe Total</th>
+                        <th class="awesome">Estado</th>
+                        <th class="awesome">Observaciones</th>
+                        <th class="awesome">Nronota</th>
+                        <th class="awesome">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for solicitud in solicituds %}
+                        <tr>
+                            <td><a href="{{ path('solicitud_show', { 'id': solicitud.id }) }}">{{ solicitud.id }}</a></td>
+                            <td>{{ solicitud.nombreEvento }}</td>
+                            <td>{{ solicitud.autores }}</td>
+                            <td>{{ solicitud.direccion }}</td>
+                            <td>{% if solicitud.fechaInicio %}{{ solicitud.fechaInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{% if solicitud.fechaFin %}{{ solicitud.fechaFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <!--<td>{% if solicitud.fechaSalida %}{{ solicitud.fechaSalida|date('Y-m-d H:i:s') }}{% endif %}</td>-->
+                            <!--<td>{% if solicitud.fechaLlegada %}{{ solicitud.fechaLlegada|date('Y-m-d H:i:s') }}{% endif %}</td>-->
+                            <td>{{ solicitud.importeTotal }}</td>
+                            <td>{{ solicitud.estado }}</td>
+                            <td>{{ solicitud.observaciones }}</td>
+                            <td>{{ solicitud.nroNota }}</td>
+                            <!--<td>{% if solicitud.fechaGeneracion %}{{ solicitud.fechaGeneracion|date('Y-m-d H:i:s') }}{% endif %}</td>-->
+                            <td>
+                                <div class="btn-group btn-group-toggle">
+                                    <a class="btn btn-info" href="{{ path('solicitud_show', { 'id': solicitud.id }) }}">Mostrar</a>
+                                    <a  class="btn btn-success" href="{{ path('solicitud_edit', { 'id': solicitud.id }) }}">Editar</a>
+                                </div>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
     </div>
 
 
