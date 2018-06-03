@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use AppBundle\Form\SolicitudConceptoType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -81,7 +82,7 @@ class SolicitudType extends AbstractType {
                     'empty_data' => '0',
                     'attr' => array('placeholder' => '0'),
                 ))
-                ->add('observaciones', TextType::class, array('required' => false));
+                ->add('observaciones', TextareaType::class, array('required' => false));
 
         $builder->add('conceptos', CollectionType::class, array(
             'entry_type' => SolicitudConceptoType::class,
