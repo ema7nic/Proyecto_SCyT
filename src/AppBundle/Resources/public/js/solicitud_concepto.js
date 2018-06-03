@@ -39,12 +39,12 @@ function sumConceptosCargados($i) {
         if (!isNaN(j)) {
             sum += j;
             sum -= anterior;
-            parseInt($("#appbundle_solicitud_importeTotal").val(sum));
+            $("#appbundle_solicitud_importeTotal").val(sum);
             anterior = j;
         } else {
             if (!isNaN(sum)) {
                 sum -= anterior;
-                parseInt($("#appbundle_solicitud_importeTotal").val(sum));
+                $("#appbundle_solicitud_importeTotal").val(sum);
                 anterior = 0;
             }
         }
