@@ -11,7 +11,7 @@
                 <div class="row justify-content-md-center">
                     <div class="col-12 col-md-auto">
                         {{ form_start(edit_form) }}
-                        <h3>Lugar Realización</h3>
+                        <h4>Lugar Realización</h4>
                         <div class="row">
                             <div class="col">
                                 <div class="input-group mb-3">
@@ -32,9 +32,9 @@
                                 </div>
                                 <span class="text-danger"> {{form_errors(edit_form.localidad)}}</span>
                             </div>
-                        </div>
+                        </div><hr />
 
-                        <h3>Fecha Realización</h3>
+                        <h4>Fecha Realización</h4>
                         <div class="row">
                             <div class="col">
                                 <div class="input-group mb-3">
@@ -54,9 +54,9 @@
                                 </div>
                                 <span class="text-danger"> {{form_errors(edit_form.fechaFin)}}</span>
                             </div>
-                        </div>
+                        </div><hr />
 
-                        <h3>Datos Evento</h3> 
+                        <h4>Datos Evento</h4> 
                         <div class="row">
                             <div class="col">
                                 <div class="input-group mb-3">
@@ -76,9 +76,9 @@
                                 </div>
                                 <span class="text-danger"> {{form_errors(edit_form.tipoevento)}}</span>
                             </div> 
-                        </div>
+                        </div><hr />
 
-                        <h3>Datos Trabajo</h3>
+                        <h4>Datos Trabajo</h4>
                         <div class="row">
                             <div class="col">
                                 <div class="input-group mb-3">
@@ -98,8 +98,8 @@
                                 </div>
                                 <span class="text-danger"> {{form_errors(edit_form.contratados)}}</span>
                             </div>     
-                        </div>
-                        <h3>Grupo o Proyecto</h3>
+                        </div><hr />
+                        <h4>Grupo o Proyecto</h4>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
@@ -110,8 +110,8 @@
                                 </div>
                                 <span class="text-danger"> {{form_errors(edit_form.proyectoGrupo)}}</span>
                             </div>     
-                        </div>
-                        <h3>Cantidad de Días</h3>
+                        </div><hr />
+                        <h4>Cantidad de Días</h4>
                         <div class="row">
                             <div class="col">
                                 <div class="input-group mb-3">
@@ -132,8 +132,8 @@
                                 </div>
                                 <span class="text-danger"> {{form_errors(edit_form.fechaLlegada)}}</span>
                             </div>
-                        </div>
-                        <h3>Concepto de Gastos</h3>
+                        </div><hr />
+                        <h4>Concepto de Gastos</h4>
                         <div class="conceptoImporte" data-prototype="{{ form_row(edit_form.conceptos.vars.prototype)|e('html_attr') }}">                                           
                             {% for elemento in edit_form.conceptos %} 
                                 <div class="quitar">
@@ -151,9 +151,9 @@
                                 <div class="col"> 
                                     <input class="btn btn-secondary add_tag_link" value="Agregar Concepto" />
                                 </div>                       
-                            </div>
+                            </div><hr />
                         </div>
-                        <h3>Importe Total</h3>
+                        <h4>Importe Total</h4>
                         <div class="row">                    
                             <div class="col">
                                 <div class="input-group mb-3">
@@ -173,7 +173,7 @@
                                 </div>
                                 <span class="text-danger"> {{form_errors(edit_form.importeTotal)}}</span>
                             </div>     
-                        </div>
+                        </div><hr />
 
                         <div class="row">
                             <div class="col-md-6">
@@ -186,7 +186,7 @@
                                 </div>
                                 <span class="text-danger"> {{form_errors(edit_form.nroNota)}}</span>
                             </div>
-                        </div>
+                        </div><hr />
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="btn-group btn-group-toggle">
@@ -197,7 +197,7 @@
                                     {{ form_end(delete_form) }}
                                 </div> 
                             </div>
-                        </div> 
+                        </div><hr />
                     </div>
                 </div>
             </div>
