@@ -155,27 +155,6 @@
                         </div>
                         <h4>Importe Total</h4>
                         <div class="row">                    
-                            <div class="col">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Observaciones</span>
-                                    </div>
-                                    {{ form_widget(edit_form.observaciones, {'attr' : {'class' : 'form-control' }}) }}
-                                </div>
-                                <span class="text-danger"> {{form_errors(edit_form.observaciones)}}</span>
-                            </div> 
-                            <div class="col">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Total</span>
-                                    </div>
-                                    {{ form_widget(edit_form.importeTotal, {'attr' : {'class' : 'form-control' }}) }}
-                                </div>
-                                <span class="text-danger"> {{form_errors(edit_form.importeTotal)}}</span>
-                            </div>     
-                        </div><hr />
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -186,6 +165,26 @@
                                 </div>
                                 <span class="text-danger"> {{form_errors(edit_form.nroNota)}}</span>
                             </div>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Total</span>
+                                    </div>
+                                    {{ form_widget(edit_form.importeTotal, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.importeTotal)}}</span>
+                            </div>     
+                        </div><hr />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Observaciones</span>
+                                    </div>
+                                    {{ form_widget(edit_form.observaciones, {'attr' : {'class' : 'form-control' }}) }}
+                                </div>
+                                <span class="text-danger"> {{form_errors(edit_form.observaciones)}}</span>
+                            </div> 
                         </div><hr />
                         <div class="row">
                             <div class="col-md-6">
@@ -197,7 +196,7 @@
                                     {{ form_end(delete_form) }}
                                 </div> 
                             </div>
-                        </div><hr />
+                        </div>
                     </div>
                 </div>
             </div>
