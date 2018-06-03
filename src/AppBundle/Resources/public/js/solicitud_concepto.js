@@ -1,23 +1,56 @@
 
 var $collectionHolder;
 var sum = 0;
+
 //var $addTagLink = $('<input class="btn btn-secondary add_tag_link" value="Agregar" />');
 
 jQuery(document).ready(function () {
     $collectionHolder = $('div.conceptoImporte');
     $addTagLink = $('input.add_tag_link');
+    var l = 0;
 
     $collectionHolder.find('div.quitar').each(function () {
-        addTagFormDeleteLinkFor($(this),);
+        addTagFormDeleteLinkFor($(this), l);
+        l++;
     });
 
-    $collectionHolder.data('index', $collectionHolder.find(':input').length);
+    var k = $collectionHolder.find('select').length;
+
+    $collectionHolder.data('index', k);
+
+    sum = parseInt($("#appbundle_solicitud_importeTotal").val());
+    for ($i = 0; $i < k; $i++) {
+        sumConceptosCargados($i);
+    }
 
     $addTagLink.on('click', function (e) {
         e.preventDefault();
         addTagForm($collectionHolder, $addTagLink);
     });
+
+
+
 });
+
+function sumConceptosCargados($i) {
+    var anterior = parseInt($('#appbundle_solicitud_conceptos_' + $i + '_monto').val());
+    $("#appbundle_solicitud_conceptos_" + $i + "_monto").on('input', function () {
+        var j = parseInt($('#appbundle_solicitud_conceptos_' + $i + '_monto').val());
+        if (!isNaN(j)) {
+            sum += j;
+            sum -= anterior;
+            parseInt($("#appbundle_solicitud_importeTotal").val(sum));
+            anterior = j;
+        } else {
+            if (!isNaN(sum)) {
+                sum -= anterior;
+                parseInt($("#appbundle_solicitud_importeTotal").val(sum));
+                anterior = 0;
+            }
+        }
+    });
+
+}
 
 function addTagForm($collectionHolder, $newLinkLi) {
     var prototype = $collectionHolder.data('prototype');
@@ -36,11 +69,21 @@ function addTagForm($collectionHolder, $newLinkLi) {
 
     addTagFormDeleteLink($newFormLi, index);
 
-    $('#appbundle_solicitud_conceptos_' + index + '_monto').on('change', function () {
-        sum += parseInt($('#appbundle_solicitud_conceptos_' + index + '_monto').val());
-        sum -=anterior;
-        $("#appbundle_solicitud_importeTotal").val(sum);
-        anterior = parseInt($('#appbundle_solicitud_conceptos_' + index + '_monto').val());
+    $('#appbundle_solicitud_conceptos_' + index + '_monto').on('input', function () {
+        var j = parseInt($('#appbundle_solicitud_conceptos_' + index + '_monto').val());
+        if (!isNaN(j)) {
+            sum += j;
+            sum -= anterior;
+            parseInt($("#appbundle_solicitud_importeTotal").val(sum));
+            anterior = j;
+        } else {
+            if (!isNaN(sum)) {
+                sum -= anterior;
+                parseInt($("#appbundle_solicitud_importeTotal").val(sum));
+                anterior = 0;
+            }
+        }
+
     });
 }
 
@@ -61,11 +104,15 @@ function addTagFormDeleteLink($tagFormLi, $index) {
     });
 }
 
-function addTagFormDeleteLinkFor($tagFormLi) {
+function addTagFormDeleteLinkFor($tagFormLi, $index) {
     var $removeFormA = $('<div class="col"><input class="btn btn-secondary delete_concepto_link" value="Quitar" /></div>');
     $tagFormLi.find('div.row').append($removeFormA);
     $removeFormA.on('click', function (e) {
-        
+        var j = parseInt($('#appbundle_solicitud_conceptos_' + $index + '_monto').val());
+        if (!isNaN(j)) {
+            sum -= j;
+            $("#appbundle_solicitud_importeTotal").val(sum);
+        }
         e.preventDefault();
         $tagFormLi.remove();
     });
