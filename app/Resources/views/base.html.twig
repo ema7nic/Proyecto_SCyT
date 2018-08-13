@@ -5,29 +5,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}SCyT{% endblock %}</title>  
         {% stylesheets
-            '@AppBundle/Resources/public/css/bootstrap.min.css'
-            '@AppBundle/Resources/public/css/dataTables.bootstrap4.min.css'
+            '@bootstrap_css'
+            '@datables_css'
             filter='cssrewrite' output='css/compiled/app.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
         <style type="text/css">
-            .input-group-text, .awesome, .col-12{
-                border: 1px solid rgba(0, 0, 0, 0.6);
-                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-                background-color: transparent;                
-                background-image: linear-gradient(#484e55, #3A3F44 60%, #313539);
-                background-repeat: no-repeat;
-                -webkit-filter: none;
-                filter: none;
-                color: #fff;
-                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-            }
-            .col-12{
-                padding-bottom: 20px;
-                padding-top: 30px;
-                padding-left: 20px;
-                padding-right: 20px;
-            }
+            {#            .input-group-text, .awesome, .col-12{
+                            border: 1px solid rgba(0, 0, 0, 0.6);
+                            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+                            background-color: transparent;                
+                            background-image: linear-gradient(#484e55, #3A3F44 60%, #313539);
+                            background-repeat: no-repeat;
+                            -webkit-filter: none;
+                            filter: none;
+                            color: #fff;
+                            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+                        }
+                        .col-12{
+                            padding-bottom: 20px;
+                            padding-top: 30px;
+                            padding-left: 20px;
+                            padding-right: 20px;
+                        }#}
 
             .fixed-top {
                 position: sticky;
@@ -36,7 +36,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body id="top">
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark bg-primary" style="background-color: #e3f2fd;">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -89,10 +89,10 @@
         <div id="myProgressBar" style="visibility: hidden;"></div>
         {% block javascripts %}
             {% javascripts 
-                '@AppBundle/Resources/public/js/jquery-3.2.1.min.js'  
-                '@AppBundle/Resources/public/js/jquery.dataTables.min.js'
-            	'@AppBundle/Resources/public/js/bootstrap.min.js'
-                '@AppBundle/Resources/public/js/dataTables.bootstrap4.min.js'
+                '@jquery'
+                '@datables_js'
+            	'@bootstrap_js'   
+                '@datables_bootstrap_js'
                 '@AppBundle/Resources/public/js/solicitud_concepto.js'
                 output='js/compiled/main.js'      	                                             
             %}
