@@ -18,7 +18,9 @@ jQuery(document).ready(function () {
 
     $collectionHolder.data('index', k);
 
+    $("#appbundle_solicitud_importeTotal").val(0)
     sum = parseInt($("#appbundle_solicitud_importeTotal").val());
+
     for ($i = 0; $i < k; $i++) {
         sumConceptosCargados($i);
     }
@@ -33,18 +35,22 @@ jQuery(document).ready(function () {
 });
 
 function sumConceptosCargados($i) {
-    var anterior = parseInt($('#appbundle_solicitud_conceptos_' + $i + '_monto').val());
-    $("#appbundle_solicitud_conceptos_" + $i + "_monto").on('input', function () {
-        var j = parseInt($('#appbundle_solicitud_conceptos_' + $i + '_monto').val());
+    const conceptos_selector = "#appbundle_solicitud_conceptos_" + $i + "_monto";
+    const total_selector = "#appbundle_solicitud_importeTotal";
+    let anterior = parseInt(conceptos_selector).val();
+
+    $(conceptos_selector).on('input', function () {
+        var j = parseInt($(conceptos_selector).val());
+
         if (!isNaN(j)) {
             sum += j;
             sum -= anterior;
-            $("#appbundle_solicitud_importeTotal").val(sum);
+            $(total_selector).val(sum);
             anterior = j;
         } else {
             if (!isNaN(sum)) {
                 sum -= anterior;
-                $("#appbundle_solicitud_importeTotal").val(sum);
+                $(total_selector).val(sum);
                 anterior = 0;
             }
         }
@@ -54,11 +60,12 @@ function sumConceptosCargados($i) {
 
 function addTagForm($collectionHolder, $newLinkLi) {
     var prototype = $collectionHolder.data('prototype');
-
     var index = $collectionHolder.data('index');
     var i = index;
     var newForm = prototype;
     var anterior = 0;
+
+    const conceptos_selector = "#appbundle_solicitud_conceptos_" + index + "_monto";
 
     newForm = newForm.replace(/__name__/g, index);
 
@@ -68,9 +75,10 @@ function addTagForm($collectionHolder, $newLinkLi) {
     $newLinkLi.before($newFormLi);
 
     addTagFormDeleteLink($newFormLi, index);
+    $(conceptos_selector).focus();
 
-    $('#appbundle_solicitud_conceptos_' + index + '_monto').on('input', function () {
-        var j = parseInt($('#appbundle_solicitud_conceptos_' + index + '_monto').val());
+    $(conceptos_selector).on('input', function () {
+        var j = parseInt($(conceptos_selector).val());
         if (!isNaN(j)) {
             sum += j;
             sum -= anterior;
@@ -106,7 +114,7 @@ function addTagFormDeleteLink($tagFormLi, $index) {
 
 function addTagFormDeleteLinkFor($tagFormLi, $index) {
     var $removeFormA = $('<div class="col"><input class="btn btn-secondary delete_concepto_link" value="Quitar" /></div>');
-    $tagFormLi.find('div.row').append($removeFormA);
+    $tagFormLi.find('div.row').append($removeFormA); 
     $removeFormA.on('click', function (e) {
         var j = parseInt($('#appbundle_solicitud_conceptos_' + $index + '_monto').val());
         if (!isNaN(j)) {
